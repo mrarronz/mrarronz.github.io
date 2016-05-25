@@ -13,7 +13,7 @@ locale: en_US
 # twitter_username: mrarronz
 github_username:  mrarronz
 disqus_shortname: mrarronz
-favicon:     "/images/favicon.ico"
+favicon:     "/images/favicon.png"
 aboutme: A little fool, strugglling for life. # these are shown on aboutme-sidebar.
 # aboutme_photo: https://i.imgur.com/Mdc4szJl.jpg # your photo.
 aboutme_photo: "/images/img_car.jpg"

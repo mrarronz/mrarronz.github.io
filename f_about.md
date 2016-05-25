@@ -17,15 +17,15 @@ permalink: /about/
 
 ###  Contact me
 
->  * 邮箱:arronzhu@hotmail.com    
->  * GitHub:[https://github.com/mrarronz](https://github.com/mrarronz)  
+>  * 邮箱: arronzhu@hotmail.com    
+>  * GitHub: [https://github.com/mrarronz](https://github.com/mrarronz)  
 
 ---
 
 ###  About this site
 
-> * 搭建于[Github](https://github.com/mrarronz/mrarronz.github.io)  
-> * 模板及样式来源[freshman21](https://github.com/yulijia/freshman21/)
-> * 模板资源[Jekyll Themes](http://jekyllthemes.org/)
+> * 搭建于 [Github](https://github.com/mrarronz/mrarronz.github.io)  
+> * 模板及样式来源 [freshman21](https://github.com/yulijia/freshman21/)
+> * 模板资源 [Jekyll Themes](http://jekyllthemes.org/)
 
 <br/>

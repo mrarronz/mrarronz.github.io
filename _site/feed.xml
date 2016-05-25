@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 May 2016 17:47:51 +0800</pubDate>
-    <lastBuildDate>Wed, 25 May 2016 17:47:51 +0800</lastBuildDate>
+    <pubDate>Wed, 25 May 2016 22:24:58 +0800</pubDate>
+    <lastBuildDate>Wed, 25 May 2016 22:24:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -46,8 +46,6 @@
       &lt;th style=&quot;text-align: center&quot;&gt;Kingdom&lt;/th&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Phylum&lt;/th&gt;
       &lt;th style=&quot;text-align: center&quot;&gt;Class&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Order&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Family&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -55,8 +53,6 @@
       &lt;td style=&quot;text-align: center&quot;&gt;ANIMALIA&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;CHORDATA&lt;/td&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;MAMMALIA&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;CETARTIODACTYLA&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;CERVIDAE&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;

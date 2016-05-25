@@ -15,10 +15,10 @@ dl, dd, ol, ul, figure {
 body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
   font-size: 16px;
-  line-height: 1.6em;
+  line-height: 1.8em;
   font-weight: 300;
   color: #111;
-  background-color: #f9f9f9;
+  background-color: #F6F8F8;
   -webkit-text-size-adjust: 100%; }
 
 /**
@@ -34,8 +34,8 @@ ul, ol, dl, figure {
  */
 .container {
   min-height: 100%;
-  max-width: -webkit-calc(1000px - (15px * 2));
-  max-width: calc(1000px - (15px * 2));
+  max-width: -webkit-calc(1150px - (15px * 2));
+  max-width: calc(1150px - (15px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -102,10 +102,10 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #2583ad;
+  color: #208EDA;
   text-decoration: none; }
   a:visited {
-    color: #0f3344; }
+    color: #10466b; }
   a:hover {
     color: #669900;
     text-decoration: underline; }
@@ -160,16 +160,16 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(960px - (15px * 2));
-  max-width: calc(960px - (15px * 2));
+  max-width: -webkit-calc(1120px - (15px * 2));
+  max-width: calc(1120px - (15px * 2));
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px; }
   @media screen and (max-width: 800px) {
     .wrapper {
-      max-width: -webkit-calc(960px - (15px));
-      max-width: calc(960px - (15px));
+      max-width: -webkit-calc(1120px - (15px));
+      max-width: calc(1120px - (15px));
       padding-right: 7.5px;
       padding-left: 7.5px; } }
 
@@ -253,7 +253,7 @@ cite {
   text-align: center; }
   .site-title a, .site-title a:visited
   .site-title a:hover {
-    color: #2583ad;
+    color: #208EDA;
     border-bottom: 1px dotted;
     text-decoration: none; }
 
@@ -274,7 +274,7 @@ cite {
     display: none; }
   .site-nav .page-link {
     color: #828282;
-    line-height: 1.6em;
+    line-height: 1.8em;
     margin-left: 10px;
     margin-right: 10px; }
   .site-nav a {
@@ -285,7 +285,7 @@ cite {
   @media screen and (max-width: 600px) {
     .site-nav {
       position: relative;
-      background-color: #f9f9f9;
+      background-color: #F6F8F8;
       border: 1px solid #e8e8e8;
       border-radius: 5px;
       text-align: center; }
