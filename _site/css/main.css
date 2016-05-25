@@ -102,10 +102,10 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #208EDA;
+  color: #2583ad;
   text-decoration: none; }
   a:visited {
-    color: #10466b; }
+    color: #0f3344; }
   a:hover {
     color: #669900;
     text-decoration: underline; }
@@ -253,7 +253,7 @@ cite {
   text-align: center; }
   .site-title a, .site-title a:visited
   .site-title a:hover {
-    color: #208EDA;
+    color: #2583ad;
     border-bottom: 1px dotted;
     text-decoration: none; }
 
