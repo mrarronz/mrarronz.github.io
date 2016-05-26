@@ -109,6 +109,7 @@ end
 1、将自己的源码上传到github仓库再clone到本地，如果仓库有代码就直接clone
 
 2、创建podspec文件
+cd到项目的根目录，在终端执行以下命令
 
 ```
 pod spec create XXXX(项目名称)

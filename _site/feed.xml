@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 11:30:35 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 11:30:35 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 11:33:35 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 11:33:35 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -112,7 +112,8 @@ end
 
 &lt;p&gt;1、将自己的源码上传到github仓库再clone到本地，如果仓库有代码就直接clone&lt;/p&gt;
 
-&lt;p&gt;2、创建podspec文件&lt;/p&gt;
+&lt;p&gt;2、创建podspec文件
+cd到项目的根目录，在终端执行以下命令&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod spec create XXXX(项目名称)
 &lt;/code&gt;&lt;/pre&gt;
