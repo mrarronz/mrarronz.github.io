@@ -58,7 +58,7 @@ touch podfile
 ```
 
 ```
-platform:ios, '6.0'   
+platform :ios, '6.0'   
 pod 'AFNetworking', '~> 3.0'
 ```
 ESC退出编辑，ZZ关闭文件
