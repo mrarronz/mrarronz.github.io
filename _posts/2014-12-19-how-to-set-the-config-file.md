@@ -4,7 +4,7 @@ title: How to set the config.yml file
 modified: 2014-12-19
 categories: [Jekyll]
 tags: 
-  - Jekyll theme installation
+  - Jekyll theme
 comments: true
 ---
 

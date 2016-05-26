@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 17:40:45 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 17:40:45 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 17:46:22 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 17:46:22 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -217,7 +217,7 @@ pod setup
         <link>http://mrarronz.github.io/cocoapods/2016/05/26/cocoapods-install-usage.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/cocoapods/2016/05/26/cocoapods-install-usage.html</guid>
         
-        <category>CocoaPods installation</category>
+        <category>CocoaPods</category>
         
         
         <category>CocoaPods</category>
@@ -323,7 +323,7 @@ pod setup
         <link>http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html</guid>
         
-        <category>Carthage installation</category>
+        <category>Carthage</category>
         
         
         <category>Carthage</category>
@@ -404,7 +404,7 @@ rm -rf ~/Library/Caches/Homebrew
         <link>http://mrarronz.github.io/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html</guid>
         
-        <category>gem installation</category>
+        <category>gem</category>
         
         
         <category>Jekyll</category>
@@ -491,7 +491,7 @@ rm -rf ~/Library/Caches/Homebrew
         <link>http://mrarronz.github.io/jekyll/2014/12/19/how-to-set-the-config-file.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/jekyll/2014/12/19/how-to-set-the-config-file.html</guid>
         
-        <category>Jekyll theme installation</category>
+        <category>Jekyll theme</category>
         
         
         <category>Jekyll</category>
@@ -636,7 +636,7 @@ rm -rf ~/Library/Caches/Homebrew
         <link>http://mrarronz.github.io/jekyll/2014/12/19/freshman21-structure.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/jekyll/2014/12/19/freshman21-structure.html</guid>
         
-        <category>Jekyll theme installation</category>
+        <category>Jekyll theme</category>
         
         
         <category>Jekyll</category>
@@ -664,7 +664,7 @@ rm -rf ~/Library/Caches/Homebrew
         <link>http://mrarronz.github.io/jekyll/2014/12/18/how-to-install.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/jekyll/2014/12/18/how-to-install.html</guid>
         
-        <category>Jekyll theme installation</category>
+        <category>Jekyll theme</category>
         
         
         <category>Jekyll</category>
@@ -858,7 +858,7 @@ This species is listed as Extinct in the Wild, as all populations are still unde
         <link>http://mrarronz.github.io/jekyll/2014/12/13/simple-post.html</link>
         <guid isPermaLink="true">http://mrarronz.github.io/jekyll/2014/12/13/simple-post.html</guid>
         
-        <category>Jekyll theme installation</category>
+        <category>Jekyll theme</category>
         
         
         <category>Jekyll</category>

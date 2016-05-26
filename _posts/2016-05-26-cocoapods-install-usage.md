@@ -3,7 +3,7 @@ layout: post
 title: CocoaPods的安装和使用
 excerpt: "CocoaPods的安装和使用，如何创建podspec并push到cocoaPods仓库"
 categories: CocoaPods
-tags: [CocoaPods installation]
+tags: [CocoaPods]
 comments: true
 ---
 

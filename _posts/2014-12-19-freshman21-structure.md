@@ -4,7 +4,7 @@ title: Theme structure
 modified: 2014-12-19
 categories: [Jekyll]
 tags: 
-  - Jekyll theme installation
+  - Jekyll theme
 comments: true
 ---
 

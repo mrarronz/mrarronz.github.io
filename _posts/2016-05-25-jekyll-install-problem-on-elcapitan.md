@@ -3,7 +3,7 @@ layout: post
 title: Install jekyll on OS X EI Capitan
 excerpt: "The installation about jekyll."
 categories: Jekyll
-tags: [gem installation]
+tags: [gem]
 comments: true
 ---
 

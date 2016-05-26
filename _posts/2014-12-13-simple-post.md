@@ -4,7 +4,7 @@ title: Sample Post
 author: Lijia Yu
 excerpt: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
 categories: Jekyll
-tags: [Jekyll theme installation]
+tags: [Jekyll theme]
 comments: true
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: How to install this theme
 categories: Jekyll
-tags: [Jekyll theme installation]
+tags: [Jekyll theme]
 comments: true
 description: How to install this theme, follow steps, very easy!
 ---

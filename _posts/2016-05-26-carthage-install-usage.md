@@ -3,7 +3,7 @@ layout: post
 title: Carthage的安装和使用
 excerpt: "Carthage的安装和使用，怎样给自己的项目创建carthage引用"
 categories: Carthage
-tags: [Carthage installation]
+tags: [Carthage]
 comments: true
 ---
 
