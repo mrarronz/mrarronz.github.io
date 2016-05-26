@@ -106,7 +106,7 @@
   
     <header class="post-header">
       <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html">Install jekyll on OS X EL Capitan</a>
+        <a itemprop="url" class="post-link" href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html">Install jekyll on OS X EI Capitan</a>
       </h1>
       <meta itemprop="keywords" content="gem installation" />
       <p class="post-meta">
@@ -129,15 +129,76 @@
     <article class="post-content" itemprop="articleBody">
       <p>前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。升级后cocoaPods使用出现了问题，在Xcode项目中创建podfile文件使用pod install命令提示command not found。原来是cocoaPods在系统升级后被干掉了，只能重新安装了。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$sudo gem install cocoapods
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install cocoapods
 </code></pre>
 </div>
 <p>这个命令打出后安装仍然有问题，正确的做法是：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$sudo gem install -n /usr/local/bin cocoapods
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install -n /usr/local/bin cocoapods
 </code></pre>
 </div>
-<p>OS X EL Capitan系统在安全性和稳定性方面都有所提升，这可能是导致原来安装的gem被干掉的原因，新安装的gem必须指定路径。</p>
+
+<p>在安装jekyll的时候也出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。</p>
+
+<p>当执行sudo gem install jekyll命令时总是提示安装不成功，具体错误提示忘记了，大概是:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ERROR: Failed to build gem native extension....
+</code></pre>
+</div>
+<p>然后搜索了半天，结合错误提示，猜测可能是ruby的原因，于是按照各路网友的做法，使用RVM安装ruby。RVM是安装成功了，但是ruby还是安装不成功，mac系统已经自带ruby了，所以用RVM安装ruby个人觉得其实也没必要。直到找到这个<a href="http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html">Jekyll安装教程</a>之后，又重新试着使用Homebrew来更新ruby。在安装过程中出现问题，按照提示执行brew link xxx(这里都不记得了)，执行之后还是没成功。由于homebrew是我之前安装过的，所以决定将它卸载，重装一遍。</p>
+
+<p>卸载Homebrew，按照以下命令一步步完成</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>cd `brew --prefix`
+rm -rf Cellar
+brew prune
+rm `git ls-files`
+rm -r Library/Homebrew Library/Aliases Library/Formula Library/Contributions
+rm -rf .git
+rm -rf ~/Library/Caches/Homebrew
+</code></pre>
+</div>
+
+<p><a href="http://brew.sh/">安装Homebrew</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
+</div>
+<p>这才是正确的方式！</p>
+
+<p>接着执行以下命令更新ruby</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>brew install ruby
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ruby -v
+</code></pre>
+</div>
+<p>ruby成功安装，最新版本是2.3.1</p>
+
+<p>然后安装jekyll</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install jekyll
+</code></pre>
+</div>
+<p>顺利安装完成，可以使用命令校验一下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll -v
+</code></pre>
+</div>
+
+<p>cd到自己的github page仓库下，执行</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll server
+</code></pre>
+</div>
+<p>启动成功，在浏览器地址栏输入</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://127.0.0.1:4000/  （或者localhost:4000）
+</code></pre>
+</div>
+<p>成功加载出博客主页。</p>
 
 
     </article> <hr />
@@ -709,7 +770,7 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   <h4>Recent Posts</h4>
   
   <li>
-  <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EL Capitan" rel="bookmark">Install jekyll on OS X EL Capitan</a>
+  <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan" rel="bookmark">Install jekyll on OS X EI Capitan</a>
   </li>
   
   <li>

@@ -5,23 +5,84 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 May 2016 23:09:46 +0800</pubDate>
-    <lastBuildDate>Wed, 25 May 2016 23:09:46 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 10:07:24 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 10:07:24 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Install jekyll on OS X EL Capitan</title>
+        <title>Install jekyll on OS X EI Capitan</title>
         <description>&lt;p&gt;前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。升级后cocoaPods使用出现了问题，在Xcode项目中创建podfile文件使用pod install命令提示command not found。原来是cocoaPods在系统升级后被干掉了，只能重新安装了。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo gem install cocoapods
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem install cocoapods
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;这个命令打出后安装仍然有问题，正确的做法是：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$sudo gem install -n /usr/local/bin cocoapods
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem install -n /usr/local/bin cocoapods
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;OS X EL Capitan系统在安全性和稳定性方面都有所提升，这可能是导致原来安装的gem被干掉的原因，新安装的gem必须指定路径。&lt;/p&gt;
+
+&lt;p&gt;在安装jekyll的时候也出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。&lt;/p&gt;
+
+&lt;p&gt;当执行sudo gem install jekyll命令时总是提示安装不成功，具体错误提示忘记了，大概是:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ERROR: Failed to build gem native extension....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后搜索了半天，结合错误提示，猜测可能是ruby的原因，于是按照各路网友的做法，使用RVM安装ruby。RVM是安装成功了，但是ruby还是安装不成功，mac系统已经自带ruby了，所以用RVM安装ruby个人觉得其实也没必要。直到找到这个&lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;Jekyll安装教程&lt;/a&gt;之后，又重新试着使用Homebrew来更新ruby。在安装过程中出现问题，按照提示执行brew link xxx(这里都不记得了)，执行之后还是没成功。由于homebrew是我之前安装过的，所以决定将它卸载，重装一遍。&lt;/p&gt;
+
+&lt;p&gt;卸载Homebrew，按照以下命令一步步完成&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd `brew --prefix`
+rm -rf Cellar
+brew prune
+rm `git ls-files`
+rm -r Library/Homebrew Library/Aliases Library/Formula Library/Contributions
+rm -rf .git
+rm -rf ~/Library/Caches/Homebrew
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://brew.sh/&quot;&gt;安装Homebrew&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这才是正确的方式！&lt;/p&gt;
+
+&lt;p&gt;接着执行以下命令更新ruby&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install ruby
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;ruby成功安装，最新版本是2.3.1&lt;/p&gt;
+
+&lt;p&gt;然后安装jekyll&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;顺利安装完成，可以使用命令校验一下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;cd到自己的github page仓库下，执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;启动成功，在浏览器地址栏输入&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://127.0.0.1:4000/  （或者localhost:4000）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;成功加载出博客主页。&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 25 May 2016 00:00:00 +0800</pubDate>
