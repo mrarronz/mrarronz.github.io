@@ -5,28 +5,235 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 10:07:24 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 10:07:24 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 11:30:35 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 11:30:35 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Install jekyll on OS X EI Capitan</title>
-        <description>&lt;p&gt;前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。升级后cocoaPods使用出现了问题，在Xcode项目中创建podfile文件使用pod install命令提示command not found。原来是cocoaPods在系统升级后被干掉了，只能重新安装了。&lt;/p&gt;
+        <title>CocoaPods的安装和使用</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;安装&lt;/h2&gt;
+
+&lt;p&gt;CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;XXX-MacBook-Pro:~ XXX$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;移除当前的rubygems，替换为淘宝的&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/
+gem sources -l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;可以用以下命令对gem 进行更新：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem update --system
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后就可以安装cocoaPods了&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem install cocoapods
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;这个命令打出后安装仍然有问题，正确的做法是：&lt;/p&gt;
+&lt;p&gt;Max系统升级到OS X EI Capitan之后改为&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo gem install -n /usr/local/bin cocoapods
+pod setup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;使用&lt;/h2&gt;
+
+&lt;p&gt;1、新建podfile&lt;/p&gt;
+
+&lt;p&gt;cd到项目的根目录下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim podfile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;打开podfile，在podfile中引用第三方库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch podfile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;在安装jekyll的时候也出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform:ios, &#39;6.0&#39;   
+pod &#39;AFNetworking&#39;, &#39;~&amp;gt; 3.0&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;ESC退出编辑，ZZ关闭文件&lt;/p&gt;
+
+&lt;p&gt;2、安装第三方库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;更新时podspec会更新本地仓库，这个过程耗时比较长，可以用以下命令&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod install --verbose --no-repo-update (注：--verbose可以不加，加上是为了打出更多调试信息)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;执行完后，项目根目录下会出现podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、更新pod&lt;/p&gt;
+
+&lt;p&gt;编辑podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod update --verbose --no-repo-update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;4、多个target的使用方式&lt;/p&gt;
+
+&lt;p&gt;推荐方式：不同的target使用不同的第三方依赖配置，如下：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source &#39;https://github.com/CocoaPods/Specs.git&#39;
+platform :ios, &#39;6.0&#39;
+
+target :TargetName1 do
+    pod &#39;AFNetworking&#39;
+    pod &#39;MBProgressHUD&#39;
+end
+
+target :TargetName2 do
+    pod &#39;MBProgressHUD&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;podspecpod&quot;&gt;创建podspec文件，为自己的项目增加pod支持&lt;/h2&gt;
+
+&lt;p&gt;1、将自己的源码上传到github仓库再clone到本地，如果仓库有代码就直接clone&lt;/p&gt;
+
+&lt;p&gt;2、创建podspec文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod spec create XXXX(项目名称)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这时候本地仓库就生成了一个podspec文件&lt;/p&gt;
+
+&lt;p&gt;3、配置podspec文件&lt;/p&gt;
+
+&lt;p&gt;用vim或者编辑器打开.podspec文件进行编辑，以我的项目&lt;a href=&quot;https://github.com/mrarronz/NSStringCategoryKit&quot;&gt;NSStringCategoryKit&lt;/a&gt;为例&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pod::Spec.new do |s|
+  s.name         = &quot;NSStringCategoryKit&quot;
+  s.version      = &quot;0.0.1&quot;
+  s.summary      = &quot;A NSString category collections.&quot;
+  s.description  = &amp;lt;&amp;lt;-DESC
+ A category collections for NSString class. All the methods in category are often used in app development.
+                   DESC
+  s.homepage     = &quot;https://github.com/mrarronz/NSStringCategoryKit&quot;
+  s.license      = &quot;MIT&quot;
+  s.author       = { &quot;mrarronz&quot; =&amp;gt; &quot;zhuhao1340@xxx.com&quot; }
+  s.platform     = :ios, &quot;7.0&quot;
+  s.source       = { :git =&amp;gt; &quot;https://github.com/mrarronz/NSStringCategoryKit.git&quot;, :tag =&amp;gt; &quot;0.0.1&quot; }
+  s.source_files  = &quot;NSStringCategoryKit&quot;， &quot;NSStringCategoryKit/**/*.{h，m}&quot;
+  s.public_header_files = &quot;NSStringCategoryKit/**/*.h&quot;
+  s.frameworks = &quot;Foundation&quot;, &quot;UIKit&quot;, &quot;CoreImage&quot;
+  s.requires_arc = true
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;4、验证podspec文件&lt;/p&gt;
+
+&lt;p&gt;在上传podspec文件之前，先验证一下看是否有错误&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod lib lint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果出现passed validation的提示，就说明验证通过了，如果出现错误，可以根据错误消息来更改配置文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod lib lint --verbose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;使用以上命令验证时会给出更详细的提示信息，根据这个错误信息来修改配置文件&lt;/p&gt;
+
+&lt;p&gt;5、打tag上传podspec文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git tag -m &quot;first release&quot; &quot;0.0.1&quot;
+git push --tags
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod trunk register orta@cocoapods.org &#39;Orta Therox&#39; --description=&#39;macbook air&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了&lt;/p&gt;
+
+&lt;p&gt;然后使用&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod trunk me
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这个命令来查看当前你的账号的会话状况，这个是跟你的设备相关的&lt;/p&gt;
+
+&lt;p&gt;cd到你的podspec所在目录，执行以下命令开始提交podspec文件到cocoaPods官方库，这里还是以我的项目为例&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod trunk push NSStringCategoryKit.podspec
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;这个过程等待时间比较长，大概一个小时左右，成功之后执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod setup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;更新一下本地仓库，再执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod search NSStringCategoryKit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;就可以找到项目了。&lt;/p&gt;
+
+&lt;p&gt;6、使用自己的pods项目&lt;/p&gt;
+
+&lt;p&gt;在Xcode项目的podfile文件中按照上面的cocoapods的使用方法配置podfile，例如&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform:ios, &#39;7.0&#39;   
+pod &#39;NSStringCategoryKit&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后执行更新操作就可以了。&lt;/p&gt;
+
+&lt;p&gt;如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform :ios, &#39;7.0&#39;
+pod &#39;NSStringCategoryKit&#39;, :git =&amp;gt; &#39;https://github.com/mrarronz/NSStringCategoryKit.git&#39;, :tag =&amp;gt; &#39;0.1.0&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 26 May 2016 00:00:00 +0800</pubDate>
+        <link>http://mrarronz.github.io/cocoapods/2016/05/26/cocoapods-install-usage.html</link>
+        <guid isPermaLink="true">http://mrarronz.github.io/cocoapods/2016/05/26/cocoapods-install-usage.html</guid>
+        
+        <category>CocoaPods installation</category>
+        
+        
+        <category>CocoaPods</category>
+        
+      </item>
+    
+      <item>
+        <title>Install jekyll on OS X EI Capitan</title>
+        <description>&lt;p&gt;前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。&lt;/p&gt;
+
+&lt;p&gt;在安装jekyll的时候出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。&lt;/p&gt;
 
 &lt;p&gt;当执行sudo gem install jekyll命令时总是提示安装不成功，具体错误提示忘记了，大概是:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ERROR: Failed to build gem native extension....
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Failed to build gem native extension....
+
+ERROR:  While executing gem ... (Errno::EPERM)
+Operation not permitted
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;然后搜索了半天，结合错误提示，猜测可能是ruby的原因，于是按照各路网友的做法，使用RVM安装ruby。RVM是安装成功了，但是ruby还是安装不成功，mac系统已经自带ruby了，所以用RVM安装ruby个人觉得其实也没必要。直到找到这个&lt;a href=&quot;http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html&quot;&gt;Jekyll安装教程&lt;/a&gt;之后，又重新试着使用Homebrew来更新ruby。在安装过程中出现问题，按照提示执行brew link xxx(这里都不记得了)，执行之后还是没成功。由于homebrew是我之前安装过的，所以决定将它卸载，重装一遍。&lt;/p&gt;
@@ -59,7 +266,7 @@ rm -rf ~/Library/Caches/Homebrew
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby -v
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;ruby成功安装，最新版本是2.3.1&lt;/p&gt;
+&lt;p&gt;ruby成功安装，最新版本是2.3.1p112&lt;/p&gt;
 
 &lt;p&gt;然后安装jekyll&lt;/p&gt;
 
@@ -82,7 +289,7 @@ rm -rf ~/Library/Caches/Homebrew
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://127.0.0.1:4000/  （或者localhost:4000）
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;成功加载出博客主页。&lt;/p&gt;
+&lt;p&gt;成功加载出blog主页。&lt;/p&gt;
 
 </description>
         <pubDate>Wed, 25 May 2016 00:00:00 +0800</pubDate>

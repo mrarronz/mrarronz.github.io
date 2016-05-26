@@ -88,6 +88,8 @@
         
         
         
+        
+        
       </div>
     </nav>
 
@@ -101,6 +103,233 @@
   <div class="page-content col-sm-8">
     <div class="home">
   <div class="post" itemscope itemtype="http://schema.org/BlogPosting" >
+    
+    
+  
+    <header class="post-header">
+      <h1 itemprop="name" class="post-title">
+        <a itemprop="url" class="post-link" href="/cocoapods/2016/05/26/cocoapods-install-usage.html">CocoaPods的安装和使用</a>
+      </h1>
+      <meta itemprop="keywords" content="CocoaPods installation" />
+      <p class="post-meta">
+      Posted in
+      
+      <a href="/categories/#CocoaPods">CocoaPods</a>
+      
+      
+      and tagged
+      
+      <a href="/tags/#CocoaPods installation" title="CocoaPods installation">CocoaPods installation </a>
+      
+      
+      <time itemprop="datePublished" datetime="2016-05-26">
+      on May 26, 2016
+      </time>
+      </p>
+    </header>
+
+    <article class="post-content" itemprop="articleBody">
+      <h2 id="section">安装</h2>
+
+<p>CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX-MacBook-Pro:~ XXX$ gem sources -l
+*** CURRENT SOURCES ***
+
+https://ruby.taobao.org/
+</code></pre>
+</div>
+<p>移除当前的rubygems，替换为淘宝的</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/
+gem sources -l
+</code></pre>
+</div>
+<p>可以用以下命令对gem 进行更新：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem update --system
+</code></pre>
+</div>
+<p>然后就可以安装cocoaPods了</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install cocoapods
+</code></pre>
+</div>
+<p>Max系统升级到OS X EI Capitan之后改为</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install -n /usr/local/bin cocoapods
+pod setup
+</code></pre>
+</div>
+<p><br /></p>
+
+<h2 id="section-1">使用</h2>
+
+<p>1、新建podfile</p>
+
+<p>cd到项目的根目录下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim podfile
+</code></pre>
+</div>
+<p>打开podfile，在podfile中引用第三方库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>touch podfile
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>platform:ios, '6.0'   
+pod 'AFNetworking', '~&gt; 3.0'
+</code></pre>
+</div>
+<p>ESC退出编辑，ZZ关闭文件</p>
+
+<p>2、安装第三方库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod install
+</code></pre>
+</div>
+<p>更新时podspec会更新本地仓库，这个过程耗时比较长，可以用以下命令</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod install --verbose --no-repo-update (注：--verbose可以不加，加上是为了打出更多调试信息)
+</code></pre>
+</div>
+
+<p>执行完后，项目根目录下会出现podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
+<br /></p>
+
+<p>3、更新pod</p>
+
+<p>编辑podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod update --verbose --no-repo-update
+</code></pre>
+</div>
+
+<p>4、多个target的使用方式</p>
+
+<p>推荐方式：不同的target使用不同的第三方依赖配置，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '6.0'
+
+target :TargetName1 do
+    pod 'AFNetworking'
+    pod 'MBProgressHUD'
+end
+
+target :TargetName2 do
+    pod 'MBProgressHUD'
+end
+</code></pre>
+</div>
+<p><br /></p>
+
+<h2 id="podspecpod">创建podspec文件，为自己的项目增加pod支持</h2>
+
+<p>1、将自己的源码上传到github仓库再clone到本地，如果仓库有代码就直接clone</p>
+
+<p>2、创建podspec文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod spec create XXXX(项目名称)
+</code></pre>
+</div>
+<p>这时候本地仓库就生成了一个podspec文件</p>
+
+<p>3、配置podspec文件</p>
+
+<p>用vim或者编辑器打开.podspec文件进行编辑，以我的项目<a href="https://github.com/mrarronz/NSStringCategoryKit">NSStringCategoryKit</a>为例</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Pod::Spec.new do |s|
+  s.name         = "NSStringCategoryKit"
+  s.version      = "0.0.1"
+  s.summary      = "A NSString category collections."
+  s.description  = &lt;&lt;-DESC
+ A category collections for NSString class. All the methods in category are often used in app development.
+                   DESC
+  s.homepage     = "https://github.com/mrarronz/NSStringCategoryKit"
+  s.license      = "MIT"
+  s.author       = { "mrarronz" =&gt; "zhuhao1340@xxx.com" }
+  s.platform     = :ios, "7.0"
+  s.source       = { :git =&gt; "https://github.com/mrarronz/NSStringCategoryKit.git", :tag =&gt; "0.0.1" }
+  s.source_files  = "NSStringCategoryKit"， "NSStringCategoryKit/**/*.{h，m}"
+  s.public_header_files = "NSStringCategoryKit/**/*.h"
+  s.frameworks = "Foundation", "UIKit", "CoreImage"
+  s.requires_arc = true
+end
+</code></pre>
+</div>
+
+<p>4、验证podspec文件</p>
+
+<p>在上传podspec文件之前，先验证一下看是否有错误</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod lib lint
+</code></pre>
+</div>
+<p>如果出现passed validation的提示，就说明验证通过了，如果出现错误，可以根据错误消息来更改配置文件。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod lib lint --verbose
+</code></pre>
+</div>
+<p>使用以上命令验证时会给出更详细的提示信息，根据这个错误信息来修改配置文件</p>
+
+<p>5、打tag上传podspec文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git tag -m "first release" "0.0.1"
+git push --tags
+</code></pre>
+</div>
+<p>注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+</code></pre>
+</div>
+<p>将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了</p>
+
+<p>然后使用</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod trunk me
+</code></pre>
+</div>
+<p>这个命令来查看当前你的账号的会话状况，这个是跟你的设备相关的</p>
+
+<p>cd到你的podspec所在目录，执行以下命令开始提交podspec文件到cocoaPods官方库，这里还是以我的项目为例</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod trunk push NSStringCategoryKit.podspec
+</code></pre>
+</div>
+<p>这个过程等待时间比较长，大概一个小时左右，成功之后执行</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod setup
+</code></pre>
+</div>
+<p>更新一下本地仓库，再执行</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pod search NSStringCategoryKit
+</code></pre>
+</div>
+<p>就可以找到项目了。</p>
+
+<p>6、使用自己的pods项目</p>
+
+<p>在Xcode项目的podfile文件中按照上面的cocoapods的使用方法配置podfile，例如</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>platform:ios, '7.0'   
+pod 'NSStringCategoryKit'
+</code></pre>
+</div>
+<p>然后执行更新操作就可以了。</p>
+
+<p>如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>platform :ios, '7.0'
+pod 'NSStringCategoryKit', :git =&gt; 'https://github.com/mrarronz/NSStringCategoryKit.git', :tag =&gt; '0.1.0'
+</code></pre>
+</div>
+
+    </article> <hr />
     
     
   
@@ -127,22 +356,16 @@
     </header>
 
     <article class="post-content" itemprop="articleBody">
-      <p>前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。升级后cocoaPods使用出现了问题，在Xcode项目中创建podfile文件使用pod install命令提示command not found。原来是cocoaPods在系统升级后被干掉了，只能重新安装了。</p>
+      <p>前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install cocoapods
-</code></pre>
-</div>
-<p>这个命令打出后安装仍然有问题，正确的做法是：</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>sudo gem install -n /usr/local/bin cocoapods
-</code></pre>
-</div>
-
-<p>在安装jekyll的时候也出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。</p>
+<p>在安装jekyll的时候出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。</p>
 
 <p>当执行sudo gem install jekyll命令时总是提示安装不成功，具体错误提示忘记了，大概是:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>ERROR: Failed to build gem native extension....
+<div class="highlighter-rouge"><pre class="highlight"><code>Failed to build gem native extension....
+
+ERROR:  While executing gem ... (Errno::EPERM)
+Operation not permitted
 </code></pre>
 </div>
 <p>然后搜索了半天，结合错误提示，猜测可能是ruby的原因，于是按照各路网友的做法，使用RVM安装ruby。RVM是安装成功了，但是ruby还是安装不成功，mac系统已经自带ruby了，所以用RVM安装ruby个人觉得其实也没必要。直到找到这个<a href="http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html">Jekyll安装教程</a>之后，又重新试着使用Homebrew来更新ruby。在安装过程中出现问题，按照提示执行brew link xxx(这里都不记得了)，执行之后还是没成功。由于homebrew是我之前安装过的，所以决定将它卸载，重装一遍。</p>
@@ -175,7 +398,7 @@ rm -rf ~/Library/Caches/Homebrew
 <div class="highlighter-rouge"><pre class="highlight"><code>ruby -v
 </code></pre>
 </div>
-<p>ruby成功安装，最新版本是2.3.1</p>
+<p>ruby成功安装，最新版本是2.3.1p112</p>
 
 <p>然后安装jekyll</p>
 
@@ -198,7 +421,7 @@ rm -rf ~/Library/Caches/Homebrew
 <div class="highlighter-rouge"><pre class="highlight"><code>http://127.0.0.1:4000/  （或者localhost:4000）
 </code></pre>
 </div>
-<p>成功加载出博客主页。</p>
+<p>成功加载出blog主页。</p>
 
 
     </article> <hr />
@@ -507,219 +730,13 @@ rm -rf ~/Library/Caches/Homebrew
     
     
   
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/jekyll/2014/12/13/simple-post.html">Sample Post</a>
-      </h1>
-      <meta itemprop="keywords" content="Jekyll theme installation" />
-      <p class="post-meta">
-      Posted in
-      
-      <a href="/categories/#Jekyll">Jekyll</a>
-      
-      
-      and tagged
-      
-      <a href="/tags/#Jekyll theme installation" title="Jekyll theme installation">Jekyll theme installation </a>
-      
-      
-      <time itemprop="datePublished" datetime="2014-12-13">
-      on Dec 13, 2014
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      <ul id="markdown-toc">
-  <li><a href="#heading" id="markdown-toc-heading">Heading</a></li>
-  <li><a href="#body-text" id="markdown-toc-body-text">Body text</a></li>
-  <li><a href="#blockquotes" id="markdown-toc-blockquotes">Blockquotes</a></li>
-  <li><a href="#list-types" id="markdown-toc-list-types">List Types</a>    <ul>
-      <li><a href="#ordered-lists" id="markdown-toc-ordered-lists">Ordered Lists</a></li>
-      <li><a href="#unordered-lists" id="markdown-toc-unordered-lists">Unordered Lists</a></li>
-    </ul>
-  </li>
-  <li><a href="#tables" id="markdown-toc-tables">Tables</a></li>
-  <li><a href="#code-snippets" id="markdown-toc-code-snippets">Code Snippets</a>    <ul>
-      <li><a href="#highlight-with-line-number" id="markdown-toc-highlight-with-line-number">highlight with line number.</a></li>
-      <li><a href="#highlight-using-triple-backticks" id="markdown-toc-highlight-using-triple-backticks">highlight using triple backticks</a></li>
-    </ul>
-  </li>
-  <li><a href="#latex" id="markdown-toc-latex"><script type="math/tex">\LaTeX</script></a></li>
-  <li><a href="#q-tag" id="markdown-toc-q-tag">&lt;q&gt; tag</a></li>
-</ul>
-
-<p>This is a sample post.</p>
-
-<p>Below is just about everything you’ll need to style in the theme. Check the source code to see the many embedded elements within paragraphs.</p>
-
-<h2 id="heading">Heading</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code># Heading 1
-
-## Heading 2
-
-### Heading 3
-
-#### Heading 4
-</code></pre>
-</div>
-
-<h2 id="body-text">Body text</h2>
-
-<p><strong>This is strong</strong>.</p>
-
-<p>This is figure</p>
-
-<p><img src="https://i.imgur.com/Mdc4szJl.jpg" alt="Elaphurus davidianus" title="Père David's deer" /></p>
-
-<p><em>This is emphasized</em>.</p>
-
-<p>53 = 125. Water is H<sub>2</sub>O.</p>
-
-<p>The New York Times <cite>(That’s a citation)</cite>.</p>
-
-<p><u>Underline</u>.</p>
-
-<p><del>HTML and CSS are our tools</del>.</p>
-
-<h2 id="blockquotes">Blockquotes</h2>
-
-<blockquote>
-  <p>Justification:
-This species is listed as Extinct in the Wild, as all populations are still under captive management. The captive population in China has increased in recent years, and the possibility remains that free-ranging populations can be established some time in the near future. When that happens, its Red List status will need to be reassessed.</p>
-</blockquote>
-
-<blockquote>
-  <p>I follow up the quest. Despite of day and night and death and hell.</p>
-  <center> -- Idylls of the King, Tennyson </center>
-</blockquote>
-
-<h2 id="list-types">List Types</h2>
-
-<h3 id="ordered-lists">Ordered Lists</h3>
-
-<ol>
-  <li>Item one
-    <ol>
-      <li>sub item one</li>
-      <li>sub item two</li>
-      <li>sub item three</li>
-    </ol>
-  </li>
-  <li>Item two</li>
-</ol>
-
-<h3 id="unordered-lists">Unordered Lists</h3>
-
-<ul>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-</ul>
-
-<h2 id="tables">Tables</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Header1</th>
-      <th style="text-align: center">Header2</th>
-      <th style="text-align: right">Header3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">cell1</td>
-      <td style="text-align: center">cell2</td>
-      <td style="text-align: right">cell3</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">cell4</td>
-      <td style="text-align: center">cell5</td>
-      <td style="text-align: right">cell6</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">cell7</td>
-      <td style="text-align: center">cell8</td>
-      <td style="text-align: right">cell9</td>
-    </tr>
-  </tbody>
-</table>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Kingdom</th>
-      <th style="text-align: center">Phylum</th>
-      <th style="text-align: center">Class</th>
-      <th style="text-align: center">Order</th>
-      <th style="text-align: center">Family</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">ANIMALIA</td>
-      <td style="text-align: center">CHORDATA</td>
-      <td style="text-align: center">MAMMALIA</td>
-      <td style="text-align: center">CETARTIODACTYLA</td>
-      <td style="text-align: center">CERVIDAE</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="code-snippets">Code Snippets</h2>
-
-<p>Syntax highlighting via Pygments</p>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#container</span> <span class="p">{</span>
-  <span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
-  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="m">-240px</span> <span class="m">0</span> <span class="m">0</span><span class="p">;</span>
-  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<h4 id="highlight-with-line-number">highlight with line number.</h4>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
-2
-3</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">foo</span>
-  <span class="nb">puts</span> <span class="s1">'foo'</span>
-<span class="k">end</span><span class="w">
-</span></pre></td></tr></tbody></table></code></pre></figure>
-
-<h4 id="highlight-using-triple-backticks">highlight using triple backticks</h4>
-
-<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">a</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">10</span>
-<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">a</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="p">}</span>
-
-
-</code></pre>
-</div>
-
-<h2 id="latex"><script type="math/tex">\LaTeX</script></h2>
-
-<p>you can use latex with <q>double $$ </q></p>
-
-<script type="math/tex; mode=display">e^{i\pi}+1=0</script>
-
-<h2 id="q-tag">&lt;q&gt; tag</h2>
-
-<p>here is a &lt;q&gt; q tag &lt;/q&gt;</p>
-
-<p>here is a <q> q tag </q></p>
-
-    </article> <hr />
-    
-    
-  
   </div>
 </div>
 
     <section class="pager">
   
+  
+  <li class="next"><a href="/page2/" title="Older">Older &rarr;</a></li>
   
 </section>
 
@@ -770,6 +787,10 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   <h4>Recent Posts</h4>
   
   <li>
+  <a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用" rel="bookmark">CocoaPods的安装和使用</a>
+  </li>
+  
+  <li>
   <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan" rel="bookmark">Install jekyll on OS X EI Capitan</a>
   </li>
   
@@ -785,10 +806,6 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   <a href="/jekyll/2014/12/18/how-to-install.html" title="How to install this theme" rel="bookmark">How to install this theme</a>
   </li>
   
-  <li>
-  <a href="/jekyll/2014/12/13/simple-post.html" title="Sample Post" rel="bookmark">Sample Post</a>
-  </li>
-  
 </div>
 
 
@@ -796,6 +813,8 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   <h4>Categories</h4>
   
   <li><a href="/categories/#Jekyll" title="Jekyll" rel="5">Jekyll (5)</a></li>
+  
+  <li><a href="/categories/#CocoaPods" title="CocoaPods" rel="1">CocoaPods (1)</a></li>
   
 </div>
 
@@ -806,6 +825,8 @@ This species is listed as Extinct in the Wild, as all populations are still unde
     <a href="/tags/#Jekyll theme installation" title="Jekyll theme installation" rel="4">Jekyll theme installation</a> &nbsp;
   
     <a href="/tags/#gem installation" title="gem installation" rel="1">gem installation</a> &nbsp;
+  
+    <a href="/tags/#CocoaPods installation" title="CocoaPods installation" rel="1">CocoaPods installation</a> &nbsp;
   
 </div>
 
@@ -829,6 +850,9 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   
   
   <li id="2016" > <a href="/archives/#2016">2016</a></li>
+  
+  
+  
   
   
   
