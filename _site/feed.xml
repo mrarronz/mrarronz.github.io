@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 11:35:23 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 11:35:23 +0800</lastBuildDate>
+    <pubDate>Thu, 26 May 2016 17:40:45 +0800</pubDate>
+    <lastBuildDate>Thu, 26 May 2016 17:40:45 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -15,10 +15,10 @@
 
 &lt;p&gt;CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;XXX-MacBook-Pro:~ XXX$ gem sources -l
-*** CURRENT SOURCES ***
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MacBook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pro&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:~&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sources&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CURRENT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SOURCES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;***&lt;/span&gt;
 
-https://ruby.taobao.org/
+&lt;span class=&quot;n&quot;&gt;https&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;://&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ruby.taobao.org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;移除当前的rubygems，替换为淘宝的&lt;/p&gt;
@@ -48,21 +48,21 @@ pod setup
 
 &lt;h2 id=&quot;section-1&quot;&gt;使用&lt;/h2&gt;
 
-&lt;p&gt;1、新建podfile&lt;/p&gt;
+&lt;p&gt;1、新建Podfile&lt;/p&gt;
 
 &lt;p&gt;cd到项目的根目录下&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim podfile
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch Podfile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;打开podfile，在podfile中引用第三方库&lt;/p&gt;
+&lt;p&gt;打开Podfile，在Podfile中引用第三方库&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch podfile
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim Podfile
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform:ios, &#39;6.0&#39;   
-pod &#39;AFNetworking&#39;, &#39;~&amp;gt; 3.0&#39;
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;6.0&#39;&lt;/span&gt;   
+&lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;AFNetworking&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;~&amp;gt; 3.0&#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;ESC退出编辑，ZZ关闭文件&lt;/p&gt;
@@ -78,12 +78,12 @@ pod &#39;AFNetworking&#39;, &#39;~&amp;gt; 3.0&#39;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;执行完后，项目根目录下会出现podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
+&lt;p&gt;执行完后，项目根目录下会出现Podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;3、更新pod&lt;/p&gt;
 
-&lt;p&gt;编辑podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。&lt;/p&gt;
+&lt;p&gt;编辑Podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod update --verbose --no-repo-update
 &lt;/code&gt;&lt;/pre&gt;
@@ -93,17 +93,17 @@ pod &#39;AFNetworking&#39;, &#39;~&amp;gt; 3.0&#39;
 
 &lt;p&gt;推荐方式：不同的target使用不同的第三方依赖配置，如下：&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source &#39;https://github.com/CocoaPods/Specs.git&#39;
-platform :ios, &#39;6.0&#39;
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;https://github.com/CocoaPods/Specs.git&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;6.0&#39;&lt;/span&gt;
 
-target :TargetName1 do
-    pod &#39;AFNetworking&#39;
-    pod &#39;MBProgressHUD&#39;
-end
+&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TargetName1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;AFNetworking&#39;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;MBProgressHUD&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;
 
-target :TargetName2 do
-    pod &#39;MBProgressHUD&#39;
-end
+&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TargetName2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;MBProgressHUD&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -125,23 +125,23 @@ end
 
 &lt;p&gt;用vim或者编辑器打开.podspec文件进行编辑，以我的项目&lt;a href=&quot;https://github.com/mrarronz/NSStringCategoryKit&quot;&gt;NSStringCategoryKit&lt;/a&gt;为例&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Pod::Spec.new do |s|
-  s.name         = &quot;NSStringCategoryKit&quot;
-  s.version      = &quot;0.0.1&quot;
-  s.summary      = &quot;A NSString category collections.&quot;
-  s.description  = &amp;lt;&amp;lt;-DESC
- A category collections for NSString class. All the methods in category are often used in app development.
-                   DESC
-  s.homepage     = &quot;https://github.com/mrarronz/NSStringCategoryKit&quot;
-  s.license      = &quot;MIT&quot;
-  s.author       = { &quot;mrarronz&quot; =&amp;gt; &quot;zhuhao1340@xxx.com&quot; }
-  s.platform     = :ios, &quot;7.0&quot;
-  s.source       = { :git =&amp;gt; &quot;https://github.com/mrarronz/NSStringCategoryKit.git&quot;, :tag =&amp;gt; &quot;0.0.1&quot; }
-  s.source_files  = &quot;NSStringCategoryKit&quot;， &quot;NSStringCategoryKit/**/*.{h，m}&quot;
-  s.public_header_files = &quot;NSStringCategoryKit/**/*.h&quot;
-  s.frameworks = &quot;Foundation&quot;, &quot;UIKit&quot;, &quot;CoreImage&quot;
-  s.requires_arc = true
-end
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Pod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Spec.new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.name&lt;/span&gt;         &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;NSStringCategoryKit&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.version&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.summary&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;A NSString category collections.&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.description&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collections&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NSString&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;class.&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;All&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;are&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;often&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;development.&lt;/span&gt;
+                   &lt;span class=&quot;n&quot;&gt;DESC&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.homepage&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/mrarronz/NSStringCategoryKit&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.license&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;MIT&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.author&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mrarronz&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;zhuhao1340@xxx.com&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.platform&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;7.0&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.source&lt;/span&gt;       &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://github.com/mrarronz/NSStringCategoryKit.git&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.source_files&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;NSStringCategoryKit&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;NSStringCategoryKit/**/*.{h，m}&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.public_header_files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;NSStringCategoryKit/**/*.h&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.frameworks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Foundation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;UIKit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;CoreImage&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;s.requires_arc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -161,13 +161,13 @@ end
 
 &lt;p&gt;5、打tag上传podspec文件&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git tag -m &quot;first release&quot; &quot;0.0.1&quot;
-git push --tags
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;first release&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod trunk register orta@cocoapods.org &#39;Orta Therox&#39; --description=&#39;macbook air&#39;
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trunk&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;register&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;orta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cocoapods.org&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Orta Therox&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;macbook air&#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了&lt;/p&gt;
@@ -198,18 +198,18 @@ git push --tags
 
 &lt;p&gt;6、使用自己的pods项目&lt;/p&gt;
 
-&lt;p&gt;在Xcode项目的podfile文件中按照上面的cocoapods的使用方法配置podfile，例如&lt;/p&gt;
+&lt;p&gt;在Xcode项目的Podfile文件中按照上面的cocoapods的使用方法配置Podfile，例如&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform:ios, &#39;7.0&#39;   
-pod &#39;NSStringCategoryKit&#39;
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;7.0&#39;&lt;/span&gt;   
+&lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;NSStringCategoryKit&#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;然后执行更新操作就可以了。&lt;/p&gt;
 
 &lt;p&gt;如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;platform :ios, &#39;7.0&#39;
-pod &#39;NSStringCategoryKit&#39;, :git =&amp;gt; &#39;https://github.com/mrarronz/NSStringCategoryKit.git&#39;, :tag =&amp;gt; &#39;0.1.0&#39;
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;7.0&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;NSStringCategoryKit&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;https://github.com/mrarronz/NSStringCategoryKit.git&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;0.1.0&#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
@@ -221,6 +221,112 @@ pod &#39;NSStringCategoryKit&#39;, :git =&amp;gt; &#39;https://github.com/mrarro
         
         
         <category>CocoaPods</category>
+        
+      </item>
+    
+      <item>
+        <title>Carthage的安装和使用</title>
+        <description>&lt;p&gt;Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。&lt;/li&gt;
+  &lt;li&gt;CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;CocoaChina上有对&lt;a href=&quot;http://www.cocoachina.com/ios/20141204/10528.html&quot;&gt;carthage的介绍&lt;/a&gt;，本文的目的是将carthage的安装和使用等方法统一整理，作为笔记，便于参考记忆。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;carthage&quot;&gt;安装Carthage&lt;/h2&gt;
+
+&lt;p&gt;Carthage可以通过&lt;a href=&quot;http://brew.sh/&quot;&gt;Homebrew&lt;/a&gt;来安装，但是直接安装之后出现如下问题。&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MacBook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pro&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:~&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;brew&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;carthage&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;carthage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;full&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;installation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Xcode.app&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;7.3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;software.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Installing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;just&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Command&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Line&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tools&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sufficient.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Xcode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;installed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Store.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;An&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unsatisfied&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requirement&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;我的Xcode版本是7.2，安装carthage必须要使用Xcode最新的版本，仅仅只安装Command line tools是不够的。&lt;/p&gt;
+
+&lt;p&gt;App store搜索Xcode 7.3安装，等了半天没反应，软件更新提示里面也没有Xcode。看了Xcode下面的评论才知道原来得先把系统升级到最新的EI Capitan之后才会出现Xcode 7.3版本的更新提示。这个没办法了，网速太渣，系统没法升级。只能下载Carthage官方最新的&lt;a href=&quot;https://github.com/Carthage/Carthage/releases&quot;&gt;Release版本&lt;/a&gt;了.&lt;/p&gt;
+
+&lt;p&gt;下载.pkg文件安装之后，在终端中查看：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;XXX-MacBook-Pro:~ XXX$ carthage version
+0.16.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;说明安装成功&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;carthage-1&quot;&gt;使用Carthage&lt;/h2&gt;
+
+&lt;p&gt;1、创建Cartfile&lt;/p&gt;
+
+&lt;p&gt;cd 到项目的根目录下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch Cartfile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;与CocoaPods的Podfile类似，将第三方库的引用方式写入到Cartfile文件中。以AFNetworking为例&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AFNetworking/AFNetworking&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;保存Cartfile后，执行&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MacBook&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pro&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestCarthageDemo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XXX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;carthage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Cloning&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Downloading&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking.framework&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;binary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;3.1.0&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Checking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;3.1.0&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xcodebuild&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;folders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r4zs4js928nd2ty6ng64c7sr0000gp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;carthage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xcodebuild.nVuUQ1.log&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Building&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scheme&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AFNetworking OS X&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking.xcworkspace&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Building&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scheme&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AFNetworking tvOS&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking.xcworkspace&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Building&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scheme&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AFNetworking watchOS&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking.xcworkspace&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;***&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Building&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scheme&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;AFNetworking iOS&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AFNetworking.xcworkspace&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;在项目的根目录下会多出Carthage文件夹和Cartfile.resolved文件。&lt;/p&gt;
+
+&lt;p&gt;Carthage目录下还有两个文件夹，Build文件夹中存放的是针对各个平台编译好的AFNetworking的framework，Checkouts文件夹中存放的是整个AFNetworking的源代码。&lt;/p&gt;
+
+&lt;p&gt;2、在项目中引用framework&lt;/p&gt;
+
+&lt;p&gt;（1）打开Xcode项目，在项目设置页面General tab中，找到Linked Frameworks and Libraries，将Build文件夹中对应的AFNetworking.framework添加进来。iOS project就选择iOS文件夹下的framework，其它同理。这一步就把framework添加到项目中了，运行项目，build成功，app启动后却发生如下错误&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dyld&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Library&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loaded&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rpath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AFNetworking.framework&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AFNetworking&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Referenced&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Users&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;XMD001&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Library&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Developer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CoreSimulator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Devices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C63D6A2&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-7&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EBA&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-420&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-99&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C4&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-38&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C7C1A25911&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Containers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bundle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F3B81EA&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-9&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ADF&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-46&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DF&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-9&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;F32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E80F6BED1628&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestCarthageDemo.app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TestCarthageDemo&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Reason&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;found&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;还有些工作没做完，接着第（2）步~&lt;/p&gt;
+
+&lt;p&gt;（2）在Build Phases设置页面，点击左上角的’+’号，新建”New Run Script Phase”，然后将以下脚本粘贴在文本框中：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/local/bin/carthage copy-frameworks
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后在下面的“Input files”区域将framework的相对路径添加进来：&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SRCROOT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Carthage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iOS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AFNetworking.framework&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;然后再运行项目，成功了！&lt;/p&gt;
+
+&lt;p&gt;看&lt;a href=&quot;https://github.com/Carthage/Carthage&quot;&gt;官方的说明&lt;/a&gt;，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 26 May 2016 00:00:00 +0800</pubDate>
+        <link>http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html</link>
+        <guid isPermaLink="true">http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html</guid>
+        
+        <category>Carthage installation</category>
+        
+        
+        <category>Carthage</category>
         
       </item>
     

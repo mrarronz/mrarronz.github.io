@@ -11,7 +11,7 @@ comments: true
 
 CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。
 
-```
+```r
 XXX-MacBook-Pro:~ XXX$ gem sources -l
 *** CURRENT SOURCES ***
 
@@ -44,20 +44,20 @@ pod setup
 
 ## 使用
 
-1、新建podfile
+1、新建Podfile
 
 cd到项目的根目录下
 
 ```
-touch podfile
+touch Podfile
 ```
-打开podfile，在podfile中引用第三方库
+打开Podfile，在Podfile中引用第三方库
 
 ```
-vim podfile
+vim Podfile
 ```
 
-```
+```r
 platform :ios, '6.0'   
 pod 'AFNetworking', '~> 3.0'
 ```
@@ -74,12 +74,12 @@ pod install
 pod install --verbose --no-repo-update (注：--verbose可以不加，加上是为了打出更多调试信息)
 ```
 
-执行完后，项目根目录下会出现podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
+执行完后，项目根目录下会出现Podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
 <br/>
 
 3、更新pod
 
-编辑podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。
+编辑Podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。
 
 ```
 pod update --verbose --no-repo-update
@@ -89,7 +89,7 @@ pod update --verbose --no-repo-update
 
 推荐方式：不同的target使用不同的第三方依赖配置，如下：
 
-```
+```r
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '6.0'
 
@@ -121,7 +121,7 @@ pod spec create XXXX(项目名称)
 
 用vim或者编辑器打开.podspec文件进行编辑，以我的项目[NSStringCategoryKit](https://github.com/mrarronz/NSStringCategoryKit)为例
 
-```
+```r
 Pod::Spec.new do |s|
   s.name         = "NSStringCategoryKit"
   s.version      = "0.0.1"
@@ -157,13 +157,13 @@ pod lib lint --verbose
 
 5、打tag上传podspec文件
 
-```
+```r
 git tag -m "first release" "0.0.1"
 git push --tags
 ```
 注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法
 
-```
+```r
 pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
 ```
 将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了
@@ -194,9 +194,9 @@ pod search NSStringCategoryKit
 
 6、使用自己的pods项目
 
-在Xcode项目的podfile文件中按照上面的cocoapods的使用方法配置podfile，例如
+在Xcode项目的Podfile文件中按照上面的cocoapods的使用方法配置Podfile，例如
 
-```
+```r
 platform:ios, '7.0'   
 pod 'NSStringCategoryKit'
 ```
@@ -204,7 +204,7 @@ pod 'NSStringCategoryKit'
 
 如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag
 
-```
+```r
 platform :ios, '7.0'
 pod 'NSStringCategoryKit', :git => 'https://github.com/mrarronz/NSStringCategoryKit.git', :tag => '0.1.0'
 ```

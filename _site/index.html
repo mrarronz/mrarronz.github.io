@@ -133,10 +133,10 @@
 
 <p>CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>XXX-MacBook-Pro:~ XXX$ gem sources -l
-*** CURRENT SOURCES ***
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">XXX</span><span class="o">-</span><span class="n">MacBook</span><span class="o">-</span><span class="n">Pro</span><span class="o">:~</span> <span class="n">XXX</span><span class="o">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="o">-</span><span class="n">l</span>
+<span class="o">***</span> <span class="n">CURRENT</span> <span class="n">SOURCES</span> <span class="o">***</span>
 
-https://ruby.taobao.org/
+<span class="n">https</span><span class="o">://</span><span class="n">ruby.taobao.org</span><span class="o">/</span>
 </code></pre>
 </div>
 <p>移除当前的rubygems，替换为淘宝的</p>
@@ -166,21 +166,21 @@ pod setup
 
 <h2 id="section-1">使用</h2>
 
-<p>1、新建podfile</p>
+<p>1、新建Podfile</p>
 
 <p>cd到项目的根目录下</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>vim podfile
+<div class="highlighter-rouge"><pre class="highlight"><code>touch Podfile
 </code></pre>
 </div>
-<p>打开podfile，在podfile中引用第三方库</p>
+<p>打开Podfile，在Podfile中引用第三方库</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>touch podfile
+<div class="highlighter-rouge"><pre class="highlight"><code>vim Podfile
 </code></pre>
 </div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>platform:ios, '6.0'   
-pod 'AFNetworking', '~&gt; 3.0'
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">platform</span> <span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s1">'6.0'</span>   
+<span class="n">pod</span> <span class="s1">'AFNetworking'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span>
 </code></pre>
 </div>
 <p>ESC退出编辑，ZZ关闭文件</p>
@@ -196,12 +196,12 @@ pod 'AFNetworking', '~&gt; 3.0'
 </code></pre>
 </div>
 
-<p>执行完后，项目根目录下会出现podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
+<p>执行完后，项目根目录下会出现Podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。
 <br /></p>
 
 <p>3、更新pod</p>
 
-<p>编辑podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。</p>
+<p>编辑Podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>pod update --verbose --no-repo-update
 </code></pre>
@@ -211,17 +211,17 @@ pod 'AFNetworking', '~&gt; 3.0'
 
 <p>推荐方式：不同的target使用不同的第三方依赖配置，如下：</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '6.0'
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s1">'6.0'</span>
 
-target :TargetName1 do
-    pod 'AFNetworking'
-    pod 'MBProgressHUD'
-end
+<span class="n">target</span> <span class="o">:</span><span class="n">TargetName1</span> <span class="n">do</span>
+    <span class="n">pod</span> <span class="s1">'AFNetworking'</span>
+    <span class="n">pod</span> <span class="s1">'MBProgressHUD'</span>
+<span class="n">end</span>
 
-target :TargetName2 do
-    pod 'MBProgressHUD'
-end
+<span class="n">target</span> <span class="o">:</span><span class="n">TargetName2</span> <span class="n">do</span>
+    <span class="n">pod</span> <span class="s1">'MBProgressHUD'</span>
+<span class="n">end</span>
 </code></pre>
 </div>
 <p><br /></p>
@@ -243,23 +243,23 @@ end
 
 <p>用vim或者编辑器打开.podspec文件进行编辑，以我的项目<a href="https://github.com/mrarronz/NSStringCategoryKit">NSStringCategoryKit</a>为例</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Pod::Spec.new do |s|
-  s.name         = "NSStringCategoryKit"
-  s.version      = "0.0.1"
-  s.summary      = "A NSString category collections."
-  s.description  = &lt;&lt;-DESC
- A category collections for NSString class. All the methods in category are often used in app development.
-                   DESC
-  s.homepage     = "https://github.com/mrarronz/NSStringCategoryKit"
-  s.license      = "MIT"
-  s.author       = { "mrarronz" =&gt; "zhuhao1340@xxx.com" }
-  s.platform     = :ios, "7.0"
-  s.source       = { :git =&gt; "https://github.com/mrarronz/NSStringCategoryKit.git", :tag =&gt; "0.0.1" }
-  s.source_files  = "NSStringCategoryKit"， "NSStringCategoryKit/**/*.{h，m}"
-  s.public_header_files = "NSStringCategoryKit/**/*.h"
-  s.frameworks = "Foundation", "UIKit", "CoreImage"
-  s.requires_arc = true
-end
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">Pod</span><span class="o">::</span><span class="n">Spec.new</span> <span class="n">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+  <span class="n">s.name</span>         <span class="o">=</span> <span class="s2">"NSStringCategoryKit"</span>
+  <span class="n">s.version</span>      <span class="o">=</span> <span class="s2">"0.0.1"</span>
+  <span class="n">s.summary</span>      <span class="o">=</span> <span class="s2">"A NSString category collections."</span>
+  <span class="n">s.description</span>  <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="n">DESC</span>
+ <span class="n">A</span> <span class="n">category</span> <span class="n">collections</span> <span class="k">for</span> <span class="n">NSString</span> <span class="n">class.</span> <span class="n">All</span> <span class="n">the</span> <span class="n">methods</span> <span class="k">in</span> <span class="n">category</span> <span class="n">are</span> <span class="n">often</span> <span class="n">used</span> <span class="k">in</span> <span class="n">app</span> <span class="n">development.</span>
+                   <span class="n">DESC</span>
+  <span class="n">s.homepage</span>     <span class="o">=</span> <span class="s2">"https://github.com/mrarronz/NSStringCategoryKit"</span>
+  <span class="n">s.license</span>      <span class="o">=</span> <span class="s2">"MIT"</span>
+  <span class="n">s.author</span>       <span class="o">=</span> <span class="p">{</span> <span class="s2">"mrarronz"</span> <span class="o">=&gt;</span> <span class="s2">"zhuhao1340@xxx.com"</span> <span class="p">}</span>
+  <span class="n">s.platform</span>     <span class="o">=</span> <span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s2">"7.0"</span>
+  <span class="n">s.source</span>       <span class="o">=</span> <span class="p">{</span> <span class="o">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="s2">"https://github.com/mrarronz/NSStringCategoryKit.git"</span><span class="p">,</span> <span class="o">:</span><span class="n">tag</span> <span class="o">=&gt;</span> <span class="s2">"0.0.1"</span> <span class="p">}</span>
+  <span class="n">s.source_files</span>  <span class="o">=</span> <span class="s2">"NSStringCategoryKit"</span><span class="err">，</span> <span class="s2">"NSStringCategoryKit/**/*.{h，m}"</span>
+  <span class="n">s.public_header_files</span> <span class="o">=</span> <span class="s2">"NSStringCategoryKit/**/*.h"</span>
+  <span class="n">s.frameworks</span> <span class="o">=</span> <span class="s2">"Foundation"</span><span class="p">,</span> <span class="s2">"UIKit"</span><span class="p">,</span> <span class="s2">"CoreImage"</span>
+  <span class="n">s.requires_arc</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">end</span>
 </code></pre>
 </div>
 
@@ -279,13 +279,13 @@ end
 
 <p>5、打tag上传podspec文件</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git tag -m "first release" "0.0.1"
-git push --tags
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">m</span> <span class="s2">"first release"</span> <span class="s2">"0.0.1"</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">tags</span>
 </code></pre>
 </div>
 <p>注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">pod</span> <span class="n">trunk</span> <span class="n">register</span> <span class="n">orta</span><span class="o">@</span><span class="n">cocoapods.org</span> <span class="s1">'Orta Therox'</span> <span class="o">--</span><span class="n">description</span><span class="o">=</span><span class="s1">'macbook air'</span>
 </code></pre>
 </div>
 <p>将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了</p>
@@ -316,20 +316,140 @@ git push --tags
 
 <p>6、使用自己的pods项目</p>
 
-<p>在Xcode项目的podfile文件中按照上面的cocoapods的使用方法配置podfile，例如</p>
+<p>在Xcode项目的Podfile文件中按照上面的cocoapods的使用方法配置Podfile，例如</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>platform:ios, '7.0'   
-pod 'NSStringCategoryKit'
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">platform</span><span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s1">'7.0'</span>   
+<span class="n">pod</span> <span class="s1">'NSStringCategoryKit'</span>
 </code></pre>
 </div>
 <p>然后执行更新操作就可以了。</p>
 
 <p>如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>platform :ios, '7.0'
-pod 'NSStringCategoryKit', :git =&gt; 'https://github.com/mrarronz/NSStringCategoryKit.git', :tag =&gt; '0.1.0'
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">platform</span> <span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s1">'7.0'</span>
+<span class="n">pod</span> <span class="s1">'NSStringCategoryKit'</span><span class="p">,</span> <span class="o">:</span><span class="n">git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/mrarronz/NSStringCategoryKit.git'</span><span class="p">,</span> <span class="o">:</span><span class="n">tag</span> <span class="o">=&gt;</span> <span class="s1">'0.1.0'</span>
 </code></pre>
 </div>
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 itemprop="name" class="post-title">
+        <a itemprop="url" class="post-link" href="/carthage/2016/05/26/carthage-install-usage.html">Carthage的安装和使用</a>
+      </h1>
+      <meta itemprop="keywords" content="Carthage installation" />
+      <p class="post-meta">
+      Posted in
+      
+      <a href="/categories/#Carthage">Carthage</a>
+      
+      
+      and tagged
+      
+      <a href="/tags/#Carthage installation" title="Carthage installation">Carthage installation </a>
+      
+      
+      <time itemprop="datePublished" datetime="2016-05-26">
+      on May 26, 2016
+      </time>
+      </p>
+    </header>
+
+    <article class="post-content" itemprop="articleBody">
+      <p>Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：</p>
+
+<ul>
+  <li>Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。</li>
+  <li>CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。</li>
+</ul>
+
+<p>CocoaChina上有对<a href="http://www.cocoachina.com/ios/20141204/10528.html">carthage的介绍</a>，本文的目的是将carthage的安装和使用等方法统一整理，作为笔记，便于参考记忆。</p>
+
+<p><br /></p>
+
+<h2 id="carthage">安装Carthage</h2>
+
+<p>Carthage可以通过<a href="http://brew.sh/">Homebrew</a>来安装，但是直接安装之后出现如下问题。</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">XXX</span><span class="o">-</span><span class="n">MacBook</span><span class="o">-</span><span class="n">Pro</span><span class="o">:~</span> <span class="n">XXX</span><span class="o">$</span> <span class="n">brew</span> <span class="n">install</span> <span class="n">carthage</span>
+<span class="n">carthage</span><span class="o">:</span> <span class="n">A</span> <span class="n">full</span> <span class="n">installation</span> <span class="n">of</span> <span class="n">Xcode.app</span> <span class="m">7.3</span> <span class="n">is</span> <span class="n">required</span> <span class="n">to</span> <span class="n">compile</span> <span class="n">this</span> <span class="n">software.</span>
+<span class="n">Installing</span> <span class="n">just</span> <span class="n">the</span> <span class="n">Command</span> <span class="n">Line</span> <span class="n">Tools</span> <span class="n">is</span> <span class="n">not</span> <span class="n">sufficient.</span>
+<span class="n">Xcode</span> <span class="n">can</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">from</span> <span class="n">the</span> <span class="n">App</span> <span class="n">Store.</span>
+<span class="n">Error</span><span class="o">:</span> <span class="n">An</span> <span class="n">unsatisfied</span> <span class="n">requirement</span> <span class="n">failed</span> <span class="n">this</span> <span class="n">build.</span>
+</code></pre>
+</div>
+<p>我的Xcode版本是7.2，安装carthage必须要使用Xcode最新的版本，仅仅只安装Command line tools是不够的。</p>
+
+<p>App store搜索Xcode 7.3安装，等了半天没反应，软件更新提示里面也没有Xcode。看了Xcode下面的评论才知道原来得先把系统升级到最新的EI Capitan之后才会出现Xcode 7.3版本的更新提示。这个没办法了，网速太渣，系统没法升级。只能下载Carthage官方最新的<a href="https://github.com/Carthage/Carthage/releases">Release版本</a>了.</p>
+
+<p>下载.pkg文件安装之后，在终端中查看：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX-MacBook-Pro:~ XXX$ carthage version
+0.16.2
+</code></pre>
+</div>
+<p>说明安装成功</p>
+
+<p><br /></p>
+
+<h2 id="carthage-1">使用Carthage</h2>
+
+<p>1、创建Cartfile</p>
+
+<p>cd 到项目的根目录下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>touch Cartfile
+</code></pre>
+</div>
+<p>与CocoaPods的Podfile类似，将第三方库的引用方式写入到Cartfile文件中。以AFNetworking为例</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">github</span> <span class="s2">"AFNetworking/AFNetworking"</span> <span class="o">~&gt;</span> <span class="m">3.0</span>
+</code></pre>
+</div>
+<p>保存Cartfile后，执行</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">XXX</span><span class="o">-</span><span class="n">MacBook</span><span class="o">-</span><span class="n">Pro</span><span class="o">:</span><span class="n">TestCarthageDemo</span> <span class="n">XXX</span><span class="o">$</span> <span class="n">carthage</span> <span class="n">update</span>
+<span class="o">***</span> <span class="n">Cloning</span> <span class="n">AFNetworking</span>
+<span class="o">***</span> <span class="n">Downloading</span> <span class="n">AFNetworking.framework</span> <span class="n">binary</span> <span class="n">at</span> <span class="s2">"3.1.0"</span>
+<span class="o">***</span> <span class="n">Checking</span> <span class="n">out</span> <span class="n">AFNetworking</span> <span class="n">at</span> <span class="s2">"3.1.0"</span>
+<span class="o">***</span> <span class="n">xcodebuild</span> <span class="n">output</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="k">in</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nc</span><span class="o">/</span><span class="n">r4zs4js928nd2ty6ng64c7sr0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">carthage</span><span class="o">-</span><span class="n">xcodebuild.nVuUQ1.log</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking OS X"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking tvOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking watchOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking iOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+</code></pre>
+</div>
+<p>在项目的根目录下会多出Carthage文件夹和Cartfile.resolved文件。</p>
+
+<p>Carthage目录下还有两个文件夹，Build文件夹中存放的是针对各个平台编译好的AFNetworking的framework，Checkouts文件夹中存放的是整个AFNetworking的源代码。</p>
+
+<p>2、在项目中引用framework</p>
+
+<p>（1）打开Xcode项目，在项目设置页面General tab中，找到Linked Frameworks and Libraries，将Build文件夹中对应的AFNetworking.framework添加进来。iOS project就选择iOS文件夹下的framework，其它同理。这一步就把framework添加到项目中了，运行项目，build成功，app启动后却发生如下错误</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">dyld</span><span class="o">:</span> <span class="n">Library</span> <span class="n">not</span> <span class="n">loaded</span><span class="o">:</span> <span class="o">@</span><span class="n">rpath</span><span class="o">/</span><span class="n">AFNetworking.framework</span><span class="o">/</span><span class="n">AFNetworking</span>
+<span class="n">Referenced</span> <span class="n">from</span><span class="o">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">XMD001</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CoreSimulator</span><span class="o">/</span><span class="n">Devices</span><span class="o">/</span><span class="m">1</span><span class="n">C63D6A2</span><span class="m">-7</span><span class="n">EBA</span><span class="m">-420</span><span class="n">B</span><span class="m">-99</span><span class="n">C4</span><span class="m">-38</span><span class="n">C7C1A25911</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">Containers</span><span class="o">/</span><span class="n">Bundle</span><span class="o">/</span><span class="n">Application</span><span class="o">/</span><span class="m">7</span><span class="n">F3B81EA</span><span class="m">-9</span><span class="n">ADF</span><span class="m">-46</span><span class="n">DF</span><span class="m">-9</span><span class="n">F32</span><span class="o">-</span><span class="n">E80F6BED1628</span><span class="o">/</span><span class="n">TestCarthageDemo.app</span><span class="o">/</span><span class="n">TestCarthageDemo</span>
+<span class="n">Reason</span><span class="o">:</span> <span class="n">image</span> <span class="n">not</span> <span class="n">found</span>
+</code></pre>
+</div>
+<p>还有些工作没做完，接着第（2）步~</p>
+
+<p>（2）在Build Phases设置页面，点击左上角的’+’号，新建”New Run Script Phase”，然后将以下脚本粘贴在文本框中：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/bin/carthage copy-frameworks
+</code></pre>
+</div>
+<p>然后在下面的“Input files”区域将framework的相对路径添加进来：</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="o">$</span><span class="p">(</span><span class="n">SRCROOT</span><span class="p">)</span><span class="o">/</span><span class="n">Carthage</span><span class="o">/</span><span class="n">Build</span><span class="o">/</span><span class="n">iOS</span><span class="o">/</span><span class="n">AFNetworking.framework</span>
+</code></pre>
+</div>
+<p>然后再运行项目，成功了！</p>
+
+<p>看<a href="https://github.com/Carthage/Carthage">官方的说明</a>，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。</p>
+
 
     </article> <hr />
     
@@ -690,48 +810,6 @@ rm -rf ~/Library/Caches/Homebrew
     
     
   
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/jekyll/2014/12/18/how-to-install.html">How to install this theme</a>
-      </h1>
-      <meta itemprop="keywords" content="Jekyll theme installation" />
-      <p class="post-meta">
-      Posted in
-      
-      <a href="/categories/#Jekyll">Jekyll</a>
-      
-      
-      and tagged
-      
-      <a href="/tags/#Jekyll theme installation" title="Jekyll theme installation">Jekyll theme installation </a>
-      
-      
-      <time itemprop="datePublished" datetime="2014-12-18">
-      on Dec 18, 2014
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      <h2 id="how-to-install-freshman-theme">How to install Freshman theme?</h2>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># please make sure you have already installed git tools and ruby tools(gem)</span>
-<span class="gp">$ </span>gem install sass
-<span class="gp">$ </span>gem install jekyll
-<span class="gp">$ </span>git clone https://github.com/yulijia/freshman21.git
-</code></pre>
-</div>
-
-<p>Then, change the folder name to you own github page name, forexample</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code> <span class="nv">$ </span>mv freshman thisisyouname.github.io
-</code></pre>
-</div>
-
-    </article> <hr />
-    
-    
-  
   </div>
 </div>
 
@@ -793,6 +871,10 @@ rm -rf ~/Library/Caches/Homebrew
   </li>
   
   <li>
+  <a href="/carthage/2016/05/26/carthage-install-usage.html" title="Carthage的安装和使用" rel="bookmark">Carthage的安装和使用</a>
+  </li>
+  
+  <li>
   <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan" rel="bookmark">Install jekyll on OS X EI Capitan</a>
   </li>
   
@@ -804,10 +886,6 @@ rm -rf ~/Library/Caches/Homebrew
   <a href="/jekyll/2014/12/19/freshman21-structure.html" title="Theme structure" rel="bookmark">Theme structure</a>
   </li>
   
-  <li>
-  <a href="/jekyll/2014/12/18/how-to-install.html" title="How to install this theme" rel="bookmark">How to install this theme</a>
-  </li>
-  
 </div>
 
 
@@ -815,6 +893,8 @@ rm -rf ~/Library/Caches/Homebrew
   <h4>Categories</h4>
   
   <li><a href="/categories/#Jekyll" title="Jekyll" rel="5">Jekyll (5)</a></li>
+  
+  <li><a href="/categories/#Carthage" title="Carthage" rel="1">Carthage (1)</a></li>
   
   <li><a href="/categories/#CocoaPods" title="CocoaPods" rel="1">CocoaPods (1)</a></li>
   
@@ -827,6 +907,8 @@ rm -rf ~/Library/Caches/Homebrew
     <a href="/tags/#Jekyll theme installation" title="Jekyll theme installation" rel="4">Jekyll theme installation</a> &nbsp;
   
     <a href="/tags/#gem installation" title="gem installation" rel="1">gem installation</a> &nbsp;
+  
+    <a href="/tags/#Carthage installation" title="Carthage installation" rel="1">Carthage installation</a> &nbsp;
   
     <a href="/tags/#CocoaPods installation" title="CocoaPods installation" rel="1">CocoaPods installation</a> &nbsp;
   
@@ -852,6 +934,9 @@ rm -rf ~/Library/Caches/Homebrew
   
   
   <li id="2016" > <a href="/archives/#2016">2016</a></li>
+  
+  
+  
   
   
   

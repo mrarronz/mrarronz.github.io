@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width initial-scale=1">
+
+<meta property="og:title" content="Carthage的安装和使用">
+<title>Carthage的安装和使用</title>
+<meta property="og:description" content="Carthage的安装和使用，怎样给自己的项目创建carthage引用">
+<meta property="og:url" content="http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html">
+<meta property="og:site_name" content="Xiaopenzi~~">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:title" content="Carthage的安装和使用">
+<meta name="twitter:description" content="Carthage的安装和使用，怎样给自己的项目创建carthage引用">
+<meta name="twitter:url" content="http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html">
+
+<meta name="keywords" content="IT, iOS, Android, PHP, Java, Python">
+
+<link rel="icon" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="canonical" href="http://mrarronz.github.io/carthage/2016/05/26/carthage-install-usage.html">
+<link rel="alternate" type="application/atom+xml" title="Xiaopenzi~~" href="http://mrarronz.github.io/feed.xml" />
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</head>
+
+
+
+
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    <h1 class="site-title"><a href="/">Xiaopenzi~~</a></h1>
+    <h3 class="site-meta">Stay hungry stay foolish</h3>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+        
+        <a class="page-link" href="/">Home</a>
+        
+        
+        
+        <a class="page-link" href="/archives/">Archives</a>
+        
+        
+        
+        <a class="page-link" href="/categories/">Categories</a>
+        
+        
+        
+        <a class="page-link" href="/tags/">Tags</a>
+        
+        
+        
+        <a class="page-link" href="/guestbook/">Guestbook</a>
+        
+        
+        
+        <a class="page-link" href="/about/">About</a>
+        
+        
+        
+        <a class="page-link" href="/feed.xml">Subscribe</a>
+        
+        
+        
+        
+        
+        
+        
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    
+
+  <div class="page-content col-sm-8">
+    <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 itemprop="name" class="post-title">Carthage的安装和使用</h1>
+    <meta itemprop="keywords" content="Carthage installation" />
+    <p class="post-meta">
+    Posted in
+    
+    <a href="/categories/#Carthage">Carthage</a>
+     
+    
+    and tagged
+    
+    <a href="/tags/#Carthage installation" title="Carthage installation">Carthage installation </a>
+    
+    
+    <time itemprop="datePublished" datetime="2016-05-26">
+    on May 26, 2016
+    </time>
+    </p>
+  </header>
+
+  <article class="post-content" itemprop="articleBody">
+    <p>Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：</p>
+
+<ul>
+  <li>Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。</li>
+  <li>CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。</li>
+</ul>
+
+<p>CocoaChina上有对<a href="http://www.cocoachina.com/ios/20141204/10528.html">carthage的介绍</a>，本文的目的是将carthage的安装和使用等方法统一整理，作为笔记，便于参考记忆。</p>
+
+<p><br /></p>
+
+<h2 id="carthage">安装Carthage</h2>
+
+<p>Carthage可以通过<a href="http://brew.sh/">Homebrew</a>来安装，但是直接安装之后出现如下问题。</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">XXX</span><span class="o">-</span><span class="n">MacBook</span><span class="o">-</span><span class="n">Pro</span><span class="o">:~</span> <span class="n">XXX</span><span class="o">$</span> <span class="n">brew</span> <span class="n">install</span> <span class="n">carthage</span>
+<span class="n">carthage</span><span class="o">:</span> <span class="n">A</span> <span class="n">full</span> <span class="n">installation</span> <span class="n">of</span> <span class="n">Xcode.app</span> <span class="m">7.3</span> <span class="n">is</span> <span class="n">required</span> <span class="n">to</span> <span class="n">compile</span> <span class="n">this</span> <span class="n">software.</span>
+<span class="n">Installing</span> <span class="n">just</span> <span class="n">the</span> <span class="n">Command</span> <span class="n">Line</span> <span class="n">Tools</span> <span class="n">is</span> <span class="n">not</span> <span class="n">sufficient.</span>
+<span class="n">Xcode</span> <span class="n">can</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">from</span> <span class="n">the</span> <span class="n">App</span> <span class="n">Store.</span>
+<span class="n">Error</span><span class="o">:</span> <span class="n">An</span> <span class="n">unsatisfied</span> <span class="n">requirement</span> <span class="n">failed</span> <span class="n">this</span> <span class="n">build.</span>
+</code></pre>
+</div>
+<p>我的Xcode版本是7.2，安装carthage必须要使用Xcode最新的版本，仅仅只安装Command line tools是不够的。</p>
+
+<p>App store搜索Xcode 7.3安装，等了半天没反应，软件更新提示里面也没有Xcode。看了Xcode下面的评论才知道原来得先把系统升级到最新的EI Capitan之后才会出现Xcode 7.3版本的更新提示。这个没办法了，网速太渣，系统没法升级。只能下载Carthage官方最新的<a href="https://github.com/Carthage/Carthage/releases">Release版本</a>了.</p>
+
+<p>下载.pkg文件安装之后，在终端中查看：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>XXX-MacBook-Pro:~ XXX$ carthage version
+0.16.2
+</code></pre>
+</div>
+<p>说明安装成功</p>
+
+<p><br /></p>
+
+<h2 id="carthage-1">使用Carthage</h2>
+
+<p>1、创建Cartfile</p>
+
+<p>cd 到项目的根目录下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>touch Cartfile
+</code></pre>
+</div>
+<p>与CocoaPods的Podfile类似，将第三方库的引用方式写入到Cartfile文件中。以AFNetworking为例</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">github</span> <span class="s2">"AFNetworking/AFNetworking"</span> <span class="o">~&gt;</span> <span class="m">3.0</span>
+</code></pre>
+</div>
+<p>保存Cartfile后，执行</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">XXX</span><span class="o">-</span><span class="n">MacBook</span><span class="o">-</span><span class="n">Pro</span><span class="o">:</span><span class="n">TestCarthageDemo</span> <span class="n">XXX</span><span class="o">$</span> <span class="n">carthage</span> <span class="n">update</span>
+<span class="o">***</span> <span class="n">Cloning</span> <span class="n">AFNetworking</span>
+<span class="o">***</span> <span class="n">Downloading</span> <span class="n">AFNetworking.framework</span> <span class="n">binary</span> <span class="n">at</span> <span class="s2">"3.1.0"</span>
+<span class="o">***</span> <span class="n">Checking</span> <span class="n">out</span> <span class="n">AFNetworking</span> <span class="n">at</span> <span class="s2">"3.1.0"</span>
+<span class="o">***</span> <span class="n">xcodebuild</span> <span class="n">output</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="k">in</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">nc</span><span class="o">/</span><span class="n">r4zs4js928nd2ty6ng64c7sr0000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">carthage</span><span class="o">-</span><span class="n">xcodebuild.nVuUQ1.log</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking OS X"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking tvOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking watchOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+<span class="o">***</span> <span class="n">Building</span> <span class="n">scheme</span> <span class="s2">"AFNetworking iOS"</span> <span class="k">in</span> <span class="n">AFNetworking.xcworkspace</span>
+</code></pre>
+</div>
+<p>在项目的根目录下会多出Carthage文件夹和Cartfile.resolved文件。</p>
+
+<p>Carthage目录下还有两个文件夹，Build文件夹中存放的是针对各个平台编译好的AFNetworking的framework，Checkouts文件夹中存放的是整个AFNetworking的源代码。</p>
+
+<p>2、在项目中引用framework</p>
+
+<p>（1）打开Xcode项目，在项目设置页面General tab中，找到Linked Frameworks and Libraries，将Build文件夹中对应的AFNetworking.framework添加进来。iOS project就选择iOS文件夹下的framework，其它同理。这一步就把framework添加到项目中了，运行项目，build成功，app启动后却发生如下错误</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">dyld</span><span class="o">:</span> <span class="n">Library</span> <span class="n">not</span> <span class="n">loaded</span><span class="o">:</span> <span class="o">@</span><span class="n">rpath</span><span class="o">/</span><span class="n">AFNetworking.framework</span><span class="o">/</span><span class="n">AFNetworking</span>
+<span class="n">Referenced</span> <span class="n">from</span><span class="o">:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">XMD001</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CoreSimulator</span><span class="o">/</span><span class="n">Devices</span><span class="o">/</span><span class="m">1</span><span class="n">C63D6A2</span><span class="m">-7</span><span class="n">EBA</span><span class="m">-420</span><span class="n">B</span><span class="m">-99</span><span class="n">C4</span><span class="m">-38</span><span class="n">C7C1A25911</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">Containers</span><span class="o">/</span><span class="n">Bundle</span><span class="o">/</span><span class="n">Application</span><span class="o">/</span><span class="m">7</span><span class="n">F3B81EA</span><span class="m">-9</span><span class="n">ADF</span><span class="m">-46</span><span class="n">DF</span><span class="m">-9</span><span class="n">F32</span><span class="o">-</span><span class="n">E80F6BED1628</span><span class="o">/</span><span class="n">TestCarthageDemo.app</span><span class="o">/</span><span class="n">TestCarthageDemo</span>
+<span class="n">Reason</span><span class="o">:</span> <span class="n">image</span> <span class="n">not</span> <span class="n">found</span>
+</code></pre>
+</div>
+<p>还有些工作没做完，接着第（2）步~</p>
+
+<p>（2）在Build Phases设置页面，点击左上角的’+’号，新建”New Run Script Phase”，然后将以下脚本粘贴在文本框中：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/usr/local/bin/carthage copy-frameworks
+</code></pre>
+</div>
+<p>然后在下面的“Input files”区域将framework的相对路径添加进来：</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="o">$</span><span class="p">(</span><span class="n">SRCROOT</span><span class="p">)</span><span class="o">/</span><span class="n">Carthage</span><span class="o">/</span><span class="n">Build</span><span class="o">/</span><span class="n">iOS</span><span class="o">/</span><span class="n">AFNetworking.framework</span>
+</code></pre>
+</div>
+<p>然后再运行项目，成功了！</p>
+
+<p>看<a href="https://github.com/Carthage/Carthage">官方的说明</a>，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。</p>
+
+
+  </article>
+  <hr />
+</div>
+
+
+<section class="pager">
+  <ul>
+    
+    <li class="previous"><a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan">&larr; Older</a></li>
+    
+    
+    <li class="next"><a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用">Newer &rarr;</a></li>
+    
+  </ul>
+</section>
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+
+  var disqus_developer = 1;
+
+var disqus_shortname ='mrarronz';
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+    <section class="pager">
+  
+  
+</section>
+
+
+  </div>
+  <div class="col-sm-2">
+<div class="sidebar-module about">
+  <h4>About Me</h4>
+  <img title="mrarronz" src="/images/img_car.jpg" alt="mrarronz"/>
+  <span>A little fool, strugglling for life.</span>
+  <br />
+
+  
+
+  You can contact me via:
+
+  
+  <a href="mailto:arronzhu@hotmail.com" title="mailto: arronzhu@hotmail.com">Email</a> /
+  
+  
+  <a href="https://github.com/mrarronz" title="GithubID: mrarronz">Github</a> /
+  
+  
+  <a href="https://twitter.com/" title="TwitterID: ">Twitter</a>
+  
+
+  
+
+</div>
+
+<div class="sidebar-module"> <!-- sidebar-module-inset">-->
+  <h4>Copyright Notice</h4>
+
+  
+
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+    <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+  </a>
+  <br />
+  <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a>
+
+  
+
+</div>
+
+
+<div class="sidebar-module">
+  <h4>Recent Posts</h4>
+  
+  <li>
+  <a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用" rel="bookmark">CocoaPods的安装和使用</a>
+  </li>
+  
+  <li>
+  <a href="/carthage/2016/05/26/carthage-install-usage.html" title="Carthage的安装和使用" rel="bookmark">Carthage的安装和使用</a>
+  </li>
+  
+  <li>
+  <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan" rel="bookmark">Install jekyll on OS X EI Capitan</a>
+  </li>
+  
+  <li>
+  <a href="/jekyll/2014/12/19/how-to-set-the-config-file.html" title="How to set the config.yml file" rel="bookmark">How to set the config.yml file</a>
+  </li>
+  
+  <li>
+  <a href="/jekyll/2014/12/19/freshman21-structure.html" title="Theme structure" rel="bookmark">Theme structure</a>
+  </li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>Categories</h4>
+  
+  <li><a href="/categories/#Jekyll" title="Jekyll" rel="5">Jekyll (5)</a></li>
+  
+  <li><a href="/categories/#Carthage" title="Carthage" rel="1">Carthage (1)</a></li>
+  
+  <li><a href="/categories/#CocoaPods" title="CocoaPods" rel="1">CocoaPods (1)</a></li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>Tags</h4>
+  
+    <a href="/tags/#Jekyll theme installation" title="Jekyll theme installation" rel="4">Jekyll theme installation</a> &nbsp;
+  
+    <a href="/tags/#gem installation" title="gem installation" rel="1">gem installation</a> &nbsp;
+  
+    <a href="/tags/#Carthage installation" title="Carthage installation" rel="1">Carthage installation</a> &nbsp;
+  
+    <a href="/tags/#CocoaPods installation" title="CocoaPods installation" rel="1">CocoaPods installation</a> &nbsp;
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>Blogroll</h4>
+  
+  <li><a href="https://github.com/mrarronz" title="github page">mrarronz</a></li>
+  
+  <li><a href="http://yulijia.net/" title="author's website">author's website</a></li>
+  
+</div>
+
+
+<div class="sidebar-module">
+  <h4>Archives</h4>
+
+  
+  
+  
+  
+  
+  <li id="2016" > <a href="/archives/#2016">2016</a></li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li id="2014" > <a href="/archives/#2014">2014</a></li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</div>
+
+
+</div>
+
+
+
+  
+
+  <footer class="site-footer">
+
+  <p>Copyright &copy; <a href="/">Xiaopenzi~~</a></p>
+  <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a> 
+  on 
+  
+  <a href="https://github.com/">Github</a>
+  
+  | Theme <a href="https://github.com/yulijia/freshman21/">Freshman21</a> Design by <a href="http://yulijia.net">Lijia Yu</a>  
+
+</footer>
+
+
+</div>
+
+</body>
+
+</html>
