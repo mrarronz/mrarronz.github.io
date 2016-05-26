@@ -49,12 +49,12 @@ pod setup
 cd到项目的根目录下
 
 ```
-vim podfile
+touch podfile
 ```
 打开podfile，在podfile中引用第三方库
 
 ```
-touch podfile
+vim podfile
 ```
 
 ```
