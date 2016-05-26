@@ -9,8 +9,8 @@ comments: true
 
 Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：
 
-* Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。
-* CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。
+> * Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。
+> * CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。
 
 CocoaChina上有对[carthage的介绍](http://www.cocoachina.com/ios/20141204/10528.html)，本文的目的是将carthage的安装和使用等方法统一整理，作为笔记，便于参考记忆。
 
@@ -95,7 +95,67 @@ $(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework
 ```
 然后再运行项目，成功了！
 
-看[官方的说明](https://github.com/Carthage/Carthage)，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。
+看[官方的说明](https://github.com/Carthage/Carthage#getting-started)，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。
 
+3、添加framework到Unit Test或framework项目中
 
+由于unit test的General tab中没有Linked Frameworks and Libraries的设置项，framework类型的项目中没有General这个tab，所以必须把carthage编译好的framework添加到Build phase的Link Binaries With Libraries中。在unit test的build settings中找到“Runpath Search Paths”这个选项，如果这一项没有值，那么还需添加以下路径：
 
+```
+@loader_path/Frameworks
+```
+
+4、更新引用的framework
+
+如果修改了Cartfile（加入了新的framework），或者想要更新现在使用的framework，使用以下命令：
+
+```
+carthage update
+```
+如果只更新某一个framework，可以使用
+
+```
+carthage update XXX(framework名字)
+```
+
+5、framework之间嵌套依赖
+
+这表示引用的framework之间存在比较多的依赖关系，carthage会自动帮你恢复，framework编译之后需要手动将其添加到项目中
+
+<br/>
+
+## 为自己的framework添加Carthage支持
+
+1、必须使用Dynamic framework
+
+自己的工程类型必须是Dynamic framework，static library是不行的
+
+2、分享 Xcode scheme
+
+Carthage 只构建从 .xcodeproj 分享出来的 Xcode schemes。可以通过运行 
+
+```
+carthage build --no-skip-current
+``` 
+来检测所有的 intended schemes 是否构建成功，然后检查 Carthage/Build 文件夹。如果运行命令的时候，一个重要的 scheme 没有构建成功，打开 Xcode 在构建菜单选择 Manage Schemes （如下图）
+
+![image](/images/carthage/carthage_1.png)
+
+对于需要构建的 scheme 勾选 Shared （如下图）
+![image](/images/carthage/carthage_2.png)
+
+示例图片是我的github项目[NSStringCategoryKit](https://github.com/mrarronz/NSStringCategoryKit)，也添加了CocoaPods支持。这个项目最初是以static library的方式创建的，后来为了支持carthage，新建了一个framework的target。如果要添加carthage支持，最好还是创建新的framework项目，再来进行carthage的集成。
+
+3、解决构建失败以及打tag
+
+这部分请查看[官方文档](https://github.com/Carthage/Carthage#resolve-build-failures)，说得非常详细了，不再赘述，上面描述的过程都是亲自实践的。
+
+<br/>
+
+## 总结
+通过对CocoaPods和Carthage的使用，两种方式各有优缺点。
+
+> * CocoaPods会更改项目文件，生成新的.xcworkspace文件，对项目具有侵入性。
+> * Carthage使用比较方便灵活，但是把源代码clone下来就没有必要了吧，导入的项目多了，clone出来Checkouts文件夹里面源代码一堆。
+
+目前来说个人还是用CocoaPods更多一些，完全不用关心怎么设置library的引用，简单方便。
