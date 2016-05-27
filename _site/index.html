@@ -108,7 +108,7 @@
   
     <header class="post-header">
       <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html">SVN常用命令汇总和基本用法</a>
+        <a itemprop="url" class="post-link" href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html">SVN命令汇总和基本用法</a>
       </h1>
       <meta itemprop="keywords" content="Subversion" />
       <p class="post-meta">
@@ -311,7 +311,11 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 <div class="highlighter-rouge"><pre class="highlight"><code>svn move foo.c bar.c  (将foo.c改名成bar.c)
 </code></pre>
 </div>
-<p>22、svn propdel (pdel, pd)</p>
+<p>22、svn patch</p>
+
+<p><a href="http://blog.csdn.net/ameyume/article/details/7766722">svn生成patch和打（导入）patch文件的方法</a></p>
+
+<p>23、svn propdel (pdel, pd)</p>
 
 <ul>
   <li>svn propedit PROPNAME TARGET…</li>
@@ -323,7 +327,7 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 <div class="highlighter-rouge"><pre class="highlight"><code>svn propdel svn :mime-type someFile    (从someFile上移除svn :mime-type这个属性)
 </code></pre>
 </div>
-<p>23、svn propedit (pedit, pe)</p>
+<p>24、svn propedit (pedit, pe)</p>
 
 <ul>
   <li>svn propedit PROPNAME TARGET…</li>
@@ -336,7 +340,7 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 </code></pre>
 </div>
 
-<p>24、svn propget (pget, pg)</p>
+<p>25、svn propget (pget, pg)</p>
 
 <ul>
   <li>svn propget PROPNAME [TARGET[@REV]…]</li>
@@ -348,7 +352,7 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 <div class="highlighter-rouge"><pre class="highlight"><code>svn propget svn :keywords file.c   (从file.c中取得svn :keywords属性的值)
 </code></pre>
 </div>
-<p>25、svn proplist (plist, pl)</p>
+<p>26、svn proplist (plist, pl)</p>
 
 <ul>
   <li>svn proplist [TARGET[@REV]…]</li>
@@ -360,7 +364,7 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 <div class="highlighter-rouge"><pre class="highlight"><code>svn proplist --verbose file.c
 </code></pre>
 </div>
-<p>26、propset (pset, ps)</p>
+<p>27、svn propset (pset, ps)</p>
 
 <p>给文件、目录或版本附加属性并赋值</p>
 
@@ -368,7 +372,80 @@ svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch 
 svn propset --revprop -r 25 svn :log "Journaled about trip to New York." (给版本25补上log message)
 </code></pre>
 </div>
+<p>28、svn resolve</p>
 
+<p>将冲突的文件标记为已解决，并且删掉冲突产生的临时文件。注意这个命令并不是能把冲突解决，解决冲突还是得靠人工，人工解决冲突后，文件的状态还是冲突C状态，需要将其标记为resolved之后才能正常提交</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn resolve --accept filePath  (filePath是文件路径，1.5版本后，加上--accept参数，尝试自动处理冲突)
+</code></pre>
+</div>
+<p>29、svn revert</p>
+
+<p>还原WC中所有的本地更改</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn revert --depth=infinity  (将整个目录所有文件还原)
+svn revert test.h            (将对test.h文件所做的修改还原)
+</code></pre>
+</div>
+<p>30、svn status(stat, st)</p>
+
+<p>输出WC中文件和目录的状态。如果WC提交，这些状态就会同步到仓库里。一般有如下几种状态：</p>
+
+<p>’’ 没有修改
+A  新增
+D  删除
+M  修改
+R  替代
+C  冲突
+I  忽略
+？ 未添加到版本管理
+！ 文件丢失</p>
+
+<p>31、svn switch(sw)</p>
+
+<ul>
+  <li>svn switch URL，将当前WC切换到另一个URL，一般是从trunk工作目录转向tag工作目录，或者从tag转回来，switch的类似update，将switch的目标工作目录的文件更新到本地，一般会产生很多冲突</li>
+  <li>svn switch –relocate，将WC连接的服务器地址切换到另一个地址，比如服务器地址由IP地址改为域名的情况，但是项目文件结构都没有变化。</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn switch path
+svn switch --relocate path1 path2
+</code></pre>
+</div>
+<p>32、svn unlock</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn unlock fileName
+</code></pre>
+</div>
+<p>33、svn update(up)</p>
+
+<p>更新本地WC，直接使用svn up命令，如果要指定版本，使用svn up -r 200 (更新到版本号为200的版本)</p>
+
+<p>34、svn upgrade</p>
+
+<p>如果本地svn版本高于WC当前被管理的svn版本，那么就需要使用upgrade命令将WC的svn版本升级。可以理解为将当前WC所处的环境升级，本来是在1.6版本svn的管理之下，现在通过upgrade之后处于1.7版本的svn管理之下了。</p>
+
+<p><br /></p>
+
+<h2 id="section-1">主干、分支和标记</h2>
+
+<p>通常我们在项目开发中都会建立主干(trunk)、分支(branch )、标记(tag)来管理项目代码。</p>
+
+<p>一般情况下</p>
+
+<ul>
+  <li>trunk：是用来做主方向开发的，一个新模块的开发，这个时候就放在trunk，当模块开发完成后，需要修改，就用branch。在开发阶段的代码都提交到该目录上。</li>
+  <li>branch：是用来做并行开发的，这里的并行是指和trunk进行比较。</li>
+  <li>tag：是用来做一个milestone的，不管是不是发布版本，但都是一个可用的版本。这里，应该是只读的。更多的是一个显示用的，给人一个可读的标记。</li>
+</ul>
+
+<p>比如，3.0开发完成，这个时候要做一个tag，tag_release_3_0，然后基于这个tag做发布。trunk进入3.1的开发，但是3.0发现了bug，那么就需要基于tag_release_3_0做一个分支(branch)，branch_bugfix_3_0，基于这 个branch进行bug修改，等到bugfix结束，做一个tag，tag_release_3_0_1，然后，根据需要决定 branch_bugfix_3_0是否并入主干(trunk)。</p>
+
+<p>branch和tag的创建都是用svn copy命令完成，将trunk目录下的工程copy到对应的branch和tag目录</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn cp path1 path2 -m "create branch" (path1表示trunk所在路径，path2表示branch或tag路径)
+</code></pre>
+</div>
 
     </article> <hr />
     
@@ -1044,7 +1121,7 @@ rm -rf ~/Library/Caches/Homebrew
   <h4>Recent Posts</h4>
   
   <li>
-  <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html" title="SVN常用命令汇总和基本用法" rel="bookmark">SVN常用命令汇总和基本用法</a>
+  <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html" title="SVN命令汇总和基本用法" rel="bookmark">SVN命令汇总和基本用法</a>
   </li>
   
   <li>
