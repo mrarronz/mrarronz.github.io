@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 May 2016 23:14:22 +0800</pubDate>
-    <lastBuildDate>Fri, 27 May 2016 23:14:22 +0800</lastBuildDate>
+    <pubDate>Fri, 27 May 2016 23:48:40 +0800</pubDate>
+    <lastBuildDate>Fri, 27 May 2016 23:48:40 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -334,6 +334,48 @@ svn switch --relocate path1 path2
         <guid isPermaLink="true">http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html</guid>
         
         <category>Subversion</category>
+        
+        
+        <category>版本管理</category>
+        
+      </item>
+    
+      <item>
+        <title>Git常用命令和用法</title>
+        <description>&lt;p&gt;Git是一个免费开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。分布式相比于集中式的最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。svn就是集中式的版本控制系统。&lt;/p&gt;
+
+&lt;p&gt;平常用到的git命令主要有：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init      // 创建git仓库
+git clone     // 相当于svn的checkout，拉取代码
+git add       // 添加文件或目录到版本管理
+git status    // 查看状态
+git commit    // 提交到仓库
+git push origin master  // 将更新同步到远程仓库
+git rm 文件名  // 删除文件
+git pull      // 拉取更新，相当于svn update
+git push      // 将本地仓库的更改push到远程仓库路径
+git tag       // 创建tag
+git branch    // 创建分支
+git log       // 查看提交的log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;git命令用法一搜一大堆，这里不再赘述了。保留几个常用命令速查手册，便于查找：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.jb51.net/article/55442.htm&quot;&gt;Git 常用命令速查表(图文+表格)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/wangli61289/article/details/45576025&quot;&gt;Git常用命令速查表&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/cspku/articles/Git_cmds.html&quot;&gt;Git常用命令&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Fri, 27 May 2016 00:00:00 +0800</pubDate>
+        <link>http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html</link>
+        <guid isPermaLink="true">http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html</guid>
+        
+        <category>Git</category>
         
         
         <category>版本管理</category>

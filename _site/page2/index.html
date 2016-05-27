@@ -108,6 +108,107 @@
   
     <header class="post-header">
       <h1 itemprop="name" class="post-title">
+        <a itemprop="url" class="post-link" href="/jekyll/2014/12/19/how-to-set-the-config-file.html">How to set the config.yml file</a>
+      </h1>
+      <meta itemprop="keywords" content="Jekyll theme" />
+      <p class="post-meta">
+      Posted in
+      
+      <a href="/categories/#Jekyll">Jekyll</a>
+      
+      
+      and tagged
+      
+      <a href="/tags/#Jekyll theme" title="Jekyll theme">Jekyll theme </a>
+      
+      
+      <time itemprop="datePublished" datetime="2014-12-19">
+      on Dec 19, 2014
+      </time>
+      </p>
+    </header>
+
+    <article class="post-content" itemprop="articleBody">
+      <p>The <a href="https://github.com/yulijia/freshman21/blob/master/_config.yml">config.yml file</a> in the Freshman21 theme includes five parts.</p>
+
+<p><strong>First part</strong> is the site info.</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">title</span><span class="pi">:</span> <span class="s">Freshman21</span> <span class="c1"># blog title</span>
+<span class="s">tagline</span><span class="pi">:</span> <span class="s">Another Jekyll theme, Freshman twenty-first</span> <span class="c1"># blog sub-titile</span>
+<span class="s">author</span><span class="pi">:</span> <span class="s">Lijia YU</span> <span class="c1"># author name</span>
+<span class="s">email</span><span class="pi">:</span> <span class="s">yu@lijiayu.net</span> <span class="c1"># author email</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Freshman21</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Jekyll</span><span class="nv"> </span><span class="s">blog</span><span class="nv"> </span><span class="s">theme."</span> <span class="c1"># You can edit this line in _config.yml. It will appear in your document head meta and in </span>
+<span class="s">your feed.xml site description</span>
+<span class="s">keywords</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Jekyll,</span><span class="nv"> </span><span class="s">theme,</span><span class="nv"> </span><span class="s">Freshman21"</span> <span class="c1"># html meta keywords</span>
+<span class="s">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/freshman21"</span> <span class="c1"># the subpath of your site, e.g. /blog</span>
+<span class="s">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://yulijia.net/freshman21"</span> <span class="c1"># the base hostname &amp; protocol for your site</span>
+</code></pre>
+</div>
+
+<p><strong>Part 2</strong>, Personal info and site tools info, twitter, github, aboutme and aboutme_photo only appears on the sidebar aboutme-box, you can <q>Hide</q> in two ways <sup><a href="#[1]">[1]</a></sup>:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">twitter_username</span><span class="pi">:</span> <span class="c1">#your twitter handle  </span>
+<span class="s">github_username</span><span class="pi">:</span>  <span class="c1">#your github account</span>
+<span class="s">disqus_shortname</span><span class="pi">:</span> <span class="c1">#disqus shortname</span>
+<span class="s">favicon</span><span class="pi">:</span>     <span class="s2">"</span><span class="s">images/favicon.ico"</span>
+<span class="s">aboutme</span><span class="pi">:</span> <span class="s">Hi, this is Lijia Yu. I made the Freshman21 theme. Please enjoy it.</span> <span class="c1"># these are shown on aboutme-box(sidebar).</span>
+<span class="s">aboutme_photo</span><span class="pi">:</span> <span class="s">https://i.imgur.com/15BT1.jpg</span> <span class="c1"># your personal photo.</span>
+</code></pre>
+</div>
+
+<p><strong>Part3</strong>, Site setting:</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">ShowContactInfo</span><span class="pi">:</span> <span class="s2">"</span><span class="s">True"</span> <span class="c1"># Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown where ShowContactInfo == True</span>
+<span class="s">default_column</span><span class="pi">:</span> <span class="s2">"</span><span class="s">two"</span> <span class="c1"># blog style: two columns, if default_column != "two", you will see a one column blog.</span>
+<span class="s">default_locale</span><span class="pi">:</span> <span class="s2">"</span><span class="s">en"</span> <span class="c1"># blog sidebar language set, only include: English(en) and Chinese (cn)</span>
+</code></pre>
+</div>
+
+<p><strong>Part4</strong>, Blogroll info, only <em>name</em> tags can shown on the page.</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">Blogroll</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">Freshman</span>
+        <span class="s">href</span><span class="pi">:</span> <span class="s">http://yulijia.net/freshman</span>
+        <span class="s">title</span><span class="pi">:</span> <span class="s">Another Jekyll blog theme</span>
+      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">author's website</span>
+        <span class="s">href</span><span class="pi">:</span> <span class="s">http://yulijia.net/</span>
+        <span class="s">title</span><span class="pi">:</span> <span class="s">Lijia Yu's website</span>
+</code></pre>
+</div>
+
+<p><strong>Part5</strong>, Build settings</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">highlighter</span><span class="pi">:</span> <span class="s">pygments</span> <span class="c1"># highlight</span>
+<span class="s">paginate</span><span class="pi">:</span> <span class="s">5</span>  <span class="c1"># how many post can seen in the main page</span>
+</code></pre>
+</div>
+
+<p>=====</p>
+
+<ul style="list-style-type:none;"> 
+<li id="[1]"> [1], you can set those info at <strong>Part3</strong> or just delete the <q>aboutme.html</q> at <q>sidebar.html</q> in <code>_include</code> folder. </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-2"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--{ % include Aboutme.html % }--&gt;</span>
+   { % include Copyright_Notice.html % }
+   { % include Recent_Posts.html % }
+   { % include Categories.html % }
+   { % include Tags.html % }
+   { % include Blogroll.html % }
+   { % include Archives.html % }
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 itemprop="name" class="post-title">
         <a itemprop="url" class="post-link" href="/jekyll/2014/12/19/freshman21-structure.html">Theme structure</a>
       </h1>
       <meta itemprop="keywords" content="Jekyll theme" />
@@ -578,6 +679,10 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   </li>
   
   <li>
+  <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html" title="Git常用命令和用法" rel="bookmark">Git常用命令和用法</a>
+  </li>
+  
+  <li>
   <a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用" rel="bookmark">CocoaPods的安装和使用</a>
   </li>
   
@@ -587,10 +692,6 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   
   <li>
   <a href="/jekyll/2016/05/25/jekyll-install-problem-on-elcapitan.html" title="Install jekyll on OS X EI Capitan" rel="bookmark">Install jekyll on OS X EI Capitan</a>
-  </li>
-  
-  <li>
-  <a href="/jekyll/2014/12/19/how-to-set-the-config-file.html" title="How to set the config.yml file" rel="bookmark">How to set the config.yml file</a>
   </li>
   
 </div>
@@ -605,7 +706,7 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   
   <li><a href="/categories/#CocoaPods" title="CocoaPods" rel="1">CocoaPods (1)</a></li>
   
-  <li><a href="/categories/#版本管理" title="版本管理" rel="1">版本管理 (1)</a></li>
+  <li><a href="/categories/#版本管理" title="版本管理" rel="2">版本管理 (2)</a></li>
   
 </div>
 
@@ -620,6 +721,8 @@ This species is listed as Extinct in the Wild, as all populations are still unde
     <a href="/tags/#Carthage" title="Carthage" rel="1">Carthage</a> &nbsp;
   
     <a href="/tags/#CocoaPods" title="CocoaPods" rel="1">CocoaPods</a> &nbsp;
+  
+    <a href="/tags/#Git" title="Git" rel="1">Git</a> &nbsp;
   
     <a href="/tags/#Subversion" title="Subversion" rel="1">Subversion</a> &nbsp;
   
@@ -645,6 +748,9 @@ This species is listed as Extinct in the Wild, as all populations are still unde
   
   
   <li id="2016" > <a href="/archives/#2016">2016</a></li>
+  
+  
+  
   
   
   

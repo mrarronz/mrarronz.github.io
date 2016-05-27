@@ -7,24 +7,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width initial-scale=1">
 
-<meta property="og:title" content="Guestbook">
-<title>Guestbook</title>
-<meta property="og:description" content="Personal blog">
-<meta property="og:url" content="http://mrarronz.github.io/guestbook/">
+<meta property="og:title" content="Git常用命令和用法">
+<title>Git常用命令和用法</title>
+<meta property="og:description" content="Git的使用">
+<meta property="og:url" content="http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html">
 <meta property="og:site_name" content="Xiaopenzi~~">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@">
 <meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="Guestbook">
-<meta name="twitter:description" content="Personal blog">
-<meta name="twitter:url" content="http://mrarronz.github.io/guestbook/">
+<meta name="twitter:title" content="Git常用命令和用法">
+<meta name="twitter:description" content="Git的使用">
+<meta name="twitter:url" content="http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html">
 
 <meta name="keywords" content="IT, iOS, Android, PHP, Java, Python">
 
 <link rel="icon" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/main.css">
-<link rel="canonical" href="http://mrarronz.github.io/guestbook/">
+<link rel="canonical" href="http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage.html">
 <link rel="alternate" type="application/atom+xml" title="Xiaopenzi~~" href="http://mrarronz.github.io/feed.xml" />
 
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -101,26 +101,75 @@
     
 
   <div class="page-content col-sm-8">
-    <div class="post">
+    <div class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Guestbook</h1>
+    <h1 itemprop="name" class="post-title">Git常用命令和用法</h1>
+    <meta itemprop="keywords" content="Git" />
+    <p class="post-meta">
+    Posted in
+    
+    <a href="/categories/#版本管理">版本管理</a>
+     
+    
+    and tagged
+    
+    <a href="/tags/#Git" title="Git">Git </a>
+    
+    
+    <time itemprop="datePublished" datetime="2016-05-27">
+    on May 27, 2016
+    </time>
+    </p>
   </header>
 
-  <article class="post-content about"> 
-    <p><br /></p>
+  <article class="post-content" itemprop="articleBody">
+    <p>Git是一个免费开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。分布式相比于集中式的最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。svn就是集中式的版本控制系统。</p>
 
-<h3 id="hi-welcome-to-leave-a-message-here">Hi, welcome to leave a message here.:)</h3>
+<p>平常用到的git命令主要有：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git init      // 创建git仓库
+git clone     // 相当于svn的checkout，拉取代码
+git add       // 添加文件或目录到版本管理
+git status    // 查看状态
+git commit    // 提交到仓库
+git push origin master  // 将更新同步到远程仓库
+git rm 文件名  // 删除文件
+git pull      // 拉取更新，相当于svn update
+git push      // 将本地仓库的更改push到远程仓库路径
+git tag       // 创建tag
+git branch    // 创建分支
+git log       // 查看提交的log
+</code></pre>
+</div>
+
+<p>git命令用法一搜一大堆，这里不再赘述了。保留几个常用命令速查手册，便于查找：</p>
 
 <blockquote>
-  <p>To follow the path, look to the master, follow the master, walk with the master, see through the master, become the master.</p>
+  <ul>
+    <li><a href="http://www.jb51.net/article/55442.htm">Git 常用命令速查表(图文+表格)</a></li>
+    <li><a href="http://blog.csdn.net/wangli61289/article/details/45576025">Git常用命令速查表</a></li>
+    <li><a href="http://www.cnblogs.com/cspku/articles/Git_cmds.html">Git常用命令</a></li>
+  </ul>
 </blockquote>
 
-
   </article>
+  <hr />
+</div>
 
-  
-  <div id="disqus_thread"></div>
+
+<section class="pager">
+  <ul>
+    
+    <li class="previous"><a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用">&larr; Older</a></li>
+    
+    
+    <li class="next"><a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html" title="SVN命令汇总和基本用法">Newer &rarr;</a></li>
+    
+  </ul>
+</section>
+
+<div id="disqus_thread"></div>
 
 <script type="text/javascript">
 
@@ -137,9 +186,7 @@ var disqus_shortname ='mrarronz';
 
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  
 
-</div> 
 
     <section class="pager">
   
