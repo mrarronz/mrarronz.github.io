@@ -108,6 +108,274 @@
   
     <header class="post-header">
       <h1 itemprop="name" class="post-title">
+        <a itemprop="url" class="post-link" href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html">SVN常用命令汇总和基本用法</a>
+      </h1>
+      <meta itemprop="keywords" content="Subversion" />
+      <p class="post-meta">
+      Posted in
+      
+      <a href="/categories/#版本管理">版本管理</a>
+      
+      
+      and tagged
+      
+      <a href="/tags/#Subversion" title="Subversion">Subversion </a>
+      
+      
+      <time itemprop="datePublished" datetime="2016-05-27">
+      on May 27, 2016
+      </time>
+      </p>
+    </header>
+
+    <article class="post-content" itemprop="articleBody">
+      <p>本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。</p>
+
+<blockquote>
+  <ul>
+    <li><a href="http://blog.csdn.net/prettyshuang/article/details/38421205?utm_source=tuicool&amp;utm_medium=referral">svn常用命令详解（很全，很实用）</a></li>
+    <li><a href="http://blog.csdn.net/lddongyu/article/details/5493862">(转)SVN常用命令用法说明</a></li>
+    <li><a href="http://panfuy.iteye.com/blog/1278865">SVN 主干(trunk)、分支(branch )、标记(tag)</a></li>
+  </ul>
+</blockquote>
+
+<p><br /></p>
+
+<h2 id="subversion">Subversion的命令</h2>
+
+<p>在命令行输入<code class="highlighter-rouge">svn help</code>可以查看svn的所有命令</p>
+
+<p><br /></p>
+
+<h2 id="section">命令用法</h2>
+
+<p>1、svn add</p>
+
+<p>添加文件或目录到你的working copy(<code class="highlighter-rouge">以下简称WC</code>)，打上新增标记A。这些文件会在下一次你提交WC的时候提交到svn服务器.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn add test.h (添加一个文件)
+svn add *.h    (添加当前目录下所有.h文件)
+</code></pre>
+</div>
+
+<p>2、svn blame(praise, annotate, ann)</p>
+
+<p>显示某个在版本管理下的文件的每一行的最后修改版本和作者</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn blame test.h
+svn blame --xml test.h  (加上xml参数可以以xml格式显示每一行的属性)
+</code></pre>
+</div>
+
+<p>3、svn cat</p>
+
+<p>不checkout而查看输出特定文件或URL的内容</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn cat file.cpp
+svn cat file.cpp -r 2              (显示版本号为 2 的file.cpp内容)
+svn cat file.cpp --revision HEAD   (显示最新版本的file.cpp内容)
+svn cat svn://127.0.0.1/test/readme.txt  (文件全路径)
+</code></pre>
+</div>
+<p>4、svn changelist(cl)</p>
+
+<p>可以将WC中的文件从逻辑上分组.</p>
+
+<ul>
+  <li>changelist CLNAME PATH…</li>
+  <li>changelist –remove PATH…</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn cl testChangelist file1.h file2.h file3.h  (将file1.h等三个文件加入名叫testChangelist的changelist)
+svn commit --changelist testChangelist -m "create new changelist"  (将testChangelist下的所有文件提交)
+</code></pre>
+</div>
+<p>5、svn checkout</p>
+
+<p>copy出一份文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn co [svn路径]
+svn co -r 200  (checkout出版本号为200的项目)
+</code></pre>
+</div>
+<p>6、svn cleanup</p>
+
+<p>递归的清理WC中过期的锁和未完成的操作。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn cleanup
+</code></pre>
+</div>
+<p>7、svn commit(ci)</p>
+
+<p>将更改提交到仓库</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn commit -m "Update file." (必须要加上提交的注释)
+</code></pre>
+</div>
+<p>8、svn copy(cp)</p>
+
+<ul>
+  <li>copy操作可以从WC到WC；WC到URL；URL到 WC；URL到URL。现在SVN 只支持同一个仓库内文件的拷贝，不允许跨仓库操作。</li>
+  <li>copy命令是创建分支和标记的常用方式。copy到url的操作隐 含了提交动作，所以需要提供log messages。</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn copy path1 path2 -m "This is the commit message" (path1 和 path2是同一个仓库内的项目路径)
+</code></pre>
+</div>
+<p>9、svn delete(del, remove, rm)</p>
+
+<p>删除文件</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn delete file1.h  (commit的时候才会将仓库中的file1.h删除)
+svn delete file://192.168.1.111/svn/file1.h  (删除仓库中的文件)
+</code></pre>
+</div>
+<p>10、svn diff(di)</p>
+
+<p>用来比较并显示修改点</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn diff    (用来显示WC基于最近一次更新以后的所有的本地修改点)
+svn diff -r 301 bin   (比较本地WC和版本301中的bin目录的修改点)
+svn diff -r 3000:3500 file://var/svn /repos/myProject/trunk   (比较库里主干3000版和3500版的差异)
+</code></pre>
+</div>
+<p>11、svn export</p>
+
+<p>导出一个干净的目录树，不包含所有的版本管理信息。可以选择从URL或WC中导出</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn export file://var/svn/repos my-export  (导出到my-export目录)
+</code></pre>
+</div>
+<p>12、svn help(?, h)</p>
+
+<p>13、svn import</p>
+
+<p>导入本地一个目录到库中。但是导入后，本地的目录并不会处于版本管理状态</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn import -m "message" path
+</code></pre>
+</div>
+<p>14、svn info</p>
+
+<p>查看当前WC或目录的信息</p>
+
+<p>15、svn list(ls)</p>
+
+<p>显示目标下的文件和目录列表</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn ls --verbose path (verbose可以不加，加上是为了显示详细信息)
+</code></pre>
+</div>
+<p>16、svn lock</p>
+
+<p>对目标获得修改锁。如果目标已被其他用户锁定，则会抛出警告信息。 用–force参数强制从其他用户那里获得锁</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn lock filename.h
+</code></pre>
+</div>
+<p>17、svn log</p>
+
+<p>查看仓库修改时的log信息，包括add，modified，delete，replace， merge</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn log
+svn log -r 200 (查看指定版本号的提交log)
+</code></pre>
+</div>
+<p>18、svn merge</p>
+
+<p>合并两个受控源的不同之处，存放到一个WC里。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn merge --reintegrate http://svn .example.com/repos/calc/branches/my-calc-branch  (合并分支上的改变项到WC，往往用于分支合并到主干)
+svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch   (将制定URL版本156到157的所有更新合并到WC)
+</code></pre>
+</div>
+<p>19、svn mergeinfo</p>
+
+<p>查看merge操作的信息</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn mergeinfo http://svn .example.com/repos/calc/branches/my-calc-branch
+</code></pre>
+</div>
+<p>20、svn mkdir</p>
+
+<p>在WC或库路径创建目录</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn mkdir DirectoryName
+</code></pre>
+</div>
+
+<p>21、svn move(mv, rename, ren)</p>
+
+<p>等同于svn copy命令跟个svn delete命令。WC到URL的重命名是不被允许的。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn move foo.c bar.c  (将foo.c改名成bar.c)
+</code></pre>
+</div>
+<p>22、svn propdel (pdel, pd)</p>
+
+<ul>
+  <li>svn propedit PROPNAME TARGET…</li>
+  <li>propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+
+<p>从受控文件，目录等删除属性。第二种是删除某个指定版本上的附加属性</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn propdel svn :mime-type someFile    (从someFile上移除svn :mime-type这个属性)
+</code></pre>
+</div>
+<p>23、svn propedit (pedit, pe)</p>
+
+<ul>
+  <li>svn propedit PROPNAME TARGET…</li>
+  <li>svn propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+
+<p>修改属性</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn propedit svn :keywords  file.c  (修改file.c上的svn :keywords属性)
+</code></pre>
+</div>
+
+<p>24、svn propget (pget, pg)</p>
+
+<ul>
+  <li>svn propget PROPNAME [TARGET[@REV]…]</li>
+  <li>svn propget PROPNAME –revprop -r REV [URL]</li>
+</ul>
+
+<p>从文件，目录或版本取得指定属性的值</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn propget svn :keywords file.c   (从file.c中取得svn :keywords属性的值)
+</code></pre>
+</div>
+<p>25、svn proplist (plist, pl)</p>
+
+<ul>
+  <li>svn proplist [TARGET[@REV]…]</li>
+  <li>svn proplist –revprop -r REV [TARGET]</li>
+</ul>
+
+<p>列出文件、目录或版本上的所有附加属性</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn proplist --verbose file.c
+</code></pre>
+</div>
+<p>26、propset (pset, ps)</p>
+
+<p>给文件、目录或版本附加属性并赋值</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>svn propset svn :mime-type image/jpeg file.jpg   (给file.jpg附加属性svn :mime-type 其值为image/jpeg)
+svn propset --revprop -r 25 svn :log "Journaled about trip to New York." (给版本25补上log message)
+</code></pre>
+</div>
+
+
+    </article> <hr />
+    
+    
+  
+    <header class="post-header">
+      <h1 itemprop="name" class="post-title">
         <a itemprop="url" class="post-link" href="/cocoapods/2016/05/26/cocoapods-install-usage.html">CocoaPods的安装和使用</a>
       </h1>
       <meta itemprop="keywords" content="CocoaPods" />
@@ -719,165 +987,6 @@ rm -rf ~/Library/Caches/Homebrew
     
     
   
-    <header class="post-header">
-      <h1 itemprop="name" class="post-title">
-        <a itemprop="url" class="post-link" href="/jekyll/2014/12/19/freshman21-structure.html">Theme structure</a>
-      </h1>
-      <meta itemprop="keywords" content="Jekyll theme" />
-      <p class="post-meta">
-      Posted in
-      
-      <a href="/categories/#Jekyll">Jekyll</a>
-      
-      
-      and tagged
-      
-      <a href="/tags/#Jekyll theme" title="Jekyll theme">Jekyll theme </a>
-      
-      
-      <time itemprop="datePublished" datetime="2014-12-19">
-      on Dec 19, 2014
-      </time>
-      </p>
-    </header>
-
-    <article class="post-content" itemprop="articleBody">
-      <h2 id="the-structure-of-freshman21-theme">1.The structure of freshman21 theme</h2>
-
-<p>You can see the simplest way of adding a page is just to add an HTML ( or markdown ) file in the root directory with a suitable name for the page you want to create. For example, aahome.md is the homepage link, about.md is the about page.</p>
-
-<p>All sidebar boxes html files are in the <code>_include</code> directory, their name begin with upper case. You can chose which sidebar boxes appears in the main page on the <q>sidebar.html</q> in the <code>_includes</code> directory.</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>.
-|-- a_home.md                 <span class="c"># home page link at navigation bar</span>
-|-- b_about.md                <span class="c"># about link at navigation bar</span>
-|-- c_archives.md             <span class="c"># archives link at navigation bar</span>
-|-- _config.yml
-|-- css
-|   <span class="sb">`</span>-- main.scss
-|-- d_categories.md           <span class="c"># categories link at navigation bar </span>
-|-- e_tags.md                 <span class="c"># tags at main navigation bar</span>
-|-- feed.xml                  <span class="c"># RSS at main navigation bar</span>
-|-- f_guestbook.md            <span class="c"># guest book like at navigation bar</span>
-|-- images
-|   <span class="sb">`</span>-- favicon.ico           <span class="c"># here is your website favicon</span>
-|-- _includes
-|   |-- Aboutme.html          <span class="c"># right column sidebar content</span>
-|   |-- Archives.html         <span class="c"># right column sidebar content</span>
-|   |-- Blogroll.html         <span class="c"># right column sidebar content</span>
-|   |-- Categories.html       <span class="c"># right column sidebar content</span>
-|   |-- comments.html         <span class="c"># right column sidebar content</span>
-|   |-- Copyright_Notice.html <span class="c"># right column sidebar content</span>
-|   |-- footer.html
-|   |-- header.html
-|   |-- head.html
-|   |-- page_pagination.html
-|   |-- post_pagination.html
-|   |-- Recent_Posts.html     <span class="c"># right column sidebar content</span>
-|   |-- sidebar.html          <span class="c"># you can set you own sidebar content in here</span>
-|   <span class="sb">`</span>-- Tags.html             <span class="c"># right column sidebar content</span>
-|-- index.html
-|-- _layouts
-|   |-- default.html
-|   |-- page.html
-|   <span class="sb">`</span>-- post.html
-|-- LICENSE
-|-- _posts
-|   |-- 2013-10-10-milu.md
-|   |-- 2014-12-13-simple-post.md
-|   |-- 2014-12-18-how-to-install.md
-|   |-- 2014-12-19-freshman21-structure.md
-|   |-- 2014-12-19-how-to-set-the-config-file.md
-|   <span class="sb">`</span>-- 2015-03-31-readme.md
-|-- README.md
-<span class="sb">`</span>-- _sass
-    |-- _base.scss
-    |-- _layout.scss
-    |-- _syntax-highlighting-native.scss
-    <span class="sb">`</span>-- _syntax-highlighting.scss
-</code></pre>
-</div>
-
-<h2 id="structure-with-named-folders-containing-index-html-files">2.Structure with Named folders containing index HTML files</h2>
-
-<p>There is nothing wrong with the above method, however some people like to keep their URLs free from things like filename extensions. To achieve clean URLs for pages using Jekyll, you simply need to create a folder for each top-level page you want, and then place an index.html file in each page’s folder. You can find the more detail at <a href="http://jekyllrb.com/docs/pages/" title="Creating pages">Jekyll documentation</a>. Here is my own blog structure with page-folders to contain each pages.</p>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>.
-├── _backup
-│   ├── en.tar.gz
-│   └── style.css
-├── categories                              <span class="c"># =&gt; http://yulijia.net/en/categories/ </span>
-│   └── index.md
-├── _config.yml
-├── css
-│   └── main.scss
-├── feed                                    <span class="c"># =&gt; http://yulijia.net/en/feed/index.xml</span>
-│   └── index.xml
-├── guestbook                               <span class="c"># =&gt; http://yulijia.net/en/guestbook/</span>
-│   └── index.md
-├── home.md
-├── _includes
-│   ├── Aboutme.html
-│   ├── Archives.html
-│   ├── Blogroll.html
-│   ├── Categories.html
-│   ├── comments.html
-│   ├── Copyright_Notice.html
-│   ├── footer.html
-│   ├── header.html
-│   ├── head.html
-│   ├── page_pagination.html
-│   ├── post_pagination.html
-│   ├── Recent_Posts.html
-│   ├── sidebar.html
-│   └── Tags.html
-├── index.html
-├── _layouts
-│   ├── default.html
-│   ├── page.html
-│   └── post.html
-├── _posts
-│   ├── 2011-07-22-hello-world.md
-│   ├── 2011-08-06-how-to-calculate-word-frequencies-with-r.md
-│   ├── 2011-08-18-should-draco-be-effective-against-virtually-all-viruses.md
-│   ├── 2011-10-21-why-viruses-produce-long-dsrna-but-not-endogenous-ones.md
-│   ├── 2012-03-22-100-things-bioinformatics-students-should-do-before-graduating.md
-│   ├── 2012-10-08-a-new-site.md
-│   ├── 2012-10-09-github-pages.md
-│   ├── 2012-10-22-a-conference-of-Genomics-and-Epigenomics.md
-│   ├── 2012-10-23-CSHL-Asia-interesting-talks-on-genomics-and-epigenomics.md
-│   └── 2013-01-30-how-to-get-RefSeq-gene-annotations-from-UCSCdatabase.md
-├── README.md
-├── _sass
-│   ├── _base.scss
-│   ├── _layout.scss
-│   └── _syntax-highlighting.scss
-└── tags
-    └── index.md
-</code></pre>
-</div>
-
-<h2 id="how-to-change-the-highlight-style">3. How to change the highlight style?</h2>
-
-<p>This theme’s default highlighter is pygments.</p>
-
-<p>To change the highlight style, you should install <strong>pygments</strong>, and generate the css style which you wanted with code</p>
-
-<p><code>pygmentize -S default -f html &gt; freshman/_sass/_syntax-highlighting.scss</code></p>
-
-<p>Please make sure, add <code>.highlight {</code> at the head  and <code>}</code> at the end of file <q>_syntax-highlighting.scss</q>.</p>
-
-<p>See more,</p>
-
-<ol>
-  <li><a href="http://pygments.org/languages/">Pygments Supported languages</a></li>
-  <li><a href="http://stackoverflow.com/questions/9652490/do-i-need-to-generate-a-css-file-from-pygments-for-my-jekyll-blog-to-enable-col">Pygments online deme</a></li>
-</ol>
-
-    </article> <hr />
-    
-    
-  
   </div>
 </div>
 
@@ -935,6 +1044,10 @@ rm -rf ~/Library/Caches/Homebrew
   <h4>Recent Posts</h4>
   
   <li>
+  <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html" title="SVN常用命令汇总和基本用法" rel="bookmark">SVN常用命令汇总和基本用法</a>
+  </li>
+  
+  <li>
   <a href="/cocoapods/2016/05/26/cocoapods-install-usage.html" title="CocoaPods的安装和使用" rel="bookmark">CocoaPods的安装和使用</a>
   </li>
   
@@ -950,10 +1063,6 @@ rm -rf ~/Library/Caches/Homebrew
   <a href="/jekyll/2014/12/19/how-to-set-the-config-file.html" title="How to set the config.yml file" rel="bookmark">How to set the config.yml file</a>
   </li>
   
-  <li>
-  <a href="/jekyll/2014/12/19/freshman21-structure.html" title="Theme structure" rel="bookmark">Theme structure</a>
-  </li>
-  
 </div>
 
 
@@ -965,6 +1074,8 @@ rm -rf ~/Library/Caches/Homebrew
   <li><a href="/categories/#Carthage" title="Carthage" rel="1">Carthage (1)</a></li>
   
   <li><a href="/categories/#CocoaPods" title="CocoaPods" rel="1">CocoaPods (1)</a></li>
+  
+  <li><a href="/categories/#版本管理" title="版本管理" rel="1">版本管理 (1)</a></li>
   
 </div>
 
@@ -979,6 +1090,8 @@ rm -rf ~/Library/Caches/Homebrew
     <a href="/tags/#Carthage" title="Carthage" rel="1">Carthage</a> &nbsp;
   
     <a href="/tags/#CocoaPods" title="CocoaPods" rel="1">CocoaPods</a> &nbsp;
+  
+    <a href="/tags/#Subversion" title="Subversion" rel="1">Subversion</a> &nbsp;
   
 </div>
 
@@ -1002,6 +1115,9 @@ rm -rf ~/Library/Caches/Homebrew
   
   
   <li id="2016" > <a href="/archives/#2016">2016</a></li>
+  
+  
+  
   
   
   

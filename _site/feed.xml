@@ -5,9 +5,263 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 May 2016 22:00:43 +0800</pubDate>
-    <lastBuildDate>Thu, 26 May 2016 22:00:43 +0800</lastBuildDate>
+    <pubDate>Fri, 27 May 2016 17:38:53 +0800</pubDate>
+    <lastBuildDate>Fri, 27 May 2016 17:38:53 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>SVN常用命令汇总和基本用法</title>
+        <description>&lt;p&gt;本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/prettyshuang/article/details/38421205?utm_source=tuicool&amp;amp;utm_medium=referral&quot;&gt;svn常用命令详解（很全，很实用）&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/lddongyu/article/details/5493862&quot;&gt;(转)SVN常用命令用法说明&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://panfuy.iteye.com/blog/1278865&quot;&gt;SVN 主干(trunk)、分支(branch )、标记(tag)&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;subversion&quot;&gt;Subversion的命令&lt;/h2&gt;
+
+&lt;p&gt;在命令行输入&lt;code class=&quot;highlighter-rouge&quot;&gt;svn help&lt;/code&gt;可以查看svn的所有命令&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;命令用法&lt;/h2&gt;
+
+&lt;p&gt;1、svn add&lt;/p&gt;
+
+&lt;p&gt;添加文件或目录到你的working copy(&lt;code class=&quot;highlighter-rouge&quot;&gt;以下简称WC&lt;/code&gt;)，打上新增标记A。这些文件会在下一次你提交WC的时候提交到svn服务器.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn add test.h (添加一个文件)
+svn add *.h    (添加当前目录下所有.h文件)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2、svn blame(praise, annotate, ann)&lt;/p&gt;
+
+&lt;p&gt;显示某个在版本管理下的文件的每一行的最后修改版本和作者&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn blame test.h
+svn blame --xml test.h  (加上xml参数可以以xml格式显示每一行的属性)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;3、svn cat&lt;/p&gt;
+
+&lt;p&gt;不checkout而查看输出特定文件或URL的内容&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn cat file.cpp
+svn cat file.cpp -r 2              (显示版本号为 2 的file.cpp内容)
+svn cat file.cpp --revision HEAD   (显示最新版本的file.cpp内容)
+svn cat svn://127.0.0.1/test/readme.txt  (文件全路径)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;4、svn changelist(cl)&lt;/p&gt;
+
+&lt;p&gt;可以将WC中的文件从逻辑上分组.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;changelist CLNAME PATH…&lt;/li&gt;
+  &lt;li&gt;changelist –remove PATH…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn cl testChangelist file1.h file2.h file3.h  (将file1.h等三个文件加入名叫testChangelist的changelist)
+svn commit --changelist testChangelist -m &quot;create new changelist&quot;  (将testChangelist下的所有文件提交)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;5、svn checkout&lt;/p&gt;
+
+&lt;p&gt;copy出一份文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn co [svn路径]
+svn co -r 200  (checkout出版本号为200的项目)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;6、svn cleanup&lt;/p&gt;
+
+&lt;p&gt;递归的清理WC中过期的锁和未完成的操作。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn cleanup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;7、svn commit(ci)&lt;/p&gt;
+
+&lt;p&gt;将更改提交到仓库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn commit -m &quot;Update file.&quot; (必须要加上提交的注释)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;8、svn copy(cp)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;copy操作可以从WC到WC；WC到URL；URL到 WC；URL到URL。现在SVN 只支持同一个仓库内文件的拷贝，不允许跨仓库操作。&lt;/li&gt;
+  &lt;li&gt;copy命令是创建分支和标记的常用方式。copy到url的操作隐 含了提交动作，所以需要提供log messages。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn copy path1 path2 -m &quot;This is the commit message&quot; (path1 和 path2是同一个仓库内的项目路径)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;9、svn delete(del, remove, rm)&lt;/p&gt;
+
+&lt;p&gt;删除文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn delete file1.h  (commit的时候才会将仓库中的file1.h删除)
+svn delete file://192.168.1.111/svn/file1.h  (删除仓库中的文件)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;10、svn diff(di)&lt;/p&gt;
+
+&lt;p&gt;用来比较并显示修改点&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn diff    (用来显示WC基于最近一次更新以后的所有的本地修改点)
+svn diff -r 301 bin   (比较本地WC和版本301中的bin目录的修改点)
+svn diff -r 3000:3500 file://var/svn /repos/myProject/trunk   (比较库里主干3000版和3500版的差异)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;11、svn export&lt;/p&gt;
+
+&lt;p&gt;导出一个干净的目录树，不包含所有的版本管理信息。可以选择从URL或WC中导出&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn export file://var/svn/repos my-export  (导出到my-export目录)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;12、svn help(?, h)&lt;/p&gt;
+
+&lt;p&gt;13、svn import&lt;/p&gt;
+
+&lt;p&gt;导入本地一个目录到库中。但是导入后，本地的目录并不会处于版本管理状态&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn import -m &quot;message&quot; path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;14、svn info&lt;/p&gt;
+
+&lt;p&gt;查看当前WC或目录的信息&lt;/p&gt;
+
+&lt;p&gt;15、svn list(ls)&lt;/p&gt;
+
+&lt;p&gt;显示目标下的文件和目录列表&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn ls --verbose path (verbose可以不加，加上是为了显示详细信息)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;16、svn lock&lt;/p&gt;
+
+&lt;p&gt;对目标获得修改锁。如果目标已被其他用户锁定，则会抛出警告信息。 用–force参数强制从其他用户那里获得锁&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn lock filename.h
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;17、svn log&lt;/p&gt;
+
+&lt;p&gt;查看仓库修改时的log信息，包括add，modified，delete，replace， merge&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn log
+svn log -r 200 (查看指定版本号的提交log)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;18、svn merge&lt;/p&gt;
+
+&lt;p&gt;合并两个受控源的不同之处，存放到一个WC里。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn merge --reintegrate http://svn .example.com/repos/calc/branches/my-calc-branch  (合并分支上的改变项到WC，往往用于分支合并到主干)
+svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch   (将制定URL版本156到157的所有更新合并到WC)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;19、svn mergeinfo&lt;/p&gt;
+
+&lt;p&gt;查看merge操作的信息&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn mergeinfo http://svn .example.com/repos/calc/branches/my-calc-branch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;20、svn mkdir&lt;/p&gt;
+
+&lt;p&gt;在WC或库路径创建目录&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn mkdir DirectoryName
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;21、svn move(mv, rename, ren)&lt;/p&gt;
+
+&lt;p&gt;等同于svn copy命令跟个svn delete命令。WC到URL的重命名是不被允许的。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn move foo.c bar.c  (将foo.c改名成bar.c)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;22、svn propdel (pdel, pd)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;svn propedit PROPNAME TARGET…&lt;/li&gt;
+  &lt;li&gt;propedit PROPNAME –revprop -r REV [TARGET]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从受控文件，目录等删除属性。第二种是删除某个指定版本上的附加属性&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn propdel svn :mime-type someFile    (从someFile上移除svn :mime-type这个属性)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;23、svn propedit (pedit, pe)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;svn propedit PROPNAME TARGET…&lt;/li&gt;
+  &lt;li&gt;svn propedit PROPNAME –revprop -r REV [TARGET]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;修改属性&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn propedit svn :keywords  file.c  (修改file.c上的svn :keywords属性)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;24、svn propget (pget, pg)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;svn propget PROPNAME [TARGET[@REV]…]&lt;/li&gt;
+  &lt;li&gt;svn propget PROPNAME –revprop -r REV [URL]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;从文件，目录或版本取得指定属性的值&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn propget svn :keywords file.c   (从file.c中取得svn :keywords属性的值)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;25、svn proplist (plist, pl)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;svn proplist [TARGET[@REV]…]&lt;/li&gt;
+  &lt;li&gt;svn proplist –revprop -r REV [TARGET]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;列出文件、目录或版本上的所有附加属性&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn proplist --verbose file.c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;26、propset (pset, ps)&lt;/p&gt;
+
+&lt;p&gt;给文件、目录或版本附加属性并赋值&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn propset svn :mime-type image/jpeg file.jpg   (给file.jpg附加属性svn :mime-type 其值为image/jpeg)
+svn propset --revprop -r 25 svn :log &quot;Journaled about trip to New York.&quot; (给版本25补上log message)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 27 May 2016 00:00:00 +0800</pubDate>
+        <link>http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html</link>
+        <guid isPermaLink="true">http://mrarronz.github.io/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage.html</guid>
+        
+        <category>Subversion</category>
+        
+        
+        <category>版本管理</category>
+        
+      </item>
     
       <item>
         <title>CocoaPods的安装和使用</title>
