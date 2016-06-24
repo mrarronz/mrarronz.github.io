@@ -5,8 +5,8 @@
     <description>Personal blog</description>
     <link>http://mrarronz.github.io/</link>
     <atom:link href="http://mrarronz.github.io/zfeed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 May 2016 23:48:40 +0800</pubDate>
-    <lastBuildDate>Fri, 27 May 2016 23:48:40 +0800</lastBuildDate>
+    <pubDate>Thu, 23 Jun 2016 13:37:51 +0800</pubDate>
+    <lastBuildDate>Thu, 23 Jun 2016 13:37:51 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -439,6 +439,16 @@ pod setup
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;ESC退出编辑，ZZ关闭文件&lt;/p&gt;
+
+&lt;p&gt;PS：最近使用cocoaPods时貌似必须要指定target了，如果直接像上述这样写，下载第三方库时会报错，所以改成：&lt;/p&gt;
+
+&lt;div class=&quot;language-r highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ios&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;6.0&#39;&lt;/span&gt;   
+
+&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;TargetName&#39;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pod&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;AFNetworking&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;~&amp;gt; 3.0&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;2、安装第三方库&lt;/p&gt;
 

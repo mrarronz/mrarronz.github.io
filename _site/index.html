@@ -586,6 +586,16 @@ pod setup
 </div>
 <p>ESC退出编辑，ZZ关闭文件</p>
 
+<p>PS：最近使用cocoaPods时貌似必须要指定target了，如果直接像上述这样写，下载第三方库时会报错，所以改成：</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">platform</span> <span class="o">:</span><span class="n">ios</span><span class="p">,</span> <span class="s1">'6.0'</span>   
+
+<span class="n">target</span> <span class="s1">'TargetName'</span> <span class="n">do</span>
+<span class="n">pod</span> <span class="s1">'AFNetworking'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0'</span>
+<span class="n">end</span>
+</code></pre>
+</div>
+
 <p>2、安装第三方库</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>pod install

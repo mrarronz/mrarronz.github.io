@@ -63,6 +63,16 @@ pod 'AFNetworking', '~> 3.0'
 ```
 ESC退出编辑，ZZ关闭文件
 
+PS：最近使用cocoaPods时貌似必须要指定target了，如果直接像上述这样写，下载第三方库时会报错，所以改成：
+
+```r
+platform :ios, '6.0'   
+
+target 'TargetName' do
+pod 'AFNetworking', '~> 3.0'
+end
+```
+
 2、安装第三方库
 
 ```
