@@ -139,10 +139,10 @@ carthage build --no-skip-current
 ``` 
 来检测所有的 intended schemes 是否构建成功，然后检查 Carthage/Build 文件夹。如果运行命令的时候，一个重要的 scheme 没有构建成功，打开 Xcode 在构建菜单选择 Manage Schemes （如下图）
 
-![image](/images/carthage/carthage_1.png)
+![image](/assets/img/carthage/carthage_1.png)
 
 对于需要构建的 scheme 勾选 Shared （如下图）
-![image](/images/carthage/carthage_2.png)
+![image](/assets/img/carthage/carthage_2.png)
 
 示例图片是我的github项目[NSStringCategoryKit](https://github.com/mrarronz/NSStringCategoryKit)，也添加了CocoaPods支持。这个项目最初是以static library的方式创建的，后来为了支持carthage，新建了一个framework的target。如果要添加carthage支持，最好还是创建新的framework项目，再来进行carthage的集成。
 
