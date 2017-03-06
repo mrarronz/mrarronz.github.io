@@ -1,0 +1,910 @@
+
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+    
+    
+    
+    
+    <title>SVN命令汇总和基本用法 | XiaoXiXi</title>
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Zzzz">
+    
+
+    
+    <!--<%- open_graph({twitter_id: theme.author.twitter, google_plus: theme.author.google_plus}) %>-->
+    
+    <meta name="description" content="page.description">
+    
+    <meta property="og:type" content="article">
+    
+    <meta property="og:title" content="SVN命令汇总和基本用法">
+    <meta property="og:url" content="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage">
+    <meta property="og:site_name" content="XiaoXiXi">
+    <meta property="og:description" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="SVN命令汇总和基本用法">
+    <meta name="twitter:description" content="page.description">
+    <meta name="twitter:creator" content="@">
+    <link rel="publisher" href="">
+
+    
+    <link rel="alternative" href="/atom.xml" title="XiaoXiXi" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/assets/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/assets/img/img_car.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/assets/img/img_car.jpg">
+    
+
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/highlight.css" type="text/css">
+    
+</head>
+
+  <body>
+    <header>
+        <div>
+		    
+			<div id="imglogo">
+				<a href="/"><img src="/assets/img/img_car.jpg" alt="XiaoXiXi" title="XiaoXiXi"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="XiaoXiXi">XiaoXiXi</a></h1>
+				<h2 class="blog-motto">Keep moving</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>	
+</div>
+    </header>
+    <div id="container">
+      
+
+
+
+<div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+	<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage" title="SVN命令汇总和基本用法" itemprop="url">SVN命令汇总和基本用法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Zzzz" target="_blank" itemprop="author">Zzzz</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-27 00:00:00 +0800" itemprop="datePublished"> 发表于 2016-05-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article toc-content" style="display: none;">
+		
+			<!--<%- toc(item.content) %>-->
+		
+		</div>
+		
+		<p>本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。</p>
+
+<blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/prettyshuang/article/details/38421205?utm_source=tuicool&amp;utm_medium=referral">svn常用命令详解（很全，很实用）</a></li>
+<li><a href="http://blog.csdn.net/lddongyu/article/details/5493862">(转)SVN常用命令用法说明</a></li>
+<li><a href="http://panfuy.iteye.com/blog/1278865">SVN 主干(trunk)、分支(branch )、标记(tag)</a></li>
+</ul>
+</blockquote>
+
+<p><br/></p>
+
+<h2 id="subversion的命令">Subversion的命令</h2>
+
+<p>在命令行输入<code>svn help</code>可以查看svn的所有命令</p>
+
+<p><br/></p>
+
+<h2 id="命令用法">命令用法</h2>
+
+<p>1、svn add</p>
+
+<p>添加文件或目录到你的working copy(<code>以下简称WC</code>)，打上新增标记A。这些文件会在下一次你提交WC的时候提交到svn服务器.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn add test.h (添加一个文件)
+svn add *.h    (添加当前目录下所有.h文件)
+</code></pre></div>
+<p>2、svn blame(praise, annotate, ann)</p>
+
+<p>显示某个在版本管理下的文件的每一行的最后修改版本和作者</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn blame test.h
+svn blame --xml test.h  (加上xml参数可以以xml格式显示每一行的属性)
+</code></pre></div>
+<p>3、svn cat </p>
+
+<p>不checkout而查看输出特定文件或URL的内容</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn cat file.cpp
+svn cat file.cpp -r 2              (显示版本号为 2 的file.cpp内容)
+svn cat file.cpp --revision HEAD   (显示最新版本的file.cpp内容)
+svn cat svn://127.0.0.1/test/readme.txt  (文件全路径)
+</code></pre></div>
+<p>4、svn changelist(cl)</p>
+
+<p>可以将WC中的文件从逻辑上分组.</p>
+
+<ul>
+<li>changelist CLNAME PATH...</li>
+<li>changelist --remove PATH...</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">svn cl testChangelist file1.h file2.h file3.h  (将file1.h等三个文件加入名叫testChangelist的changelist)
+svn commit --changelist testChangelist -m "create new changelist"  (将testChangelist下的所有文件提交)
+</code></pre></div>
+<p>5、svn checkout</p>
+
+<p>copy出一份文件</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn co [svn路径]
+svn co -r 200  (checkout出版本号为200的项目)
+</code></pre></div>
+<p>6、svn cleanup</p>
+
+<p>递归的清理WC中过期的锁和未完成的操作。</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn cleanup
+</code></pre></div>
+<p>7、svn commit(ci)</p>
+
+<p>将更改提交到仓库</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn commit -m "Update file." (必须要加上提交的注释)
+</code></pre></div>
+<p>8、svn copy(cp)</p>
+
+<ul>
+<li>copy操作可以从WC到WC；WC到URL；URL到 WC；URL到URL。现在SVN 只支持同一个仓库内文件的拷贝，不允许跨仓库操作。</li>
+<li>copy命令是创建分支和标记的常用方式。copy到url的操作隐 含了提交动作，所以需要提供log messages。</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">svn copy path1 path2 -m "This is the commit message" (path1 和 path2是同一个仓库内的项目路径)
+</code></pre></div>
+<p>9、svn delete(del, remove, rm)</p>
+
+<p>删除文件</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn delete file1.h  (commit的时候才会将仓库中的file1.h删除)
+svn delete file://192.168.1.111/svn/file1.h  (删除仓库中的文件)
+</code></pre></div>
+<p>10、svn diff(di)</p>
+
+<p>用来比较并显示修改点</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn diff    (用来显示WC基于最近一次更新以后的所有的本地修改点)
+svn diff -r 301 bin   (比较本地WC和版本301中的bin目录的修改点)
+svn diff -r 3000:3500 file://var/svn /repos/myProject/trunk   (比较库里主干3000版和3500版的差异)
+</code></pre></div>
+<p>11、svn export</p>
+
+<p>导出一个干净的目录树，不包含所有的版本管理信息。可以选择从URL或WC中导出</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn export file://var/svn/repos my-export  (导出到my-export目录)
+</code></pre></div>
+<p>12、svn help(?, h)</p>
+
+<p>13、svn import</p>
+
+<p>导入本地一个目录到库中。但是导入后，本地的目录并不会处于版本管理状态</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn import -m "message" path
+</code></pre></div>
+<p>14、svn info</p>
+
+<p>查看当前WC或目录的信息</p>
+
+<p>15、svn list(ls)</p>
+
+<p>显示目标下的文件和目录列表</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn ls --verbose path (verbose可以不加，加上是为了显示详细信息)
+</code></pre></div>
+<p>16、svn lock</p>
+
+<p>对目标获得修改锁。如果目标已被其他用户锁定，则会抛出警告信息。 用--force参数强制从其他用户那里获得锁</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn lock filename.h
+</code></pre></div>
+<p>17、svn log</p>
+
+<p>查看仓库修改时的log信息，包括add，modified，delete，replace， merge</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn log
+svn log -r 200 (查看指定版本号的提交log)
+</code></pre></div>
+<p>18、svn merge</p>
+
+<p>合并两个受控源的不同之处，存放到一个WC里。</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn merge --reintegrate http://svn .example.com/repos/calc/branches/my-calc-branch  (合并分支上的改变项到WC，往往用于分支合并到主干)
+svn merge -r 156:157 http://svn .example.com/repos/calc/branches/my-calc-branch   (将制定URL版本156到157的所有更新合并到WC)
+</code></pre></div>
+<p>19、svn mergeinfo</p>
+
+<p>查看merge操作的信息</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn mergeinfo http://svn .example.com/repos/calc/branches/my-calc-branch
+</code></pre></div>
+<p>20、svn mkdir</p>
+
+<p>在WC或库路径创建目录</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn mkdir DirectoryName
+</code></pre></div>
+<p>21、svn move(mv, rename, ren)</p>
+
+<p>等同于svn copy命令跟个svn delete命令。WC到URL的重命名是不被允许的。</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn move foo.c bar.c  (将foo.c改名成bar.c)
+</code></pre></div>
+<p>22、svn patch</p>
+
+<p><a href="http://blog.csdn.net/ameyume/article/details/7766722">svn生成patch和打（导入）patch文件的方法</a></p>
+
+<p>23、svn propdel (pdel, pd)</p>
+
+<ul>
+<li>svn propedit PROPNAME TARGET...</li>
+<li>propedit PROPNAME --revprop -r REV [TARGET]</li>
+</ul>
+
+<p>从受控文件，目录等删除属性。第二种是删除某个指定版本上的附加属性</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn propdel svn :mime-type someFile    (从someFile上移除svn :mime-type这个属性)
+</code></pre></div>
+<p>24、svn propedit (pedit, pe)</p>
+
+<ul>
+<li>svn propedit PROPNAME TARGET...</li>
+<li>svn propedit PROPNAME --revprop -r REV [TARGET]</li>
+</ul>
+
+<p>修改属性</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn propedit svn :keywords  file.c  (修改file.c上的svn :keywords属性)
+</code></pre></div>
+<p>25、svn propget (pget, pg)</p>
+
+<ul>
+<li>svn propget PROPNAME [TARGET[@REV]...]</li>
+<li>svn propget PROPNAME --revprop -r REV [URL]</li>
+</ul>
+
+<p>从文件，目录或版本取得指定属性的值</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn propget svn :keywords file.c   (从file.c中取得svn :keywords属性的值)
+</code></pre></div>
+<p>26、svn proplist (plist, pl)</p>
+
+<ul>
+<li>svn proplist [TARGET[@REV]...]</li>
+<li>svn proplist --revprop -r REV [TARGET]</li>
+</ul>
+
+<p>列出文件、目录或版本上的所有附加属性</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn proplist --verbose file.c
+</code></pre></div>
+<p>27、svn propset (pset, ps)</p>
+
+<p>给文件、目录或版本附加属性并赋值</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn propset svn :mime-type image/jpeg file.jpg   (给file.jpg附加属性svn :mime-type 其值为image/jpeg)
+svn propset --revprop -r 25 svn :log "Journaled about trip to New York." (给版本25补上log message)
+</code></pre></div>
+<p>28、svn resolve</p>
+
+<p>将冲突的文件标记为已解决，并且删掉冲突产生的临时文件。注意这个命令并不是能把冲突解决，解决冲突还是得靠人工，人工解决冲突后，文件的状态还是冲突C状态，需要将其标记为resolved之后才能正常提交</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn resolve --accept filePath  (filePath是文件路径，1.5版本后，加上--accept参数，尝试自动处理冲突)
+</code></pre></div>
+<p>29、svn revert</p>
+
+<p>还原WC中所有的本地更改</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn revert --depth=infinity  (将整个目录所有文件还原)
+svn revert test.h            (将对test.h文件所做的修改还原)
+</code></pre></div>
+<p>30、svn status(stat, st)</p>
+
+<p>输出WC中文件和目录的状态。如果WC提交，这些状态就会同步到仓库里。一般有如下几种状态：</p>
+
+<p>&#39;&#39; 没有修改<br>
+A  新增<br>
+D  删除<br>
+M  修改<br>
+R  替代<br>
+C  冲突<br>
+I  忽略<br>
+？ 未添加到版本管理<br>
+！ 文件丢失</p>
+
+<p>31、svn switch(sw)</p>
+
+<ul>
+<li>svn switch URL，将当前WC切换到另一个URL，一般是从trunk工作目录转向tag工作目录，或者从tag转回来，switch的类似update，将switch的目标工作目录的文件更新到本地，一般会产生很多冲突</li>
+<li>svn switch --relocate，将WC连接的服务器地址切换到另一个地址，比如服务器地址由IP地址改为域名的情况，但是项目文件结构都没有变化。</li>
+</ul>
+<div class="highlight"><pre><code class="language-" data-lang="">svn switch path
+svn switch --relocate path1 path2
+</code></pre></div>
+<p>32、svn unlock</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn unlock fileName
+</code></pre></div>
+<p>33、svn update(up)</p>
+
+<p>更新本地WC，直接使用svn up命令，如果要指定版本，使用svn up -r 200 (更新到版本号为200的版本)</p>
+
+<p>34、svn upgrade</p>
+
+<p>如果本地svn版本高于WC当前被管理的svn版本，那么就需要使用upgrade命令将WC的svn版本升级。可以理解为将当前WC所处的环境升级，本来是在1.6版本svn的管理之下，现在通过upgrade之后处于1.7版本的svn管理之下了。</p>
+
+<p><br/></p>
+
+<h2 id="主干、分支和标记">主干、分支和标记</h2>
+
+<p>通常我们在项目开发中都会建立主干(trunk)、分支(branch )、标记(tag)来管理项目代码。</p>
+
+<p>一般情况下</p>
+
+<ul>
+<li>trunk：是用来做主方向开发的，一个新模块的开发，这个时候就放在trunk，当模块开发完成后，需要修改，就用branch。在开发阶段的代码都提交到该目录上。 </li>
+<li>branch：是用来做并行开发的，这里的并行是指和trunk进行比较。</li>
+<li>tag：是用来做一个milestone的，不管是不是发布版本，但都是一个可用的版本。这里，应该是只读的。更多的是一个显示用的，给人一个可读的标记。</li>
+</ul>
+
+<p>比如，3.0开发完成，这个时候要做一个tag，tag_release_3_0，然后基于这个tag做发布。trunk进入3.1的开发，但是3.0发现了bug，那么就需要基于tag_release_3_0做一个分支(branch)，branch_bugfix_3_0，基于这 个branch进行bug修改，等到bugfix结束，做一个tag，tag_release_3_0_1，然后，根据需要决定 branch_bugfix_3_0是否并入主干(trunk)。</p>
+
+<p>branch和tag的创建都是用svn copy命令完成，将trunk目录下的工程copy到对应的branch和tag目录</p>
+<div class="highlight"><pre><code class="language-" data-lang="">svn cp path1 path2 -m "create branch" (path1表示trunk所在路径，path2表示branch或tag路径)
+</code></pre></div>  
+	</div>
+	<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <!--
+  <%- list_categories(item.categories, {
+      show_count: false,
+      class: 'article-category',
+      style: 'none',
+      separator: '►'
+  }) %>
+  -->
+  
+  <a class="article-category-link" href="/categories/#版本管理">版本管理</a>
+  
+</div>
+
+
+  <div class="article-tags">
+  <!--
+  <% var tags = [];
+    item.tags.forEach(function(tag){
+      tags.push('<a href="' + config.root + tag.path + '">' + tag.name + '</a>');
+    }); %>-->
+  <span></span> <!--<%- tags.join('') %>-->
+  
+  
+  <a href="/tags/#Subversion">Subversion</a>
+  
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://localhost:4000/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/svn-command-usage" data-title="SVN命令汇总和基本用法 | XiaoXiXi" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>   
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/2016/05/27/git-usage" title="Git常用命令和用法">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Git常用命令和用法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/webserver/2017/03/06/tomcat-config-mac"  title="Tomcat在mac下的环境配置">
+ <strong>下一篇：</strong><br/> 
+ <span>Tomcat在mac下的环境配置
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+
+      
+      
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside toc-content">
+ 
+ <!--<%- toc(item.content) %>-->
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/#Jekyll" title="Jekyll">Jekyll<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/#Carthage" title="Carthage">Carthage<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/#CocoaPods" title="CocoaPods">CocoaPods<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/#版本管理" title="版本管理">版本管理<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/#WebServer" title="WebServer">WebServer<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/#Jekyll theme" title="Jekyll theme">Jekyll theme<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#gem" title="gem">gem<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Carthage" title="Carthage">Carthage<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#CocoaPods" title="CocoaPods">CocoaPods<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Git" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#Subversion" title="Subversion">Subversion<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/#WebServer" title="WebServer">WebServer<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div id="tagcloud" class="tagcloudlist clearfix">
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            <a href="https://mrarronz.github.com" target="_blank" title="Github">Github</a>
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> hmm... <br/>
+			...</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+	<!--
+			<%  Array.prototype.S=String.fromCharCode(2);
+			  Array.prototype.in_array=function(e){
+    			var r=new RegExp(this.S+e+this.S);
+    			return (r.test(this.S+this.join(this.S)+this.S));
+				};
+				var cc = new Array('by','by-nc','by-nc-nd','by-nc-sa','by-nd','by-sa','zero'); %>
+		<% if (cc.in_array(theme.creative_commons) ) { %>
+				<div class="cc-license">
+          <a href="http://creativecommons.org/licenses/<%= theme.creative_commons %>/4.0" class="cc-opacity" target="_blank">
+            <img src="<%- config.root %>img/cc-<%= theme.creative_commons %>.svg" alt="Creative Commons" />
+          </a>
+        </div>
+    <% } %>
+				-->
+
+		<p class="copyright">
+		Powered by <a href="http://jekyllrb.com" target="_blank" title="jekyll">jekyll</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="about" target="_blank" title="Zzzz">Zzzz</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/assets/js/jquery-2.0.3.min.js"></script>
+<script src="/assets/js/jquery.imagesloaded.min.js"></script>
+<script src="/assets/js/gallery.js"></script>
+<script src="/assets/js/jquery.qrcode-0.12.0.min.js"></script>
+<script src="/assets/js/toc.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+      
+    }
+  });
+});
+</script>
+
+
+<script src="/assets/js/tagcloud.js"></script>
+<script>
+$(document).ready(function() {
+  var tags = [
+    
+    { "name": "Jekyll theme", "path": "/tags/#Jekyll theme", "length": 3 },
+    
+    { "name": "gem", "path": "/tags/#gem", "length": 1 },
+    
+    { "name": "Carthage", "path": "/tags/#Carthage", "length": 1 },
+    
+    { "name": "CocoaPods", "path": "/tags/#CocoaPods", "length": 1 },
+    
+    { "name": "Git", "path": "/tags/#Git", "length": 1 },
+    
+    { "name": "Subversion", "path": "/tags/#Subversion", "length": 1 },
+    
+    { "name": "WebServer", "path": "/tags/#WebServer", "length": 1 },
+    
+  ];
+  $("#tagcloud").html(tagcloudHelper(tags));
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('#toc.toc-aside').toc({
+    title: "文章目录",
+    showEffect: "none"
+  });
+  $('#toc.toc-article').toc({
+    title: "文章目录",
+    showEffect: "show",
+    showSpeed: 0
+  });
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+/*
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      //$('.hoverqrcode').hide();
+  });
+  */
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+var disqus_shortname = 'mrarronz';
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+<!--
+
+-->
+
+
+
+
+<link rel="stylesheet" href="/assets/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/assets/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      if ($(this).hasClass('emoji')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/assets/img/scrollup.png"/></a>
+	</div>
+	<script src="/assets/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+  </body>
+</html>
+
