@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Xiaoxixi</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://mrarronz.github.io/"/>
+  <updated>2017-08-07T06:26:10.000Z</updated>
+  <id>https://mrarronz.github.io/</id>
+  
+  <author>
+    <name>Zzzz</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://mrarronz.github.io/2017/08/07/hello-world/"/>
+    <id>https://mrarronz.github.io/2017/08/07/hello-world/</id>
+    <published>2017-08-07T06:26:10.000Z</published>
+    <updated>2017-08-07T06:26:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tomcat在mac下的环境配置</title>
+    <link href="https://mrarronz.github.io/2017/03/06/2017-03-06-tomcat-config-mac/"/>
+    <id>https://mrarronz.github.io/2017/03/06/2017-03-06-tomcat-config-mac/</id>
+    <published>2017-03-06T05:36:33.000Z</published>
+    <updated>2017-03-06T05:36:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>##下载tomcat</p>
+<p>地址: <a href="http://tomcat.apache.org/" target="_blank" rel="external">http://tomcat.apache.org/</a></p>
+<p>选择左侧Download，根据本机JDK版本选择对应的tomcat版本，下载ZIP包</p>
+<h2 id="路径配置"><a href="#路径配置" class="headerlink" title="路径配置"></a>路径配置</h2><p>1、解压缩zip包，将文件夹名字改为Tomcat，将Tomcat文件夹放入到/Library/路径下</p>
+<p>2、打开终端，cd到/Library/Tomcat/bin路径下，输入：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo <span class="keyword">sh</span> startup.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<p>如果出现以下提示则说明安装并运行成功</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Using <span class="string">CATALINA_BASE:</span> <span class="regexp">/Library/</span>Tomcat </div><div class="line">Using <span class="string">CATALINA_HOME:</span> <span class="regexp">/Library/</span>Tomcat </div><div class="line">Using <span class="string">CATALINA_TMPDIR:</span> <span class="regexp">/Library/</span>Tomcat/temp </div><div class="line">Using <span class="string">JRE_HOME:</span> <span class="regexp">/System/</span>Library<span class="regexp">/Frameworks/</span>JavaVM.framework<span class="regexp">/Versions/</span>CurrentJDK/Home</div></pre></td></tr></table></figure>
+<p>在浏览器输入localhost:8080并回车，页面跳转到Apache Tomcat后说明tomcat已成功运行</p>
+<h2 id="脚本配置"><a href="#脚本配置" class="headerlink" title="脚本配置"></a>脚本配置</h2><p>使用文本编辑器输入以下脚本</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash</span></div><div class="line"></div><div class="line">case <span class="variable">$1</span> <span class="keyword">in</span></div><div class="line">start)</div><div class="line">sh <span class="regexp">/Library/</span>Tomcat<span class="regexp">/bin/</span>startup.sh</div><div class="line">;;</div><div class="line">stop)</div><div class="line">sh <span class="regexp">/Library/</span>Tomcat<span class="regexp">/bin/</span>shutdown.sh</div><div class="line">;;</div><div class="line">restart)</div><div class="line">sh <span class="regexp">/Library/</span>Tomcat<span class="regexp">/bin/</span>shutdown.sh</div><div class="line">sh <span class="regexp">/Library/</span>Tomcat<span class="regexp">/bin/</span>startup.sh</div><div class="line">;;</div><div class="line">*)</div><div class="line">echo “Usage: start|stop|restart”</div><div class="line">;;</div><div class="line">esac</div><div class="line"></div><div class="line"><span class="keyword">exit</span> <span class="number">0</span></div></pre></td></tr></table></figure>
+<p>保存文件名为tomcat，不带后缀。打开终端，cd到tomcat文件所在路径，输入以下命令：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chmod <span class="number">777</span> tomcat</div></pre></td></tr></table></figure>
+<p>赋予文件可执行权限后，将文件拖放到/usr/local/bin目录下，然后在终端中输入tomcat start，tomcat stop和tomcat restart来使用tomcat了。如果tomcat start等命令执行后出现Permission Denied的情况，需要加上sudo，回车后输入本机登录密码就行了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##下载tomcat&lt;/p&gt;
+&lt;p&gt;地址: &lt;a href=&quot;http://tomcat.apache.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tomcat.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;选择左侧Downloa
+    
+    </summary>
+    
+      <category term="WebServer" scheme="https://mrarronz.github.io/categories/WebServer/"/>
+    
+    
+      <category term="WebServer" scheme="https://mrarronz.github.io/tags/WebServer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git常用命令和用法</title>
+    <link href="https://mrarronz.github.io/2016/05/27/2016-05-27-git-usage/"/>
+    <id>https://mrarronz.github.io/2016/05/27/2016-05-27-git-usage/</id>
+    <published>2016-05-27T15:28:26.000Z</published>
+    <updated>2016-05-27T15:48:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Git是一个免费开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。分布式相比于集中式的最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。svn就是集中式的版本控制系统。</p>
+<p>平常用到的git命令主要有：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">git init      <span class="comment">// 创建git仓库</span></div><div class="line">git clone     <span class="comment">// 相当于svn的checkout，拉取代码</span></div><div class="line">git add       <span class="comment">// 添加文件或目录到版本管理</span></div><div class="line">git status    <span class="comment">// 查看状态</span></div><div class="line">git commit    <span class="comment">// 提交到仓库</span></div><div class="line">git <span class="keyword">push</span> origin master  <span class="comment">// 将更新同步到远程仓库</span></div><div class="line">git rm 文件名  <span class="comment">// 删除文件</span></div><div class="line">git pull      <span class="comment">// 拉取更新，相当于svn update</span></div><div class="line">git <span class="keyword">push</span>      <span class="comment">// 将本地仓库的更改push到远程仓库路径</span></div><div class="line">git tag       <span class="comment">// 创建tag</span></div><div class="line">git branch    <span class="comment">// 创建分支</span></div><div class="line">git <span class="built_in">log</span>       <span class="comment">// 查看提交的log</span></div></pre></td></tr></table></figure>
+<p>git命令用法一搜一大堆，这里不再赘述了。保留几个常用命令速查手册，便于查找：</p>
+<blockquote>
+<ul>
+<li><a href="http://www.jb51.net/article/55442.htm" target="_blank" rel="external">Git 常用命令速查表(图文+表格)</a></li>
+<li><a href="http://blog.csdn.net/wangli61289/article/details/45576025" target="_blank" rel="external">Git常用命令速查表</a></li>
+<li><a href="http://www.cnblogs.com/cspku/articles/Git_cmds.html" target="_blank" rel="external">Git常用命令</a></li>
+</ul>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Git是一个免费开源的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。分布式相比于集中式的最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。svn就是集中式的版本控制系统。&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="版本管理" scheme="https://mrarronz.github.io/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="Git" scheme="https://mrarronz.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVN命令汇总和基本用法</title>
+    <link href="https://mrarronz.github.io/2016/05/27/2016-05-27-svn-command-usage/"/>
+    <id>https://mrarronz.github.io/2016/05/27/2016-05-27-svn-command-usage/</id>
+    <published>2016-05-27T14:19:09.000Z</published>
+    <updated>2016-05-27T15:14:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。</p>
+<blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/prettyshuang/article/details/38421205?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">svn常用命令详解（很全，很实用）</a></li>
+<li><a href="http://blog.csdn.net/lddongyu/article/details/5493862" target="_blank" rel="external">(转)SVN常用命令用法说明</a></li>
+<li><a href="http://panfuy.iteye.com/blog/1278865" target="_blank" rel="external">SVN 主干(trunk)、分支(branch )、标记(tag)</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="Subversion的命令"><a href="#Subversion的命令" class="headerlink" title="Subversion的命令"></a>Subversion的命令</h2><p>在命令行输入<code>svn help</code>可以查看svn的所有命令</p>
+<p><br></p>
+<h2 id="命令用法"><a href="#命令用法" class="headerlink" title="命令用法"></a>命令用法</h2><p>1、svn add</p>
+<p>添加文件或目录到你的working copy(<code>以下简称WC</code>)，打上新增标记A。这些文件会在下一次你提交WC的时候提交到svn服务器.</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">add</span><span class="bash"> test.h (添加一个文件)</span></div><div class="line"><span class="bash">svn add *.h    (添加当前目录下所有.h文件)</span></div></pre></td></tr></table></figure>
+<p>2、svn blame(praise, annotate, ann)</p>
+<p>显示某个在版本管理下的文件的每一行的最后修改版本和作者</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn blame test.h</div><div class="line">svn blame --xml test<span class="selector-class">.h</span>  (加上xml参数可以以xml格式显示每一行的属性)</div></pre></td></tr></table></figure>
+<p>3、svn cat </p>
+<p>不checkout而查看输出特定文件或URL的内容</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp</div><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp -r 2              (显示版本号为 2 的<span class="keyword">file</span>.cpp内容)</div><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp --revision HEAD   (显示最新版本的<span class="keyword">file</span>.cpp内容)</div><div class="line">svn <span class="keyword">cat</span> svn:<span class="comment">//127.0.0.1/test/readme.txt  (文件全路径)</span></div></pre></td></tr></table></figure>
+<p>4、svn changelist(cl)</p>
+<p>可以将WC中的文件从逻辑上分组.</p>
+<ul>
+<li>changelist CLNAME PATH…</li>
+<li>changelist –remove PATH…</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn cl testChangelist file1<span class="selector-class">.h</span> file2<span class="selector-class">.h</span> file3<span class="selector-class">.h</span>  (将file1.h等三个文件加入名叫testChangelist的changelist)</div><div class="line">svn commit --changelist testChangelist -m <span class="string">"create new changelist"</span>  (将testChangelist下的所有文件提交)</div></pre></td></tr></table></figure>
+<p>5、svn checkout</p>
+<p>copy出一份文件</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">co</span> <span class="selector-attr">[svn路径]</span></div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">co</span> <span class="selector-tag">-r</span> <span class="selector-tag">200</span>  (checkout出版本号为<span class="number">200</span>的项目)</div></pre></td></tr></table></figure>
+<p>6、svn cleanup</p>
+<p>递归的清理WC中过期的锁和未完成的操作。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">svn cleanup</span></div></pre></td></tr></table></figure>
+<p>7、svn commit(ci)</p>
+<p>将更改提交到仓库</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn commit -m <span class="string">"Update file."</span> (必须要加上提交的注释)</div></pre></td></tr></table></figure>
+<p>8、svn copy(cp)</p>
+<ul>
+<li>copy操作可以从WC到WC；WC到URL；URL到 WC；URL到URL。现在SVN 只支持同一个仓库内文件的拷贝，不允许跨仓库操作。</li>
+<li>copy命令是创建分支和标记的常用方式。copy到url的操作隐 含了提交动作，所以需要提供log messages。</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">copy</span><span class="bash"> path1 path2 -m <span class="string">"This is the commit message"</span> (path1 和 path2是同一个仓库内的项目路径)</span></div></pre></td></tr></table></figure>
+<p>9、svn delete(del, remove, rm)</p>
+<p>删除文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">delete</span> file1.h  (commit的时候才会将仓库中的file1.h删除)</div><div class="line">svn <span class="keyword">delete</span> file:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.111</span><span class="regexp">/svn/</span>file1.h  (删除仓库中的文件)</div></pre></td></tr></table></figure>
+<p>10、svn diff(di)</p>
+<p>用来比较并显示修改点</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span>    (用来显示WC基于最近一次更新以后的所有的本地修改点)</div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span> <span class="selector-tag">-r</span> <span class="selector-tag">301</span> <span class="selector-tag">bin</span>   (比较本地WC和版本<span class="number">301</span>中的bin目录的修改点)</div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span> <span class="selector-tag">-r</span> <span class="selector-tag">3000</span><span class="selector-pseudo">:3500</span> <span class="selector-tag">file</span>:<span class="comment">//var/svn /repos/myProject/trunk   (比较库里主干3000版和3500版的差异)</span></div></pre></td></tr></table></figure>
+<p>11、svn export</p>
+<p>导出一个干净的目录树，不包含所有的版本管理信息。可以选择从URL或WC中导出</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">export</span> file://<span class="keyword">var</span>/svn/repos my-<span class="keyword">export</span>  (导出到my-<span class="keyword">export</span>目录)</div></pre></td></tr></table></figure>
+<p>12、svn help(?, h)</p>
+<p>13、svn import</p>
+<p>导入本地一个目录到库中。但是导入后，本地的目录并不会处于版本管理状态</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">import</span> -m <span class="string">"message"</span> <span class="built_in">path</span></div></pre></td></tr></table></figure>
+<p>14、svn info</p>
+<p>查看当前WC或目录的信息</p>
+<p>15、svn list(ls)</p>
+<p>显示目标下的文件和目录列表</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">ls</span> --<span class="keyword">verbose</span> path (<span class="keyword">verbose</span>可以不加，加上是为了显示详细信息)</div></pre></td></tr></table></figure>
+<p>16、svn lock</p>
+<p>对目标获得修改锁。如果目标已被其他用户锁定，则会抛出警告信息。 用–force参数强制从其他用户那里获得锁</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">lock</span> filename.<span class="keyword">h</span></div></pre></td></tr></table></figure>
+<p>17、svn log</p>
+<p>查看仓库修改时的log信息，包括add，modified，delete，replace， merge</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">log</span></div><div class="line">svn <span class="built_in">log</span> -r <span class="number">200</span> (查看指定版本号的提交<span class="built_in">log</span>)</div></pre></td></tr></table></figure>
+<p>18、svn merge</p>
+<p>合并两个受控源的不同之处，存放到一个WC里。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn merge --reintegrate http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch  (合并分支上的改变项到WC，往往用于分支合并到主干)</div><div class="line">svn merge -r <span class="number">156</span>:<span class="number">157</span> http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch   (将制定URL版本<span class="number">156</span>到<span class="number">157</span>的所有更新合并到WC)</div></pre></td></tr></table></figure>
+<p>19、svn mergeinfo</p>
+<p>查看merge操作的信息</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn mergeinfo http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch</div></pre></td></tr></table></figure>
+<p>20、svn mkdir</p>
+<p>在WC或库路径创建目录</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">mkdir</span> DirectoryName</div></pre></td></tr></table></figure>
+<p>21、svn move(mv, rename, ren)</p>
+<p>等同于svn copy命令跟个svn delete命令。WC到URL的重命名是不被允许的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">move</span> <span class="selector-tag">foo</span><span class="selector-class">.c</span> <span class="selector-tag">bar</span><span class="selector-class">.c</span>  (将<span class="selector-tag">foo</span><span class="selector-class">.c</span>改名成<span class="selector-tag">bar</span><span class="selector-class">.c</span>)</div></pre></td></tr></table></figure>
+<p>22、svn patch</p>
+<p><a href="http://blog.csdn.net/ameyume/article/details/7766722" target="_blank" rel="external">svn生成patch和打（导入）patch文件的方法</a></p>
+<p>23、svn propdel (pdel, pd)</p>
+<ul>
+<li>svn propedit PROPNAME TARGET…</li>
+<li>propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+<p>从受控文件，目录等删除属性。第二种是删除某个指定版本上的附加属性</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn propdel svn <span class="symbol">:mime-type</span> someFile    (从someFile上移除svn <span class="symbol">:mime-type</span>这个属性)</div></pre></td></tr></table></figure>
+<p>24、svn propedit (pedit, pe)</p>
+<ul>
+<li>svn propedit PROPNAME TARGET…</li>
+<li>svn propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+<p>修改属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">propedit</span> <span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>  <span class="selector-tag">file</span><span class="selector-class">.c</span>  (修改<span class="selector-tag">file</span><span class="selector-class">.c</span>上的<span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>属性)</div></pre></td></tr></table></figure>
+<p>25、svn propget (pget, pg)</p>
+<ul>
+<li>svn propget PROPNAME [TARGET[@REV]…]</li>
+<li>svn propget PROPNAME –revprop -r REV [URL]</li>
+</ul>
+<p>从文件，目录或版本取得指定属性的值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">propget</span> <span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span> <span class="selector-tag">file</span><span class="selector-class">.c</span>   (从<span class="selector-tag">file</span><span class="selector-class">.c</span>中取得<span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>属性的值)</div></pre></td></tr></table></figure>
+<p>26、svn proplist (plist, pl)</p>
+<ul>
+<li>svn proplist [TARGET[@REV]…]</li>
+<li>svn proplist –revprop -r REV [TARGET]</li>
+</ul>
+<p>列出文件、目录或版本上的所有附加属性</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn proplist --<span class="keyword">verbose</span> <span class="keyword">file</span>.<span class="keyword">c</span></div></pre></td></tr></table></figure>
+<p>27、svn propset (pset, ps)</p>
+<p>给文件、目录或版本附加属性并赋值</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn propset svn <span class="symbol">:mime-type</span> image/jpeg file.jpg   (给file.jpg附加属性svn <span class="symbol">:mime-type</span> 其值为image/jpeg)</div><div class="line">svn propset --revprop -r <span class="number">25</span> svn <span class="symbol">:log</span> <span class="string">"Journaled about trip to New York."</span> (给版本<span class="number">25</span>补上log message)</div></pre></td></tr></table></figure>
+<p>28、svn resolve</p>
+<p>将冲突的文件标记为已解决，并且删掉冲突产生的临时文件。注意这个命令并不是能把冲突解决，解决冲突还是得靠人工，人工解决冲突后，文件的状态还是冲突C状态，需要将其标记为resolved之后才能正常提交</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">svn</span> <span class="comment">resolve</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">accept</span> <span class="comment">filePath</span>  <span class="comment">(filePath是文件路径，1</span><span class="string">.</span><span class="comment">5版本后，加上</span><span class="literal">-</span><span class="literal">-</span><span class="comment">accept参数，尝试自动处理冲突)</span></div></pre></td></tr></table></figure>
+<p>29、svn revert</p>
+<p>还原WC中所有的本地更改</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">revert</span> --depth=<span class="built_in">infinity</span>  (将整个目录所有文件还原)</div><div class="line">svn <span class="built_in">revert</span> test.h            (将对test.h文件所做的修改还原)</div></pre></td></tr></table></figure>
+<p>30、svn status(stat, st)</p>
+<p>输出WC中文件和目录的状态。如果WC提交，这些状态就会同步到仓库里。一般有如下几种状态：</p>
+<p>‘’ 没有修改<br>A  新增<br>D  删除<br>M  修改<br>R  替代<br>C  冲突<br>I  忽略<br>？ 未添加到版本管理<br>！ 文件丢失</p>
+<p>31、svn switch(sw)</p>
+<ul>
+<li>svn switch URL，将当前WC切换到另一个URL，一般是从trunk工作目录转向tag工作目录，或者从tag转回来，switch的类似update，将switch的目标工作目录的文件更新到本地，一般会产生很多冲突</li>
+<li>svn switch –relocate，将WC连接的服务器地址切换到另一个地址，比如服务器地址由IP地址改为域名的情况，但是项目文件结构都没有变化。</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">switch</span> path</div><div class="line">svn <span class="keyword">switch</span> <span class="comment">--relocate path1 path2</span></div></pre></td></tr></table></figure>
+<p>32、svn unlock</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">svn unlock fileName</span></div></pre></td></tr></table></figure>
+<p>33、svn update(up)</p>
+<p>更新本地WC，直接使用svn up命令，如果要指定版本，使用svn up -r 200 (更新到版本号为200的版本)</p>
+<p>34、svn upgrade</p>
+<p>如果本地svn版本高于WC当前被管理的svn版本，那么就需要使用upgrade命令将WC的svn版本升级。可以理解为将当前WC所处的环境升级，本来是在1.6版本svn的管理之下，现在通过upgrade之后处于1.7版本的svn管理之下了。</p>
+<p><br></p>
+<h2 id="主干、分支和标记"><a href="#主干、分支和标记" class="headerlink" title="主干、分支和标记"></a>主干、分支和标记</h2><p>通常我们在项目开发中都会建立主干(trunk)、分支(branch )、标记(tag)来管理项目代码。</p>
+<p>一般情况下</p>
+<ul>
+<li>trunk：是用来做主方向开发的，一个新模块的开发，这个时候就放在trunk，当模块开发完成后，需要修改，就用branch。在开发阶段的代码都提交到该目录上。 </li>
+<li>branch：是用来做并行开发的，这里的并行是指和trunk进行比较。</li>
+<li>tag：是用来做一个milestone的，不管是不是发布版本，但都是一个可用的版本。这里，应该是只读的。更多的是一个显示用的，给人一个可读的标记。</li>
+</ul>
+<p>比如，3.0开发完成，这个时候要做一个tag，tag_release_3_0，然后基于这个tag做发布。trunk进入3.1的开发，但是3.0发现了bug，那么就需要基于tag_release_3_0做一个分支(branch)，branch_bugfix_3_0，基于这 个branch进行bug修改，等到bugfix结束，做一个tag，tag_release_3_0_1，然后，根据需要决定 branch_bugfix_3_0是否并入主干(trunk)。</p>
+<p>branch和tag的创建都是用svn copy命令完成，将trunk目录下的工程copy到对应的branch和tag目录</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn cp path1 path2 -m <span class="string">"create branch"</span> (<span class="name">path1</span>表示trunk所在路径，path2表示branch或tag路径)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/prettyshuang/article/details/38
+    
+    </summary>
+    
+      <category term="版本管理" scheme="https://mrarronz.github.io/categories/%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="Subversion" scheme="https://mrarronz.github.io/tags/Subversion/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Install jekyll on OS X EI Capitan</title>
+    <link href="https://mrarronz.github.io/2016/05/26/2016-05-25-jekyll-install-problem-on-elcapitan/"/>
+    <id>https://mrarronz.github.io/2016/05/26/2016-05-25-jekyll-install-problem-on-elcapitan/</id>
+    <published>2016-05-26T10:30:46.000Z</published>
+    <updated>2016-05-26T10:30:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。</p>
+<p>在安装jekyll的时候出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。</p>
+<p>当执行sudo gem install jekyll命令时总是提示安装不成功，具体错误提示忘记了，大概是:</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failed to build gem native extension....</div><div class="line"></div><div class="line"><span class="keyword">ERROR:  </span>While executing gem ... (Errno::EPERM)</div><div class="line">Operation not permitted</div></pre></td></tr></table></figure>
+<p>然后搜索了半天，结合错误提示，猜测可能是ruby的原因，于是按照各路网友的做法，使用RVM安装ruby。RVM是安装成功了，但是ruby还是安装不成功，mac系统已经自带ruby了，所以用RVM安装ruby个人觉得其实也没必要。直到找到这个<a href="http://www.zhanxin.info/jekyll/2013-08-07-jekyll-doc-installation.html" target="_blank" rel="external">Jekyll安装教程</a>之后，又重新试着使用Homebrew来更新ruby。在安装过程中出现问题，按照提示执行brew link xxx(这里都不记得了)，执行之后还是没成功。由于homebrew是我之前安装过的，所以决定将它卸载，重装一遍。</p>
+<p>卸载Homebrew，按照以下命令一步步完成</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> `brew --prefix`</div><div class="line"><span class="keyword">rm</span> -rf Cellar</div><div class="line">brew prune</div><div class="line"><span class="keyword">rm</span> `git <span class="keyword">ls</span>-files`</div><div class="line"><span class="keyword">rm</span> -r Library/Homebrew Library/Aliases Library/Formula Library/Contributions</div><div class="line"><span class="keyword">rm</span> -rf .git</div><div class="line"><span class="keyword">rm</span> -rf ~/Library/Caches/Homebrew</div></pre></td></tr></table></figure>
+<p><a href="http://brew.sh/" target="_blank" rel="external">安装Homebrew</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>bin<span class="regexp">/ruby -e "$(curl -fsSL https:/</span><span class="regexp">/raw.githubusercontent.com/</span>Homebrew<span class="regexp">/install/m</span>aster<span class="regexp">/install)"</span></div></pre></td></tr></table></figure>
+<p>这才是正确的方式！</p>
+<p>接着执行以下命令更新ruby</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">brew </span><span class="keyword">install </span>ruby</div></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ruby -v</span></div></pre></td></tr></table></figure>
+<p>ruby成功安装，最新版本是2.3.1p112</p>
+<p>然后安装jekyll</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem <span class="keyword">install</span> jekyll</div></pre></td></tr></table></figure>
+<p>顺利安装完成，可以使用命令校验一下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">jekyll -v</span></div></pre></td></tr></table></figure>
+<p>cd到自己的github page仓库下，执行</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jekyll <span class="keyword">server</span></div></pre></td></tr></table></figure>
+<p>启动成功，在浏览器地址栏输入</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">http:</span><span class="comment">//127.0.0.1:4000/  （或者localhost:4000）</span></div></pre></td></tr></table></figure>
+<p>成功加载出blog主页。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前不久由于要将Xcode升级到7.3版本，只好将系统升级到OS X最新的EL Capitan。&lt;/p&gt;
+&lt;p&gt;在安装jekyll的时候出现了问题，这里主要记录下当时的操作，以便以后遇到问题能快速定位，具体错误差不多都忘了。&lt;/p&gt;
+&lt;p&gt;当执行sudo gem instal
+    
+    </summary>
+    
+      <category term="Jekyll" scheme="https://mrarronz.github.io/categories/Jekyll/"/>
+    
+    
+      <category term="gem" scheme="https://mrarronz.github.io/tags/gem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Carthage的安装和使用</title>
+    <link href="https://mrarronz.github.io/2016/05/26/2016-05-26-carthage-install-usage/"/>
+    <id>https://mrarronz.github.io/2016/05/26/2016-05-26-carthage-install-usage/</id>
+    <published>2016-05-26T10:30:46.000Z</published>
+    <updated>2017-03-06T07:05:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：</p>
+<blockquote>
+<ul>
+<li>Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于我们的项目来说是非侵入性的。我们可以很灵活的管理carthage编译的第三方库。</li>
+<li>CocoaPods是把第三方库集中管理，默认会自动创建并更新你的应用程序和所有依赖的Xcode workspace，它修改了我们的项目文件，来达到统一管理第三方库的目的。</li>
+</ul>
+</blockquote>
+<p>CocoaChina上有对<a href="http://www.cocoachina.com/ios/20141204/10528.html" target="_blank" rel="external">carthage的介绍</a>，本文的目的是将carthage的安装和使用等方法统一整理，作为笔记，便于参考记忆。</p>
+<p><br></p>
+<h2 id="安装Carthage"><a href="#安装Carthage" class="headerlink" title="安装Carthage"></a>安装Carthage</h2><p>Carthage可以通过<a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>来安装，但是直接安装之后出现如下问题。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">XXX-MacBook-Pro:~ XXX$ brew install carthage</div><div class="line">carthage: A full installation of Xcode.app <span class="number">7.3</span> is required to compile this software.</div><div class="line">Installing just the Command Line Tools is not sufficient.</div><div class="line">Xcode can be installed from the App Store.</div><div class="line">Error: An unsatisfied requirement failed this build.</div></pre></td></tr></table></figure>
+<p>我的Xcode版本是7.2，安装carthage必须要使用Xcode最新的版本，仅仅只安装Command line tools是不够的。</p>
+<p>App store搜索Xcode 7.3安装，等了半天没反应，软件更新提示里面也没有Xcode。看了Xcode下面的评论才知道原来得先把系统升级到最新的EI Capitan之后才会出现Xcode 7.3版本的更新提示。这个没办法了，网速太渣，系统没法升级。只能下载Carthage官方最新的<a href="https://github.com/Carthage/Carthage/releases" target="_blank" rel="external">Release版本</a>了.</p>
+<p>下载.pkg文件安装之后，在终端中查看：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">XXX-MacBook-<span class="keyword">Pro</span>:~ XXX$ carthage <span class="keyword">version</span></div><div class="line">0.16.2</div></pre></td></tr></table></figure>
+<p>说明安装成功</p>
+<p><br></p>
+<h2 id="使用Carthage"><a href="#使用Carthage" class="headerlink" title="使用Carthage"></a>使用Carthage</h2><p>1、创建Cartfile</p>
+<p>cd 到项目的根目录下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">touch Cartfile</span></div></pre></td></tr></table></figure>
+<p>与CocoaPods的Podfile类似，将第三方库的引用方式写入到Cartfile文件中。以AFNetworking为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">github <span class="string">"AFNetworking/AFNetworking"</span> ~&gt; <span class="number">3.0</span></div></pre></td></tr></table></figure>
+<p>保存Cartfile后，执行</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">XXX-MacBook-Pro:TestCarthageDemo XXX$ carthage update</div><div class="line">*** Cloning AFNetworking</div><div class="line">*** Downloading AFNetworking.framework binary at <span class="string">"3.1.0"</span></div><div class="line">*** Checking out AFNetworking at <span class="string">"3.1.0"</span></div><div class="line">*** xcodebuild output can be found <span class="keyword">in</span> /var/folders/nc/r4zs4js928nd2ty6ng64c7sr0000gp/<span class="literal">T</span>/carthage-xcodebuild.nVuUQ1.log</div><div class="line">*** Building scheme <span class="string">"AFNetworking OS X"</span> <span class="keyword">in</span> AFNetworking.xcworkspace</div><div class="line">*** Building scheme <span class="string">"AFNetworking tvOS"</span> <span class="keyword">in</span> AFNetworking.xcworkspace</div><div class="line">*** Building scheme <span class="string">"AFNetworking watchOS"</span> <span class="keyword">in</span> AFNetworking.xcworkspace</div><div class="line">*** Building scheme <span class="string">"AFNetworking iOS"</span> <span class="keyword">in</span> AFNetworking.xcworkspace</div></pre></td></tr></table></figure>
+<p>在项目的根目录下会多出Carthage文件夹和Cartfile.resolved文件。</p>
+<p>Carthage目录下还有两个文件夹，Build文件夹中存放的是针对各个平台编译好的AFNetworking的framework，Checkouts文件夹中存放的是整个AFNetworking的源代码。</p>
+<p>2、在项目中引用framework</p>
+<p>（1）打开Xcode项目，在项目设置页面General tab中，找到Linked Frameworks and Libraries，将Build文件夹中对应的AFNetworking.framework添加进来。iOS project就选择iOS文件夹下的framework，其它同理。这一步就把framework添加到项目中了，运行项目，build成功，app启动后却发生如下错误</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dyld: Library not loaded: @rpath/AFNetworking.framework/AFNetworking</div><div class="line">Referenced from: /Users/XMD001/Library/Developer/CoreSimulator/Devices/1C63D6A2-7EBA-420B-99C4-38C7C1A25911/data/Containers/Bundle/Application/7F3B81EA-9ADF-46DF-9F32-E80F6BED1628/TestCarthageDemo.app/TestCarthageDemo</div><div class="line">Reason: image not found</div></pre></td></tr></table></figure>
+<p>还有些工作没做完，接着第（2）步~</p>
+<p>（2）在Build Phases设置页面，点击左上角的’+’号，新建”New Run Script Phase”，然后将以下脚本粘贴在文本框中：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>carthage <span class="keyword">copy</span>-frameworks</div></pre></td></tr></table></figure>
+<p>然后在下面的“Input files”区域将framework的相对路径添加进来：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework</div></pre></td></tr></table></figure>
+<p>然后再运行项目，成功了！</p>
+<p>看<a href="https://github.com/Carthage/Carthage#getting-started" target="_blank" rel="external">官方的说明</a>，第（2）步的脚本以work around的形式解决了一个app提交审核时由universal binaries导致的bug。所以这里一定要加上第（2）步的脚本配置。</p>
+<p>3、添加framework到Unit Test或framework项目中</p>
+<p>由于unit test的General tab中没有Linked Frameworks and Libraries的设置项，framework类型的项目中没有General这个tab，所以必须把carthage编译好的framework添加到Build phase的Link Binaries With Libraries中。在unit test的build settings中找到“Runpath Search Paths”这个选项，如果这一项没有值，那么还需添加以下路径：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">loader_path</span>/<span class="keyword">Frameworks</span></div></pre></td></tr></table></figure>
+<p>4、更新引用的framework</p>
+<p>如果修改了Cartfile（加入了新的framework），或者想要更新现在使用的framework，使用以下命令：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">carthage update</span></div></pre></td></tr></table></figure>
+<p>如果只更新某一个framework，可以使用</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">carthage update XXX(<span class="name">framework</span>名字)</div></pre></td></tr></table></figure>
+<p>5、framework之间嵌套依赖</p>
+<p>这表示引用的framework之间存在比较多的依赖关系，carthage会自动帮你恢复，framework编译之后需要手动将其添加到项目中</p>
+<p><br></p>
+<h2 id="为自己的framework添加Carthage支持"><a href="#为自己的framework添加Carthage支持" class="headerlink" title="为自己的framework添加Carthage支持"></a>为自己的framework添加Carthage支持</h2><p>1、必须使用Dynamic framework</p>
+<p>自己的工程类型必须是Dynamic framework，static library是不行的</p>
+<p>2、分享 Xcode scheme</p>
+<p>Carthage 只构建从 .xcodeproj 分享出来的 Xcode schemes。可以通过运行 </p>
+<pre><code>carthage build --no-skip-current
+</code></pre><p>来检测所有的 intended schemes 是否构建成功，然后检查 Carthage/Build 文件夹。如果运行命令的时候，一个重要的 scheme 没有构建成功，打开 Xcode 在构建菜单选择 Manage Schemes （如下图）</p>
+<p><img src="/assets/img/carthage/carthage_1.png" alt="image"></p>
+<p>对于需要构建的 scheme 勾选 Shared （如下图）<br><img src="/assets/img/carthage/carthage_2.png" alt="image"></p>
+<p>示例图片是我的github项目<a href="https://github.com/mrarronz/NSStringCategoryKit" target="_blank" rel="external">NSStringCategoryKit</a>，也添加了CocoaPods支持。这个项目最初是以static library的方式创建的，后来为了支持carthage，新建了一个framework的target。如果要添加carthage支持，最好还是创建新的framework项目，再来进行carthage的集成。</p>
+<p>3、解决构建失败以及打tag</p>
+<p>这部分请查看<a href="https://github.com/Carthage/Carthage#resolve-build-failures" target="_blank" rel="external">官方文档</a>，说得非常详细了，不再赘述，上面描述的过程都是亲自实践的。</p>
+<p><br></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过对CocoaPods和Carthage的使用，两种方式各有优缺点。</p>
+<blockquote>
+<ul>
+<li>CocoaPods会更改项目文件，生成新的.xcworkspace文件，对项目具有侵入性。</li>
+<li>Carthage使用比较方便灵活，但是把源代码clone下来就没有必要了吧，导入的项目多了，clone出来Checkouts文件夹里面源代码一堆。</li>
+</ul>
+</blockquote>
+<p>目前来说个人还是用CocoaPods更多一些，完全不用关心怎么设置library的引用，简单方便。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Carthage是一个去中心化的Cocoa依赖管理器，它与CocoaPods的不同在于：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Carthage使用xcodebuild来编译框架的二进制文件，但如何集成它们将交由用户自己判断，carthage更加灵活，并且对于
+    
+    </summary>
+    
+      <category term="Carthage" scheme="https://mrarronz.github.io/categories/Carthage/"/>
+    
+    
+      <category term="Carthage" scheme="https://mrarronz.github.io/tags/Carthage/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods的安装和使用</title>
+    <link href="https://mrarronz.github.io/2016/05/26/2016-05-26-cocoapods-install-usage/"/>
+    <id>https://mrarronz.github.io/2016/05/26/2016-05-26-cocoapods-install-usage/</id>
+    <published>2016-05-26T10:30:46.000Z</published>
+    <updated>2016-06-23T05:36:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的rubygems镜像。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">XXX-MacBook-Pro:~ XXX$ gem sources -l</div><div class="line">*** CURRENT SOURCES ***</div><div class="line"></div><div class="line">https://ruby.taobao.org/</div></pre></td></tr></table></figure>
+<p>移除当前的rubygems，替换为淘宝的</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem sources --remove <span class="string">https:</span><span class="comment">//rubygems.org/</span></div><div class="line">gem sources -a <span class="string">https:</span><span class="comment">//ruby.taobao.org/</span></div><div class="line">gem sources -l</div></pre></td></tr></table></figure>
+<p>可以用以下命令对gem 进行更新：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem <span class="keyword">update</span> --<span class="keyword">system</span></div></pre></td></tr></table></figure>
+<p>然后就可以安装cocoaPods了</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem <span class="keyword">install</span> cocoapods</div></pre></td></tr></table></figure>
+<p>Max系统升级到OS X EI Capitan之后改为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo gem <span class="keyword">install</span> -n /usr/<span class="keyword">local</span>/<span class="keyword">bin</span> cocoapods</div><div class="line">pod setup</div></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>1、新建Podfile</p>
+<p>cd到项目的根目录下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">touch Podfile</span></div></pre></td></tr></table></figure>
+<p>打开Podfile，在Podfile中引用第三方库</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">vim Podfile</span></div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">platform :ios, <span class="string">'6.0'</span>   </div><div class="line">pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 3.0'</span></div></pre></td></tr></table></figure>
+<p>ESC退出编辑，ZZ关闭文件</p>
+<p>PS：最近使用cocoaPods时貌似必须要指定target了，如果直接像上述这样写，下载第三方库时会报错，所以改成：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">platform :ios, <span class="string">'6.0'</span>   </div><div class="line"></div><div class="line">target <span class="string">'TargetName'</span> do</div><div class="line">pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 3.0'</span></div><div class="line">end</div></pre></td></tr></table></figure>
+<p>2、安装第三方库</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="keyword">install</span></div></pre></td></tr></table></figure>
+<p>更新时podspec会更新本地仓库，这个过程耗时比较长，可以用以下命令</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod install --<span class="keyword">verbose</span> --<span class="keyword">no</span>-repo-<span class="keyword">update</span> (注：--<span class="keyword">verbose</span>可以不加，加上是为了打出更多调试信息)</div></pre></td></tr></table></figure>
+<p>执行完后，项目根目录下会出现Podfile.lock，pods，后缀名为.xcworkspace的项目文件。以后打开项目就只需要双击xcworkspace文件。<br><br></p>
+<p>3、更新pod</p>
+<p>编辑Podfile文件，加入其它第三方库的引用方式，再执行pod update。在这个过程中需要注意第三方库之间的引用关系，以免造成pod update出错的情况。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="keyword">update</span> --<span class="keyword">verbose</span> --<span class="keyword">no</span>-repo-<span class="keyword">update</span></div></pre></td></tr></table></figure>
+<p>4、多个target的使用方式</p>
+<p>推荐方式：不同的target使用不同的第三方依赖配置，如下：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">source</span> <span class="string">'https://github.com/CocoaPods/Specs.git'</span></div><div class="line">platform :ios, <span class="string">'6.0'</span></div><div class="line"></div><div class="line">target :TargetName1 do</div><div class="line">    pod <span class="string">'AFNetworking'</span></div><div class="line">    pod <span class="string">'MBProgressHUD'</span></div><div class="line">end</div><div class="line"></div><div class="line">target :TargetName2 do</div><div class="line">    pod <span class="string">'MBProgressHUD'</span></div><div class="line">end</div></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="创建podspec文件，为自己的项目增加pod支持"><a href="#创建podspec文件，为自己的项目增加pod支持" class="headerlink" title="创建podspec文件，为自己的项目增加pod支持"></a>创建podspec文件，为自己的项目增加pod支持</h2><p>1、将自己的源码上传到github仓库再clone到本地，如果仓库有代码就直接clone</p>
+<p>2、创建podspec文件</p>
+<p>cd到项目的根目录，在终端执行以下命令</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="keyword">spec</span> create XXXX(项目名称)</div></pre></td></tr></table></figure>
+<p>这时候本地仓库就生成了一个podspec文件</p>
+<p>3、配置podspec文件</p>
+<p>用vim或者编辑器打开.podspec文件进行编辑，以我的项目<a href="https://github.com/mrarronz/NSStringCategoryKit" target="_blank" rel="external">NSStringCategoryKit</a>为例</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new do |s|</div><div class="line">  s.name         = <span class="string">"NSStringCategoryKit"</span></div><div class="line">  s.version      = <span class="string">"0.0.1"</span></div><div class="line">  s.summary      = <span class="string">"A NSString category collections."</span></div><div class="line">  s.description  = &lt;&lt;-DESC</div><div class="line"> A category collections <span class="keyword">for</span> NSString class. All the methods <span class="keyword">in</span> category are often used <span class="keyword">in</span> app development.</div><div class="line">                   DESC</div><div class="line">  s.homepage     = <span class="string">"https://github.com/mrarronz/NSStringCategoryKit"</span></div><div class="line">  s.license      = <span class="string">"MIT"</span></div><div class="line">  s.author       = &#123; <span class="string">"mrarronz"</span> =&gt; <span class="string">"zhuhao1340@xxx.com"</span> &#125;</div><div class="line">  s.platform     = :ios, <span class="string">"7.0"</span></div><div class="line">  s.source       = &#123; :git =&gt; <span class="string">"https://github.com/mrarronz/NSStringCategoryKit.git"</span>, :tag =&gt; <span class="string">"0.0.1"</span> &#125;</div><div class="line">  s.source_files  = <span class="string">"NSStringCategoryKit"</span>， <span class="string">"NSStringCategoryKit/**/*.&#123;h，m&#125;"</span></div><div class="line">  s.public_header_files = <span class="string">"NSStringCategoryKit/**/*.h"</span></div><div class="line">  s.frameworks = <span class="string">"Foundation"</span>, <span class="string">"UIKit"</span>, <span class="string">"CoreImage"</span></div><div class="line">  s.requires_arc = true</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>4、验证podspec文件</p>
+<p>在上传podspec文件之前，先验证一下看是否有错误</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="class"><span class="keyword">lib</span> <span class="title">lint</span></span></div></pre></td></tr></table></figure>
+<p>如果出现passed validation的提示，就说明验证通过了，如果出现错误，可以根据错误消息来更改配置文件。</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="class"><span class="keyword">lib</span> <span class="title">lint</span> --<span class="title">verbose</span></span></div></pre></td></tr></table></figure>
+<p>使用以上命令验证时会给出更详细的提示信息，根据这个错误信息来修改配置文件</p>
+<p>5、打tag上传podspec文件</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git tag -m <span class="string">"first release"</span> <span class="string">"0.0.1"</span></div><div class="line">git push --tags</div></pre></td></tr></table></figure>
+<p>注意，这里必须要给项目打上tag，作为一个版本来发布。然后就是把podspec上传到cocoapods官方库了。以前可能需要用clone，pull request的方式提交，耗时非常久，现在只需要参照官方的做法</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod trunk register orta@cocoapods.org <span class="string">'Orta Therox'</span> --description=<span class="string">'macbook air'</span></div></pre></td></tr></table></figure>
+<p>将邮箱，用户名和description改为自己的，执行之后，这个邮箱会收到一封来自cocoaPods官方的邮件，确认之后就注册完成了</p>
+<p>然后使用</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod trunk <span class="keyword">me</span></div></pre></td></tr></table></figure>
+<p>这个命令来查看当前你的账号的会话状况，这个是跟你的设备相关的</p>
+<p>cd到你的podspec所在目录，执行以下命令开始提交podspec文件到cocoaPods官方库，这里还是以我的项目为例</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">pod</span> trunk <span class="keyword">push </span>NSStringCategoryKit.podspec</div></pre></td></tr></table></figure>
+<p>这个过程等待时间比较长，大概一个小时左右，成功之后执行</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod <span class="built_in">setup</span></div></pre></td></tr></table></figure>
+<p>更新一下本地仓库，再执行</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">pod search NSStringCategoryKit</span></div></pre></td></tr></table></figure>
+<p>就可以找到项目了。</p>
+<p>6、使用自己的pods项目</p>
+<p>在Xcode项目的Podfile文件中按照上面的cocoapods的使用方法配置Podfile，例如</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">platform:ios, <span class="string">'7.0'</span>   </div><div class="line">pod <span class="string">'NSStringCategoryKit'</span></div></pre></td></tr></table></figure>
+<p>然后执行更新操作就可以了。</p>
+<p>如果没有将自己的podspec文件上传，也可以在项目中进行使用，这时需要指定github的项目路径和tag</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">platform :ios, <span class="string">'7.0'</span></div><div class="line">pod <span class="string">'NSStringCategoryKit'</span>, :git =&gt; <span class="string">'https://github.com/mrarronz/NSStringCategoryKit.git'</span>, :tag =&gt; <span class="string">'0.1.0'</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h2&gt;&lt;p&gt;CocoaPods可以使用Mac自带的RubyGems来安装，但是由于ruby的软件源rubygems.org被天朝屏蔽，只能切换为淘宝的r
+    
+    </summary>
+    
+      <category term="CocoaPods" scheme="https://mrarronz.github.io/categories/CocoaPods/"/>
+    
+    
+      <category term="CocoaPods" scheme="https://mrarronz.github.io/tags/CocoaPods/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="keep moving"><title>SVN命令汇总和基本用法 | Xiaoxixi</title><link rel="stylesheet" type="text/css" href="//fonts.css.network/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">SVN命令汇总和基本用法</h1><a id="logo" href="/.">Xiaoxixi</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">SVN命令汇总和基本用法</h1><div class="post-meta"><a href="/2016/05/27/2016-05-27-svn-command-usage/#comments" class="comment-count"><i data-disqus-identifier="2016/05/27/2016-05-27-svn-command-usage/" class="disqus-comment-count"></i>留言</a><p><span class="date">May 27, 2016</span><span><a href="/categories/版本管理/" class="category">版本管理</a></span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><p>本文内容来自于以下文章，著作权属于原作者。本文在原作的基础上加以整理修改而成，仅用于笔记参考学习。</p>
+<blockquote>
+<ul>
+<li><a href="http://blog.csdn.net/prettyshuang/article/details/38421205?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">svn常用命令详解（很全，很实用）</a></li>
+<li><a href="http://blog.csdn.net/lddongyu/article/details/5493862" target="_blank" rel="external">(转)SVN常用命令用法说明</a></li>
+<li><a href="http://panfuy.iteye.com/blog/1278865" target="_blank" rel="external">SVN 主干(trunk)、分支(branch )、标记(tag)</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="Subversion的命令"><a href="#Subversion的命令" class="headerlink" title="Subversion的命令"></a>Subversion的命令</h2><p>在命令行输入<code>svn help</code>可以查看svn的所有命令</p>
+<p><br></p>
+<h2 id="命令用法"><a href="#命令用法" class="headerlink" title="命令用法"></a>命令用法</h2><p>1、svn add</p>
+<p>添加文件或目录到你的working copy(<code>以下简称WC</code>)，打上新增标记A。这些文件会在下一次你提交WC的时候提交到svn服务器.</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">add</span><span class="bash"> test.h (添加一个文件)</span></div><div class="line"><span class="bash">svn add *.h    (添加当前目录下所有.h文件)</span></div></pre></td></tr></table></figure>
+<p>2、svn blame(praise, annotate, ann)</p>
+<p>显示某个在版本管理下的文件的每一行的最后修改版本和作者</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn blame test.h</div><div class="line">svn blame --xml test<span class="selector-class">.h</span>  (加上xml参数可以以xml格式显示每一行的属性)</div></pre></td></tr></table></figure>
+<p>3、svn cat </p>
+<p>不checkout而查看输出特定文件或URL的内容</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp</div><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp -r 2              (显示版本号为 2 的<span class="keyword">file</span>.cpp内容)</div><div class="line">svn <span class="keyword">cat</span> <span class="keyword">file</span>.cpp --revision HEAD   (显示最新版本的<span class="keyword">file</span>.cpp内容)</div><div class="line">svn <span class="keyword">cat</span> svn:<span class="comment">//127.0.0.1/test/readme.txt  (文件全路径)</span></div></pre></td></tr></table></figure>
+<p>4、svn changelist(cl)</p>
+<p>可以将WC中的文件从逻辑上分组.</p>
+<ul>
+<li>changelist CLNAME PATH…</li>
+<li>changelist –remove PATH…</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn cl testChangelist file1<span class="selector-class">.h</span> file2<span class="selector-class">.h</span> file3<span class="selector-class">.h</span>  (将file1.h等三个文件加入名叫testChangelist的changelist)</div><div class="line">svn commit --changelist testChangelist -m <span class="string">"create new changelist"</span>  (将testChangelist下的所有文件提交)</div></pre></td></tr></table></figure>
+<p>5、svn checkout</p>
+<p>copy出一份文件</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">co</span> <span class="selector-attr">[svn路径]</span></div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">co</span> <span class="selector-tag">-r</span> <span class="selector-tag">200</span>  (checkout出版本号为<span class="number">200</span>的项目)</div></pre></td></tr></table></figure>
+<p>6、svn cleanup</p>
+<p>递归的清理WC中过期的锁和未完成的操作。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">svn cleanup</span></div></pre></td></tr></table></figure>
+<p>7、svn commit(ci)</p>
+<p>将更改提交到仓库</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn commit -m <span class="string">"Update file."</span> (必须要加上提交的注释)</div></pre></td></tr></table></figure>
+<p>8、svn copy(cp)</p>
+<ul>
+<li>copy操作可以从WC到WC；WC到URL；URL到 WC；URL到URL。现在SVN 只支持同一个仓库内文件的拷贝，不允许跨仓库操作。</li>
+<li>copy命令是创建分支和标记的常用方式。copy到url的操作隐 含了提交动作，所以需要提供log messages。</li>
+</ul>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">copy</span><span class="bash"> path1 path2 -m <span class="string">"This is the commit message"</span> (path1 和 path2是同一个仓库内的项目路径)</span></div></pre></td></tr></table></figure>
+<p>9、svn delete(del, remove, rm)</p>
+<p>删除文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">delete</span> file1.h  (commit的时候才会将仓库中的file1.h删除)</div><div class="line">svn <span class="keyword">delete</span> file:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.111</span><span class="regexp">/svn/</span>file1.h  (删除仓库中的文件)</div></pre></td></tr></table></figure>
+<p>10、svn diff(di)</p>
+<p>用来比较并显示修改点</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span>    (用来显示WC基于最近一次更新以后的所有的本地修改点)</div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span> <span class="selector-tag">-r</span> <span class="selector-tag">301</span> <span class="selector-tag">bin</span>   (比较本地WC和版本<span class="number">301</span>中的bin目录的修改点)</div><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">diff</span> <span class="selector-tag">-r</span> <span class="selector-tag">3000</span><span class="selector-pseudo">:3500</span> <span class="selector-tag">file</span>:<span class="comment">//var/svn /repos/myProject/trunk   (比较库里主干3000版和3500版的差异)</span></div></pre></td></tr></table></figure>
+<p>11、svn export</p>
+<p>导出一个干净的目录树，不包含所有的版本管理信息。可以选择从URL或WC中导出</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">export</span> file://<span class="keyword">var</span>/svn/repos my-<span class="keyword">export</span>  (导出到my-<span class="keyword">export</span>目录)</div></pre></td></tr></table></figure>
+<p>12、svn help(?, h)</p>
+<p>13、svn import</p>
+<p>导入本地一个目录到库中。但是导入后，本地的目录并不会处于版本管理状态</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">import</span> -m <span class="string">"message"</span> <span class="built_in">path</span></div></pre></td></tr></table></figure>
+<p>14、svn info</p>
+<p>查看当前WC或目录的信息</p>
+<p>15、svn list(ls)</p>
+<p>显示目标下的文件和目录列表</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">ls</span> --<span class="keyword">verbose</span> path (<span class="keyword">verbose</span>可以不加，加上是为了显示详细信息)</div></pre></td></tr></table></figure>
+<p>16、svn lock</p>
+<p>对目标获得修改锁。如果目标已被其他用户锁定，则会抛出警告信息。 用–force参数强制从其他用户那里获得锁</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">lock</span> filename.<span class="keyword">h</span></div></pre></td></tr></table></figure>
+<p>17、svn log</p>
+<p>查看仓库修改时的log信息，包括add，modified，delete，replace， merge</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">log</span></div><div class="line">svn <span class="built_in">log</span> -r <span class="number">200</span> (查看指定版本号的提交<span class="built_in">log</span>)</div></pre></td></tr></table></figure>
+<p>18、svn merge</p>
+<p>合并两个受控源的不同之处，存放到一个WC里。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn merge --reintegrate http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch  (合并分支上的改变项到WC，往往用于分支合并到主干)</div><div class="line">svn merge -r <span class="number">156</span>:<span class="number">157</span> http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch   (将制定URL版本<span class="number">156</span>到<span class="number">157</span>的所有更新合并到WC)</div></pre></td></tr></table></figure>
+<p>19、svn mergeinfo</p>
+<p>查看merge操作的信息</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn mergeinfo http:<span class="regexp">//</span>svn .example.com<span class="regexp">/repos/</span>calc<span class="regexp">/branches/my</span>-calc-branch</div></pre></td></tr></table></figure>
+<p>20、svn mkdir</p>
+<p>在WC或库路径创建目录</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">mkdir</span> DirectoryName</div></pre></td></tr></table></figure>
+<p>21、svn move(mv, rename, ren)</p>
+<p>等同于svn copy命令跟个svn delete命令。WC到URL的重命名是不被允许的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">move</span> <span class="selector-tag">foo</span><span class="selector-class">.c</span> <span class="selector-tag">bar</span><span class="selector-class">.c</span>  (将<span class="selector-tag">foo</span><span class="selector-class">.c</span>改名成<span class="selector-tag">bar</span><span class="selector-class">.c</span>)</div></pre></td></tr></table></figure>
+<p>22、svn patch</p>
+<p><a href="http://blog.csdn.net/ameyume/article/details/7766722" target="_blank" rel="external">svn生成patch和打（导入）patch文件的方法</a></p>
+<p>23、svn propdel (pdel, pd)</p>
+<ul>
+<li>svn propedit PROPNAME TARGET…</li>
+<li>propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+<p>从受控文件，目录等删除属性。第二种是删除某个指定版本上的附加属性</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn propdel svn <span class="symbol">:mime-type</span> someFile    (从someFile上移除svn <span class="symbol">:mime-type</span>这个属性)</div></pre></td></tr></table></figure>
+<p>24、svn propedit (pedit, pe)</p>
+<ul>
+<li>svn propedit PROPNAME TARGET…</li>
+<li>svn propedit PROPNAME –revprop -r REV [TARGET]</li>
+</ul>
+<p>修改属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">propedit</span> <span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>  <span class="selector-tag">file</span><span class="selector-class">.c</span>  (修改<span class="selector-tag">file</span><span class="selector-class">.c</span>上的<span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>属性)</div></pre></td></tr></table></figure>
+<p>25、svn propget (pget, pg)</p>
+<ul>
+<li>svn propget PROPNAME [TARGET[@REV]…]</li>
+<li>svn propget PROPNAME –revprop -r REV [URL]</li>
+</ul>
+<p>从文件，目录或版本取得指定属性的值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svn</span> <span class="selector-tag">propget</span> <span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span> <span class="selector-tag">file</span><span class="selector-class">.c</span>   (从<span class="selector-tag">file</span><span class="selector-class">.c</span>中取得<span class="selector-tag">svn</span> <span class="selector-pseudo">:keywords</span>属性的值)</div></pre></td></tr></table></figure>
+<p>26、svn proplist (plist, pl)</p>
+<ul>
+<li>svn proplist [TARGET[@REV]…]</li>
+<li>svn proplist –revprop -r REV [TARGET]</li>
+</ul>
+<p>列出文件、目录或版本上的所有附加属性</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn proplist --<span class="keyword">verbose</span> <span class="keyword">file</span>.<span class="keyword">c</span></div></pre></td></tr></table></figure>
+<p>27、svn propset (pset, ps)</p>
+<p>给文件、目录或版本附加属性并赋值</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn propset svn <span class="symbol">:mime-type</span> image/jpeg file.jpg   (给file.jpg附加属性svn <span class="symbol">:mime-type</span> 其值为image/jpeg)</div><div class="line">svn propset --revprop -r <span class="number">25</span> svn <span class="symbol">:log</span> <span class="string">"Journaled about trip to New York."</span> (给版本<span class="number">25</span>补上log message)</div></pre></td></tr></table></figure>
+<p>28、svn resolve</p>
+<p>将冲突的文件标记为已解决，并且删掉冲突产生的临时文件。注意这个命令并不是能把冲突解决，解决冲突还是得靠人工，人工解决冲突后，文件的状态还是冲突C状态，需要将其标记为resolved之后才能正常提交</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">svn</span> <span class="comment">resolve</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">accept</span> <span class="comment">filePath</span>  <span class="comment">(filePath是文件路径，1</span><span class="string">.</span><span class="comment">5版本后，加上</span><span class="literal">-</span><span class="literal">-</span><span class="comment">accept参数，尝试自动处理冲突)</span></div></pre></td></tr></table></figure>
+<p>29、svn revert</p>
+<p>还原WC中所有的本地更改</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="built_in">revert</span> --depth=<span class="built_in">infinity</span>  (将整个目录所有文件还原)</div><div class="line">svn <span class="built_in">revert</span> test.h            (将对test.h文件所做的修改还原)</div></pre></td></tr></table></figure>
+<p>30、svn status(stat, st)</p>
+<p>输出WC中文件和目录的状态。如果WC提交，这些状态就会同步到仓库里。一般有如下几种状态：</p>
+<p>‘’ 没有修改<br>A  新增<br>D  删除<br>M  修改<br>R  替代<br>C  冲突<br>I  忽略<br>？ 未添加到版本管理<br>！ 文件丢失</p>
+<p>31、svn switch(sw)</p>
+<ul>
+<li>svn switch URL，将当前WC切换到另一个URL，一般是从trunk工作目录转向tag工作目录，或者从tag转回来，switch的类似update，将switch的目标工作目录的文件更新到本地，一般会产生很多冲突</li>
+<li>svn switch –relocate，将WC连接的服务器地址切换到另一个地址，比如服务器地址由IP地址改为域名的情况，但是项目文件结构都没有变化。</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn <span class="keyword">switch</span> path</div><div class="line">svn <span class="keyword">switch</span> <span class="comment">--relocate path1 path2</span></div></pre></td></tr></table></figure>
+<p>32、svn unlock</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">svn unlock fileName</span></div></pre></td></tr></table></figure>
+<p>33、svn update(up)</p>
+<p>更新本地WC，直接使用svn up命令，如果要指定版本，使用svn up -r 200 (更新到版本号为200的版本)</p>
+<p>34、svn upgrade</p>
+<p>如果本地svn版本高于WC当前被管理的svn版本，那么就需要使用upgrade命令将WC的svn版本升级。可以理解为将当前WC所处的环境升级，本来是在1.6版本svn的管理之下，现在通过upgrade之后处于1.7版本的svn管理之下了。</p>
+<p><br></p>
+<h2 id="主干、分支和标记"><a href="#主干、分支和标记" class="headerlink" title="主干、分支和标记"></a>主干、分支和标记</h2><p>通常我们在项目开发中都会建立主干(trunk)、分支(branch )、标记(tag)来管理项目代码。</p>
+<p>一般情况下</p>
+<ul>
+<li>trunk：是用来做主方向开发的，一个新模块的开发，这个时候就放在trunk，当模块开发完成后，需要修改，就用branch。在开发阶段的代码都提交到该目录上。 </li>
+<li>branch：是用来做并行开发的，这里的并行是指和trunk进行比较。</li>
+<li>tag：是用来做一个milestone的，不管是不是发布版本，但都是一个可用的版本。这里，应该是只读的。更多的是一个显示用的，给人一个可读的标记。</li>
+</ul>
+<p>比如，3.0开发完成，这个时候要做一个tag，tag_release_3_0，然后基于这个tag做发布。trunk进入3.1的开发，但是3.0发现了bug，那么就需要基于tag_release_3_0做一个分支(branch)，branch_bugfix_3_0，基于这 个branch进行bug修改，等到bugfix结束，做一个tag，tag_release_3_0_1，然后，根据需要决定 branch_bugfix_3_0是否并入主干(trunk)。</p>
+<p>branch和tag的创建都是用svn copy命令完成，将trunk目录下的工程copy到对应的branch和tag目录</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn cp path1 path2 -m <span class="string">"create branch"</span> (<span class="name">path1</span>表示trunk所在路径，path2表示branch或tag路径)</div></pre></td></tr></table></figure></div><div class="tags"><a href="/tags/Subversion/">Subversion</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2016/05/27/2016-05-27-git-usage/" class="pre">Git常用命令和用法</a><a href="/2016/05/26/2016-05-25-jekyll-install-problem-on-elcapitan/" class="next">Install jekyll on OS X EI Capitan</a></div><div id="comments"><div id="disqus_thread"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Subversion的命令"><span class="toc-text">Subversion的命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令用法"><span class="toc-text">命令用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主干、分支和标记"><span class="toc-text">主干、分支和标记</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/07/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/2017-03-06-tomcat-config-mac/">Tomcat在mac下的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/27/2016-05-27-git-usage/">Git常用命令和用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/27/2016-05-27-svn-command-usage/">SVN命令汇总和基本用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-25-jekyll-install-problem-on-elcapitan/">Install jekyll on OS X EI Capitan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-carthage-install-usage/">Carthage的安装和使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/2016-05-26-cocoapods-install-usage/">CocoaPods的安装和使用</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Carthage/">Carthage</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CocoaPods/">CocoaPods</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jekyll/">Jekyll</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WebServer/">WebServer</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/版本管理/">版本管理</a><span class="category-list-count">2</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/gem/" style="font-size: 15px;">gem</a> <a href="/tags/Carthage/" style="font-size: 15px;">Carthage</a> <a href="/tags/WebServer/" style="font-size: 15px;">WebServer</a> <a href="/tags/CocoaPods/" style="font-size: 15px;">CocoaPods</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Subversion/" style="font-size: 15px;">Subversion</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">Zzzz.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>var disqus_shortname = 'mrarronz';
+var disqus_identifier = '2016/05/27/2016-05-27-svn-command-usage/';
+var disqus_title = 'SVN命令汇总和基本用法';
+var disqus_url = 'https://mrarronz.github.io/2016/05/27/2016-05-27-svn-command-usage/';
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//mrarronz.disqus.com/count.js" async></script><script type="text/javascript" src="//mrarronz.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></body></html>
