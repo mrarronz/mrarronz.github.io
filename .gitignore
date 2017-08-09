@@ -1,0 +1,12 @@
+
+node_modules
+
+themes
+
+public
+
+debug.log
+
+db.json
+
+.deploy_git
